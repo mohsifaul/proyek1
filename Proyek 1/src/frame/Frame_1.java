@@ -40,6 +40,11 @@ public class Frame_1 extends javax.swing.JFrame {
         btKatalogBarang.setText("KATALOG BARANG");
 
         btMenabung.setText("MENABUNG");
+        btMenabung.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btMenabungActionPerformed(evt);
+            }
+        });
 
         btAmbilUang.setText("AMBIL UANG");
 
@@ -89,6 +94,12 @@ public class Frame_1 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btMenabungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMenabungActionPerformed
+        // TODO add your handling code here:
+        new Frame_1_3().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btMenabungActionPerformed
 
     /**
      * @param args the command line arguments
