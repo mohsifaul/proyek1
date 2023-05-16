@@ -24,104 +24,73 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jInternalFrame1" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="btKembali" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="btLanjut" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="169" max="-2" attributes="0"/>
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                          <Component id="txNim" min="-2" pref="383" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace pref="50" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jInternalFrame1" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="txNim" min="-2" pref="34" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btLanjut" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btKembali" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="25" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JInternalFrame" name="jInternalFrame1">
+    <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="visible" type="boolean" value="true"/>
+        <Property name="text" type="java.lang.String" value="Menabung"/>
       </Properties>
-
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jButton2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="246" max="-2" attributes="0"/>
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
-                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
-                              <Component id="jTextField1" min="-2" pref="383" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
-                  <EmptySpace pref="108" max="32767" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
-                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jTextField1" min="-2" pref="34" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace pref="167" max="32767" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-      <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel1">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Menabung"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Masukkan NIM :"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTextField1">
-        </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Lanjut"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Kembali"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
-          </Events>
-        </Component>
-      </SubComponents>
-    </Container>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Masukkan NIM :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txNim">
+    </Component>
+    <Component class="javax.swing.JButton" name="btLanjut">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Lanjut"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btKembali">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Kembali"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btKembaliActionPerformed"/>
+      </Events>
+    </Component>
   </SubComponents>
 </Form>

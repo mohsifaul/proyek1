@@ -36,8 +36,18 @@ public class Frame_1 extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btBayarUang.setText("BAYAR BARANG");
+        btBayarUang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btBayarUangActionPerformed(evt);
+            }
+        });
 
         btKatalogBarang.setText("KATALOG BARANG");
+        btKatalogBarang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btKatalogBarangActionPerformed(evt);
+            }
+        });
 
         btMenabung.setText("MENABUNG");
         btMenabung.addActionListener(new java.awt.event.ActionListener() {
@@ -47,6 +57,11 @@ public class Frame_1 extends javax.swing.JFrame {
         });
 
         btAmbilUang.setText("AMBIL UANG");
+        btAmbilUang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAmbilUangActionPerformed(evt);
+            }
+        });
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
@@ -100,6 +115,24 @@ public class Frame_1 extends javax.swing.JFrame {
         new Frame_1_3().setVisible(true);
         dispose();
     }//GEN-LAST:event_btMenabungActionPerformed
+
+    private void btBayarUangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBayarUangActionPerformed
+        // TODO add your handling code here:
+        new Frame_1_1().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btBayarUangActionPerformed
+
+    private void btKatalogBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btKatalogBarangActionPerformed
+        // TODO add your handling code here:
+        new Frame_1_2().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btKatalogBarangActionPerformed
+
+    private void btAmbilUangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAmbilUangActionPerformed
+        // TODO add your handling code here:
+        new Frame_1_3().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btAmbilUangActionPerformed
 
     /**
      * @param args the command line arguments
