@@ -26,13 +26,18 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="btKatalogBarang" max="32767" attributes="0"/>
-                  <Component id="btBayarUang" min="-2" pref="136" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btAmbilUang" min="-2" pref="136" max="-2" attributes="0"/>
-                  <Component id="btMenabung" min="-2" pref="136" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="btKatalogBarang" max="32767" attributes="0"/>
+                          <Component id="btBayarUang" min="-2" pref="136" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btAmbilUang" min="-2" pref="136" max="-2" attributes="0"/>
+                          <Component id="btMenabung" min="-2" pref="136" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Component id="btKeluar" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="177" max="-2" attributes="0"/>
@@ -55,6 +60,8 @@
                           <Component id="btAmbilUang" alignment="3" min="-2" pref="79" max="-2" attributes="0"/>
                           <Component id="btKatalogBarang" alignment="3" min="-2" pref="79" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btKeluar" min="-2" pref="36" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
@@ -119,5 +126,13 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JButton" name="btKeluar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Keluar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btKeluarActionPerformed"/>
+      </Events>
+    </Component>
   </SubComponents>
 </Form>

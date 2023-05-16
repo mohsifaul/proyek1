@@ -27,39 +27,44 @@ public class Frame_1_2 extends javax.swing.JFrame {
     private void initComponents() {
 
         jInternalFrame1 = new javax.swing.JInternalFrame();
-        jTextField1 = new javax.swing.JTextField();
+        inputBarang = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btKembali = new javax.swing.JButton();
+        btCari = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jInternalFrame1.setVisible(true);
 
-        jTextField1.setText("jTextField1");
+        inputBarang.setText("jTextField1");
 
         jLabel1.setText("Cari Barang");
 
-        jButton1.setText("Kembali");
+        btKembali.setText("Kembali");
+        btKembali.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btKembaliActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Cari");
+        btCari.setText("Cari");
 
         javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
         jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
         jInternalFrame1Layout.setHorizontalGroup(
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jInternalFrame1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addGap(48, 48, 48)
-                        .addComponent(jButton2))
+                        .addComponent(btKembali)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btCari))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jInternalFrame1Layout.createSequentialGroup()
                         .addGap(71, 71, 71)
                         .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(inputBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(98, Short.MAX_VALUE))
         );
         jInternalFrame1Layout.setVerticalGroup(
@@ -68,11 +73,11 @@ public class Frame_1_2 extends javax.swing.JFrame {
                 .addGap(95, 95, 95)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(inputBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(btKembali)
+                    .addComponent(btCari))
                 .addContainerGap(202, Short.MAX_VALUE))
         );
 
@@ -95,6 +100,12 @@ public class Frame_1_2 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btKembaliActionPerformed
+        // TODO add your handling code here:
+        new Frame_1().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btKembaliActionPerformed
 
     /**
      * @param args the command line arguments
@@ -147,10 +158,10 @@ public class Frame_1_2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btCari;
+    private javax.swing.JButton btKembali;
+    private javax.swing.JTextField inputBarang;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
