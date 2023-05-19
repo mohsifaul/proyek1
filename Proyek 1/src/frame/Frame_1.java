@@ -145,7 +145,7 @@ public class Frame_1 extends javax.swing.JFrame {
 
     private void btAmbilUangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAmbilUangActionPerformed
         // TODO add your handling code here:
-        new Frame_1_3().setVisible(true);
+        new Frame_1_4().setVisible(true);
         dispose();
     }//GEN-LAST:event_btAmbilUangActionPerformed
 
