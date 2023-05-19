@@ -31,6 +31,7 @@ public class Frame_1_3_1 extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jLabel1.setText("Masukkan Jumlah Uang :");
 

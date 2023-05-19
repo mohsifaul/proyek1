@@ -34,6 +34,7 @@ public class Frame_2 extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         btBayarUang.setText("DAFTAR ANGGOTA");
 

@@ -37,6 +37,7 @@ public class Frame_1 extends javax.swing.JFrame {
         btKeluar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         btBayarUang.setText("BAYAR BARANG");
         btBayarUang.addActionListener(new java.awt.event.ActionListener() {
