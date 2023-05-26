@@ -4,6 +4,7 @@
  */
 package frame;
 
+import code.ClassValidasi;
 import javax.swing.JOptionPane;
 
 /**
@@ -36,6 +37,9 @@ public class Frame_Login extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1366, 720));
+        setPreferredSize(new java.awt.Dimension(1366, 720));
+        setSize(new java.awt.Dimension(1366, 720));
 
         txUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,27 +72,27 @@ public class Frame_Login extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btLogin)
+                    .addComponent(btLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel2)
                         .addComponent(jLabel1)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(txPassword)
-                            .addComponent(txUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(50, 50, 50))
+                            .addComponent(txUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(477, 477, 477))
             .addGroup(layout.createSequentialGroup()
-                .addGap(114, 114, 114)
+                .addGap(683, 683, 683)
                 .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(683, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(83, 83, 83)
+                .addGap(150, 150, 150)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                .addGap(99, 99, 99)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -96,9 +100,9 @@ public class Frame_Login extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(9, 9, 9)
                 .addComponent(txPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(btLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
@@ -118,8 +122,23 @@ public class Frame_Login extends javax.swing.JFrame {
         if (txUsername.getText().isEmpty() || txPassword.getText().isEmpty()) {
             JOptionPane.showMessageDialog(rootPane, "Masukkan Username / Password", "Informasi", JOptionPane.ERROR_MESSAGE);
         } else {
-            new Frame_1().setVisible(true);
-            dispose();
+            ClassValidasi cv = new ClassValidasi();
+            String[] userData = cv.Login2(txUsername.getText(), txPassword.getText());
+            if (userData[0] != null) {
+                String nama = userData[0];
+                String level = userData[1];
+                if ("Admin".equals(level)) {
+                    new Frame_2(nama).setVisible(true);
+                    dispose();
+                } else if("Anggota".equals(level)){
+                    new Frame_1_3().setVisible(true);
+                    dispose();
+                }else{
+                   JOptionPane.showMessageDialog(null, "Login Gagal.\nAnda Bukan Admin", "Informasi", JOptionPane.ERROR_MESSAGE); 
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Login Gagal.\nSilahkan Cek kembali Username dan Password", "Informasi", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_btLoginActionPerformed
 

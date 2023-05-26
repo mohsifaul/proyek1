@@ -16,8 +16,9 @@ public class Frame_1 extends javax.swing.JFrame {
      * Creates new form KOCAK_1
      */
     public Frame_1() {
-        initComponents();
+            initComponents();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -68,10 +69,12 @@ public class Frame_1 extends javax.swing.JFrame {
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
+        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
         jTextArea1.setText("> Bayar Barang :\na. Bayar Barang apa saja yang \ningin kamu beli \n\n> Katalog Barang :\nMembantu anda dalam \nmencari letak dan harga barang tinggal masukkan kode barang\n\n> Menabung :\nGunakan ketika anda ingin \nmenabung dan setorkan uang \nke pada admin\n\n> Ambil Uang : \nGunakan Ketika ingin mengambil uang yang berada dalam tabungan mu");
+        jTextArea1.setBorder(javax.swing.BorderFactory.createTitledBorder("Pemberitahuan"));
         jScrollPane1.setViewportView(jTextArea1);
 
         btKeluar.setText("Keluar");
@@ -106,7 +109,7 @@ public class Frame_1 extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(101, 101, 101)
+                        .addGap(110, 110, 110)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btBayarUang, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btMenabung, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -123,6 +126,7 @@ public class Frame_1 extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btMenabungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMenabungActionPerformed
