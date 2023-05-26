@@ -27,11 +27,11 @@
               <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="btKatalogBarang" alignment="0" max="32767" attributes="0"/>
-                  <Component id="btBayarUang" alignment="0" min="-2" pref="136" max="-2" attributes="0"/>
+                  <Component id="btDaftarAnggota" alignment="0" min="-2" pref="136" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btAmbilUang" alignment="0" min="-2" pref="136" max="-2" attributes="0"/>
+                  <Component id="btTransaksi" alignment="0" min="-2" pref="136" max="-2" attributes="0"/>
                   <Component id="btMenabung" alignment="0" min="-2" pref="136" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
@@ -47,12 +47,12 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btBayarUang" alignment="3" min="-2" pref="79" max="-2" attributes="0"/>
+                          <Component id="btDaftarAnggota" alignment="3" min="-2" pref="79" max="-2" attributes="0"/>
                           <Component id="btMenabung" alignment="3" min="-2" pref="79" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btAmbilUang" alignment="3" min="-2" pref="79" max="-2" attributes="0"/>
+                          <Component id="btTransaksi" alignment="3" min="-2" pref="79" max="-2" attributes="0"/>
                           <Component id="btKatalogBarang" alignment="3" min="-2" pref="79" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -67,10 +67,13 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="btBayarUang">
+    <Component class="javax.swing.JButton" name="btDaftarAnggota">
       <Properties>
         <Property name="text" type="java.lang.String" value="DAFTAR ANGGOTA"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btDaftarAnggotaActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btMenabung">
       <Properties>
@@ -82,7 +85,7 @@
         <Property name="text" type="java.lang.String" value="KATALOG BARANG"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btAmbilUang">
+    <Component class="javax.swing.JButton" name="btTransaksi">
       <Properties>
         <Property name="text" type="java.lang.String" value="TRANSAKSI BARANG"/>
       </Properties>

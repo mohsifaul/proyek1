@@ -26,22 +26,27 @@ public class Frame_2 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btBayarUang = new javax.swing.JButton();
+        btDaftarAnggota = new javax.swing.JButton();
         btMenabung = new javax.swing.JButton();
         btKatalogBarang = new javax.swing.JButton();
-        btAmbilUang = new javax.swing.JButton();
+        btTransaksi = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btBayarUang.setText("DAFTAR ANGGOTA");
+        btDaftarAnggota.setText("DAFTAR ANGGOTA");
+        btDaftarAnggota.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDaftarAnggotaActionPerformed(evt);
+            }
+        });
 
         btMenabung.setText("TABUNGAN");
 
         btKatalogBarang.setText("KATALOG BARANG");
 
-        btAmbilUang.setText("TRANSAKSI BARANG");
+        btTransaksi.setText("TRANSAKSI BARANG");
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
@@ -59,10 +64,10 @@ public class Frame_2 extends javax.swing.JFrame {
                 .addGap(62, 62, 62)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btKatalogBarang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btBayarUang, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btDaftarAnggota, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btAmbilUang, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btMenabung, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -75,11 +80,11 @@ public class Frame_2 extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(101, 101, 101)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btBayarUang, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btDaftarAnggota, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btMenabung, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(33, 33, 33)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btAmbilUang, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btKatalogBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -89,6 +94,12 @@ public class Frame_2 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btDaftarAnggotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDaftarAnggotaActionPerformed
+        // TODO add your handling code here:
+        new Frame_2_1().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btDaftarAnggotaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -129,10 +140,10 @@ public class Frame_2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btAmbilUang;
-    private javax.swing.JButton btBayarUang;
+    private javax.swing.JButton btDaftarAnggota;
     private javax.swing.JButton btKatalogBarang;
     private javax.swing.JButton btMenabung;
+    private javax.swing.JButton btTransaksi;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
