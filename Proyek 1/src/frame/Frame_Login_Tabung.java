@@ -11,12 +11,13 @@ import javax.swing.JOptionPane;
  *
  * @author MSIFAULK
  */
-public class Frame_Login extends javax.swing.JFrame {
+public class Frame_Login_Tabung extends javax.swing.JFrame {
 
     /**
      * Creates new form FrameCOba
      */
-    public Frame_Login() {
+    public Frame_Login_Tabung() {
+        
         initComponents();
     }
 
@@ -37,8 +38,6 @@ public class Frame_Login extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1366, 720));
-        setPreferredSize(new java.awt.Dimension(1366, 720));
         setSize(new java.awt.Dimension(1366, 720));
 
         txUsername.addActionListener(new java.awt.event.ActionListener() {
@@ -123,19 +122,11 @@ public class Frame_Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Masukkan Username / Password", "Informasi", JOptionPane.ERROR_MESSAGE);
         } else {
             ClassValidasi cv = new ClassValidasi();
-            String[] userData = cv.Login2(txUsername.getText(), txPassword.getText());
+            String[] userData = cv.LoginTabung(txUsername.getText(), txPassword.getText());
             if (userData[0] != null) {
-                String nama = userData[0];
-                String level = userData[1];
-                if ("Admin".equals(level)) {
-                    new Frame_2(nama).setVisible(true);
-                    dispose();
-                } else if("Anggota".equals(level)){
-                    new Frame_1_3_0().setVisible(true);
-                    dispose();
-                }else{
-                   JOptionPane.showMessageDialog(null, "Login Gagal.\nAnda Bukan Admin", "Informasi", JOptionPane.ERROR_MESSAGE); 
-                }
+                String saldo = userData[1];
+                new Frame_1_3_0(saldo).setVisible(true);
+                dispose();
             } else {
                 JOptionPane.showMessageDialog(null, "Login Gagal.\nSilahkan Cek kembali Username dan Password", "Informasi", JOptionPane.ERROR_MESSAGE);
             }
@@ -159,21 +150,23 @@ public class Frame_Login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Frame_Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frame_Login_Tabung.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Frame_Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frame_Login_Tabung.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Frame_Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frame_Login_Tabung.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Frame_Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frame_Login_Tabung.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Frame_Login().setVisible(true);
+                new Frame_1().setVisible(true);
             }
         });
     }

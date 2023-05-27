@@ -62,4 +62,23 @@ public class ClassValidasi {
         }
         return userData;
     }
+    
+    // Login untuk Cek Saldo
+    public String[] LoginTabung(String username, String password){
+        String userData[] = new String[2];
+        String sql = "SELECT * FROM anggota WHERE username = '" + username + "'"
+                + "AND userpass = '" + password + "'";
+        try{
+            conn = ClassConnection.getKoneksi();
+            st = conn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            if (rs.next()) {
+                userData[0] = rs.getString("nama"); // Simpan nama ke indeks 0
+                userData[1] = rs.getString("saldo"); // Simpan saldo ke indeks 1
+            }
+        }catch (SQLException ex){
+            java.util.logging.Logger.getLogger(ClassValidasi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        return userData;
+    }
 }

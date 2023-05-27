@@ -53,7 +53,7 @@ public class Frame_1 extends javax.swing.JFrame {
             }
         });
 
-        btMenabung.setText("MENABUNG");
+        btMenabung.setText("CEK SALDO");
         btMenabung.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btMenabungActionPerformed(evt);
@@ -131,7 +131,7 @@ public class Frame_1 extends javax.swing.JFrame {
 
     private void btMenabungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMenabungActionPerformed
         // TODO add your handling code here:
-        new Frame_1_3().setVisible(true);
+        new Frame_Login_Tabung().setVisible(true);
         dispose();
     }//GEN-LAST:event_btMenabungActionPerformed
 
