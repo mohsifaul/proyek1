@@ -41,6 +41,9 @@ public class Frame_1_4 extends javax.swing.JFrame {
 
         jLabel2.setText("Masukkan NIM :");
 
+        btLanjut.setBackground(new java.awt.Color(241, 196, 15));
+        btLanjut.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
+        btLanjut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/angle-right.png"))); // NOI18N
         btLanjut.setText("Lanjut");
         btLanjut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -48,6 +51,9 @@ public class Frame_1_4 extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(231, 76, 60));
+        jButton2.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/angle-left.png"))); // NOI18N
         jButton2.setText("Kembali");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -83,7 +89,7 @@ public class Frame_1_4 extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btLanjut)
                     .addComponent(jButton2))
-                .addContainerGap(132, Short.MAX_VALUE))
+                .addContainerGap(130, Short.MAX_VALUE))
         );
 
         pack();

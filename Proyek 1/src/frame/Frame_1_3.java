@@ -39,8 +39,14 @@ public class Frame_1_3 extends javax.swing.JFrame {
 
         jLabel2.setText("Masukkan NIM :");
 
+        btLanjut.setBackground(new java.awt.Color(241, 196, 15));
+        btLanjut.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
+        btLanjut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/angle-right.png"))); // NOI18N
         btLanjut.setText("Lanjut");
 
+        btKembali.setBackground(new java.awt.Color(231, 76, 60));
+        btKembali.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
+        btKembali.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/angle-left.png"))); // NOI18N
         btKembali.setText("Kembali");
         btKembali.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,7 +90,7 @@ public class Frame_1_3 extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btLanjut)
                     .addComponent(btKembali))
-                .addContainerGap(148, Short.MAX_VALUE))
+                .addContainerGap(146, Short.MAX_VALUE))
         );
 
         pack();

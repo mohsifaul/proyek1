@@ -37,8 +37,12 @@ public class Frame_1 extends javax.swing.JFrame {
         btKeluar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(46, 204, 113));
         setUndecorated(true);
 
+        btBayarUang.setBackground(new java.awt.Color(46, 204, 113));
+        btBayarUang.setFont(new java.awt.Font("Source Sans Pro", 1, 12)); // NOI18N
+        btBayarUang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/dollar.png"))); // NOI18N
         btBayarUang.setText("BAYAR BARANG");
         btBayarUang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -46,6 +50,9 @@ public class Frame_1 extends javax.swing.JFrame {
             }
         });
 
+        btKatalogBarang.setBackground(new java.awt.Color(46, 204, 113));
+        btKatalogBarang.setFont(new java.awt.Font("Source Sans Pro", 1, 12)); // NOI18N
+        btKatalogBarang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/shopping-bag.png"))); // NOI18N
         btKatalogBarang.setText("KATALOG BARANG");
         btKatalogBarang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -53,6 +60,9 @@ public class Frame_1 extends javax.swing.JFrame {
             }
         });
 
+        btMenabung.setBackground(new java.awt.Color(46, 204, 113));
+        btMenabung.setFont(new java.awt.Font("Source Sans Pro", 1, 12)); // NOI18N
+        btMenabung.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/sack-dollar.png"))); // NOI18N
         btMenabung.setText("MENABUNG");
         btMenabung.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,6 +70,9 @@ public class Frame_1 extends javax.swing.JFrame {
             }
         });
 
+        btAmbilUang.setBackground(new java.awt.Color(46, 204, 113));
+        btAmbilUang.setFont(new java.awt.Font("Source Sans Pro", 1, 12)); // NOI18N
+        btAmbilUang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/credit-card.png"))); // NOI18N
         btAmbilUang.setText("AMBIL UANG");
         btAmbilUang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,12 +83,16 @@ public class Frame_1 extends javax.swing.JFrame {
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Source Sans Pro", 0, 12)); // NOI18N
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
         jTextArea1.setText("> Bayar Barang :\na. Bayar Barang apa saja yang \ningin kamu beli \n\n> Katalog Barang :\nMembantu anda dalam \nmencari letak dan harga barang tinggal masukkan kode barang\n\n> Menabung :\nGunakan ketika anda ingin \nmenabung dan setorkan uang \nke pada admin\n\n> Ambil Uang : \nGunakan Ketika ingin mengambil uang yang berada dalam tabungan mu");
         jScrollPane1.setViewportView(jTextArea1);
 
-        btKeluar.setText("Keluar");
+        btKeluar.setBackground(new java.awt.Color(231, 76, 60));
+        btKeluar.setFont(new java.awt.Font("Source Sans Pro", 1, 14)); // NOI18N
+        btKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/cross.png"))); // NOI18N
+        btKeluar.setText("  Keluar");
         btKeluar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btKeluarActionPerformed(evt);
@@ -100,7 +117,7 @@ public class Frame_1 extends javax.swing.JFrame {
                     .addComponent(btKeluar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(36, 36, 36)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

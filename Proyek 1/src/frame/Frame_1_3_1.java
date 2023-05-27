@@ -35,6 +35,9 @@ public class Frame_1_3_1 extends javax.swing.JFrame {
 
         jLabel1.setText("Masukkan Jumlah Uang :");
 
+        jButton1.setBackground(new java.awt.Color(241, 196, 15));
+        jButton1.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/printer.png"))); // NOI18N
         jButton1.setText("Cetak Struk");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -61,7 +64,7 @@ public class Frame_1_3_1 extends javax.swing.JFrame {
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addContainerGap(160, Short.MAX_VALUE))
+                .addContainerGap(158, Short.MAX_VALUE))
         );
 
         pack();

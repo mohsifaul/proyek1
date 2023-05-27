@@ -32,12 +32,16 @@ public class Frame_1_2 extends javax.swing.JFrame {
         btCari = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(26, 188, 156));
         setUndecorated(true);
 
         inputBarang.setText("jTextField1");
 
         jLabel1.setText("Cari Barang");
 
+        btKembali.setBackground(new java.awt.Color(231, 76, 60));
+        btKembali.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
+        btKembali.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/angle-left.png"))); // NOI18N
         btKembali.setText("Kembali");
         btKembali.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -45,6 +49,9 @@ public class Frame_1_2 extends javax.swing.JFrame {
             }
         });
 
+        btCari.setBackground(new java.awt.Color(241, 196, 15));
+        btCari.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
+        btCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/search-interface-symbol.png"))); // NOI18N
         btCari.setText("Cari");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -61,7 +68,7 @@ public class Frame_1_2 extends javax.swing.JFrame {
                         .addComponent(btCari))
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(inputBarang, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(97, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -74,7 +81,7 @@ public class Frame_1_2 extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btKembali)
                     .addComponent(btCari))
-                .addContainerGap(173, Short.MAX_VALUE))
+                .addContainerGap(171, Short.MAX_VALUE))
         );
 
         pack();

@@ -52,13 +52,19 @@ public class Frame_2_2 extends javax.swing.JFrame {
 
         jLabel1.setText("Cari");
 
-        jButton1.setText("Cetak Struk");
+        jButton1.setBackground(new java.awt.Color(241, 196, 15));
+        jButton1.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/printer.png"))); // NOI18N
+        jButton1.setText("Cetak");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(41, 128, 185));
+        jButton2.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/pencil.png"))); // NOI18N
         jButton2.setText("Edit Anggota");
 
         jLabel2.setText("Katalog Barang");
@@ -104,7 +110,7 @@ public class Frame_2_2 extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         pack();
