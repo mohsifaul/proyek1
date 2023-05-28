@@ -4,6 +4,8 @@
  */
 package frame;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author BANI BANN
@@ -28,16 +30,16 @@ public class Frame_1_3_1 extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         txUang = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btTabung = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Masukkan Jumlah Uang :");
 
-        jButton1.setText("Cetak Struk");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btTabung.setText("Cetak Struk");
+        btTabung.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btTabungActionPerformed(evt);
             }
         });
 
@@ -46,15 +48,12 @@ public class Frame_1_3_1 extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
+                    .addComponent(btTabung)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(txUang, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jLabel1))))
+                        .addComponent(txUang, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -65,22 +64,22 @@ public class Frame_1_3_1 extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txUang, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(btTabung)
                 .addGap(69, 69, 69))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btTabungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTabungActionPerformed
         // TODO add your handling code here:
         String uangTabung = txUang.getText();
         if (uangTabung.isEmpty()) {
-            
+            JOptionPane.showMessageDialog(rootPane, "Silahkan Masukkan Nominal Uang", "Informasi", JOptionPane.OK_OPTION);
         } else {
             
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btTabungActionPerformed
 
     /**
      * @param args the command line arguments
@@ -125,7 +124,7 @@ public class Frame_1_3_1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btTabung;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField txUang;
     // End of variables declaration//GEN-END:variables

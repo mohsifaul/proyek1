@@ -4,10 +4,13 @@
  */
 package code;
 
+import static java.lang.Integer.parseInt;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -39,6 +42,16 @@ public class ClassAnggota {
         }
         return userData;
     }
-    
+    public void tabungUang(String nominal){
+        int saldoTabung = parseInt(nominal);
+        try{
+            conn = ClassConnection.getKoneksi();
+            st = conn.createStatement();
+            
+        } catch (SQLException ex){
+//            System.out.println("Data gagal di Update");
+            JOptionPane.showMessageDialog(null, "Data Gagal Di Ubah");
+        }
+    }
 }
 
