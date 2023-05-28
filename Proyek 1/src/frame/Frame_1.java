@@ -4,21 +4,18 @@
  */
 package frame;
 
-import javax.swing.JOptionPane;
-
 /**
  *
- * @author BANI BANN
+ * @author MSIFAULK
  */
 public class Frame_1 extends javax.swing.JFrame {
 
     /**
-     * Creates new form KOCAK_1
+     * Creates new form Frame_1
      */
     public Frame_1() {
-            initComponents();
+        initComponents();
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,181 +26,21 @@ public class Frame_1 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btBayarUang = new javax.swing.JButton();
-        btKatalogBarang = new javax.swing.JButton();
-        btMenabung = new javax.swing.JButton();
-        btAmbilUang = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        btKeluar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(46, 204, 113));
-        setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(600, 450));
-
-        btBayarUang.setBackground(new java.awt.Color(46, 204, 113));
-        btBayarUang.setFont(new java.awt.Font("Source Sans Pro", 1, 12)); // NOI18N
-        btBayarUang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/dollar.png"))); // NOI18N
-        btBayarUang.setText("BAYAR BARANG");
-        btBayarUang.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btBayarUangActionPerformed(evt);
-            }
-        });
-
-        btKatalogBarang.setBackground(new java.awt.Color(46, 204, 113));
-        btKatalogBarang.setFont(new java.awt.Font("Source Sans Pro", 1, 12)); // NOI18N
-        btKatalogBarang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/shopping-bag.png"))); // NOI18N
-        btKatalogBarang.setText("KATALOG BARANG");
-        btKatalogBarang.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btKatalogBarangActionPerformed(evt);
-            }
-        });
-
-<<<<<<< HEAD
-        btMenabung.setText("CEK SALDO");
-=======
-        btMenabung.setBackground(new java.awt.Color(46, 204, 113));
-        btMenabung.setFont(new java.awt.Font("Source Sans Pro", 1, 12)); // NOI18N
-        btMenabung.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/sack-dollar.png"))); // NOI18N
-        btMenabung.setText("MENABUNG");
->>>>>>> 0521940258b18c6262bb6cdd422aa19b2e241760
-        btMenabung.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btMenabungActionPerformed(evt);
-            }
-        });
-
-        btAmbilUang.setBackground(new java.awt.Color(46, 204, 113));
-        btAmbilUang.setFont(new java.awt.Font("Source Sans Pro", 1, 12)); // NOI18N
-        btAmbilUang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/credit-card.png"))); // NOI18N
-        btAmbilUang.setText("AMBIL UANG");
-        btAmbilUang.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btAmbilUangActionPerformed(evt);
-            }
-        });
-
-        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Source Sans Pro", 0, 12)); // NOI18N
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(5);
-<<<<<<< HEAD
-        jTextArea1.setText("> Bayar Barang :\na. Bayar Barang apa saja yang \ningin kamu beli \n\n> Katalog Barang :\nMembantu anda dalam \nmencari letak dan harga barang tinggal masukkan kode barang\n\n> Menabung :\nGunakan ketika anda ingin \nmenabung dan setorkan uang \nke pada admin\n\n> Ambil Uang : \nGunakan Ketika ingin mengambil uang yang berada dalam tabungan mu");
-        jTextArea1.setBorder(javax.swing.BorderFactory.createTitledBorder("Pemberitahuan"));
-=======
-        jTextArea1.setText("> Bayar Barang :\na. Bayar Barang apa saja yang \ningin kamu beli \n\n> Katalog Barang :\nMembantu anda dalam \nmencari letak dan harga barang \ntinggal masukkan kode barang\n\n> Menabung :\nGunakan ketika anda ingin \nmenabung dan setorkan uang \nke pada admin\n\n> Ambil Uang : \nGunakan Ketika ingin mengambil uang yang berada dalam\ntabungan mu");
->>>>>>> 0521940258b18c6262bb6cdd422aa19b2e241760
-        jScrollPane1.setViewportView(jTextArea1);
-
-        btKeluar.setBackground(new java.awt.Color(231, 76, 60));
-        btKeluar.setFont(new java.awt.Font("Source Sans Pro", 1, 14)); // NOI18N
-        btKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/cross.png"))); // NOI18N
-        btKeluar.setText("  Keluar");
-        btKeluar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btKeluarActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setFont(new java.awt.Font("Source Sans Pro", 1, 24)); // NOI18N
-        jLabel1.setText("KOPERASI SEKOLAH");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btKatalogBarang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btBayarUang, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(35, 35, 35)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btAmbilUang, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btMenabung, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(btKeluar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(101, 101, 101)
-                        .addComponent(jLabel1)))
-                .addContainerGap(16, Short.MAX_VALUE))
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel1)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-<<<<<<< HEAD
-                        .addGap(110, 110, 110)
-=======
-                        .addGap(57, 57, 57)
->>>>>>> 0521940258b18c6262bb6cdd422aa19b2e241760
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btBayarUang, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btMenabung, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(33, 33, 33)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btAmbilUang, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btKatalogBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(btKeluar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(48, 48, 48))))
+            .addGap(0, 300, Short.MAX_VALUE)
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btMenabungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMenabungActionPerformed
-        // TODO add your handling code here:
-        new Frame_Login_Tabung().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btMenabungActionPerformed
-
-    private void btBayarUangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBayarUangActionPerformed
-        // TODO add your handling code here:
-        new Frame_1_1().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btBayarUangActionPerformed
-
-    private void btKatalogBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btKatalogBarangActionPerformed
-        // TODO add your handling code here:
-        new Frame_1_2().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btKatalogBarangActionPerformed
-
-    private void btAmbilUangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAmbilUangActionPerformed
-        // TODO add your handling code here:
-        new Frame_1_4().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btAmbilUangActionPerformed
-
-    private void btKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btKeluarActionPerformed
-        // TODO add your handling code here:
-        int selectedOption = JOptionPane.showConfirmDialog(null,
-        "Apakah anda akan Keluar?", "Tutup Aplikasi", JOptionPane.YES_NO_OPTION);
-        if (selectedOption == JOptionPane.YES_OPTION) {
-            System.exit(0);
-        }
-    }//GEN-LAST:event_btKeluarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -231,7 +68,6 @@ public class Frame_1 extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Frame_1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -242,13 +78,5 @@ public class Frame_1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btAmbilUang;
-    private javax.swing.JButton btBayarUang;
-    private javax.swing.JButton btKatalogBarang;
-    private javax.swing.JButton btKeluar;
-    private javax.swing.JButton btMenabung;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }

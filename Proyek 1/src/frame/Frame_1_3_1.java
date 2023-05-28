@@ -4,16 +4,14 @@
  */
 package frame;
 
-import javax.swing.JOptionPane;
-
 /**
  *
- * @author BANI BANN
+ * @author MSIFAULK
  */
 public class Frame_1_3_1 extends javax.swing.JFrame {
 
     /**
-     * Creates new form KOCAK_1_1_3_1
+     * Creates new form Frame_1_3_1
      */
     public Frame_1_3_1() {
         initComponents();
@@ -28,74 +26,21 @@ public class Frame_1_3_1 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        txUang = new javax.swing.JTextField();
-        btTabung = new javax.swing.JButton();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
-
-        jLabel1.setText("Masukkan Jumlah Uang :");
-
-<<<<<<< HEAD
-        btTabung.setText("Cetak Struk");
-        btTabung.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btTabungActionPerformed(evt);
-            }
-        });
-=======
-        jButton1.setBackground(new java.awt.Color(241, 196, 15));
-        jButton1.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/printer.png"))); // NOI18N
-        jButton1.setText("Cetak Struk");
->>>>>>> 0521940258b18c6262bb6cdd422aa19b2e241760
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btTabung)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txUang, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(96, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-<<<<<<< HEAD
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txUang, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btTabung)
-                .addGap(69, 69, 69))
-=======
-                .addGap(35, 35, 35)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addContainerGap(158, Short.MAX_VALUE))
->>>>>>> 0521940258b18c6262bb6cdd422aa19b2e241760
+            .addGap(0, 300, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btTabungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTabungActionPerformed
-        // TODO add your handling code here:
-        String uangTabung = txUang.getText();
-        if (uangTabung.isEmpty()) {
-            JOptionPane.showMessageDialog(rootPane, "Silahkan Masukkan Nominal Uang", "Informasi", JOptionPane.OK_OPTION);
-        } else {
-            
-        }
-    }//GEN-LAST:event_btTabungActionPerformed
 
     /**
      * @param args the command line arguments
@@ -123,13 +68,6 @@ public class Frame_1_3_1 extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Frame_1_3_1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -140,8 +78,5 @@ public class Frame_1_3_1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btTabung;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField txUang;
     // End of variables declaration//GEN-END:variables
 }
