@@ -35,6 +35,10 @@ public class Frame_2_2 extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+<<<<<<< HEAD
+=======
+        setUndecorated(true);
+>>>>>>> 0521940258b18c6262bb6cdd422aa19b2e241760
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -51,19 +55,29 @@ public class Frame_2_2 extends javax.swing.JFrame {
 
         jLabel1.setText("Cari");
 
-        jButton1.setText("Cetak Struk");
+        jButton1.setBackground(new java.awt.Color(241, 196, 15));
+        jButton1.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/printer.png"))); // NOI18N
+        jButton1.setText("Cetak");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
+<<<<<<< HEAD
         btKelolaBarang.setText("Kelola Barang");
         btKelolaBarang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btKelolaBarangActionPerformed(evt);
             }
         });
+=======
+        jButton2.setBackground(new java.awt.Color(41, 128, 185));
+        jButton2.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/pencil.png"))); // NOI18N
+        jButton2.setText("Edit Anggota");
+>>>>>>> 0521940258b18c6262bb6cdd422aa19b2e241760
 
         jLabel2.setText("Katalog Barang");
 
@@ -78,7 +92,11 @@ public class Frame_2_2 extends javax.swing.JFrame {
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
+<<<<<<< HEAD
                                 .addComponent(btKelolaBarang)
+=======
+                                .addComponent(jButton2)
+>>>>>>> 0521940258b18c6262bb6cdd422aa19b2e241760
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton1))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING))
@@ -96,7 +114,11 @@ public class Frame_2_2 extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+<<<<<<< HEAD
                 .addGap(25, 25, 25)
+=======
+                .addGap(44, 44, 44)
+>>>>>>> 0521940258b18c6262bb6cdd422aa19b2e241760
                 .addComponent(jLabel2)
                 .addGap(1, 1, 1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -107,8 +129,13 @@ public class Frame_2_2 extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
+<<<<<<< HEAD
                     .addComponent(btKelolaBarang))
                 .addContainerGap(25, Short.MAX_VALUE))
+=======
+                    .addComponent(jButton2))
+                .addContainerGap(43, Short.MAX_VALUE))
+>>>>>>> 0521940258b18c6262bb6cdd422aa19b2e241760
         );
 
         pack();
@@ -177,6 +204,10 @@ public class Frame_2_2 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btKelolaBarang;
     private javax.swing.JButton jButton1;
+<<<<<<< HEAD
+=======
+    private javax.swing.JButton jButton2;
+>>>>>>> 0521940258b18c6262bb6cdd422aa19b2e241760
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

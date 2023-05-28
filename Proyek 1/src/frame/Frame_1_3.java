@@ -33,13 +33,20 @@ public class Frame_1_3 extends javax.swing.JFrame {
         btKembali = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jLabel1.setText("Menabung");
 
         jLabel2.setText("Masukkan Username :");
 
+        btLanjut.setBackground(new java.awt.Color(241, 196, 15));
+        btLanjut.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
+        btLanjut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/angle-right.png"))); // NOI18N
         btLanjut.setText("Lanjut");
 
+        btKembali.setBackground(new java.awt.Color(231, 76, 60));
+        btKembali.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
+        btKembali.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/angle-left.png"))); // NOI18N
         btKembali.setText("Kembali");
         btKembali.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -54,6 +61,7 @@ public class Frame_1_3 extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+<<<<<<< HEAD
                         .addGap(216, 216, 216)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
@@ -69,21 +77,47 @@ public class Frame_1_3 extends javax.swing.JFrame {
                                     .addComponent(jLabel2)
                                     .addGap(277, 277, 277))))))
                 .addContainerGap(50, Short.MAX_VALUE))
+=======
+                        .addGap(109, 109, 109)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btKembali)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btLanjut))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel2)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(10, 10, 10)
+                                    .addComponent(txNim, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(283, 283, 283)
+                        .addComponent(jLabel1)))
+                .addContainerGap(152, Short.MAX_VALUE))
+>>>>>>> 0521940258b18c6262bb6cdd422aa19b2e241760
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jLabel1)
+<<<<<<< HEAD
+=======
+                .addGap(109, 109, 109)
+                .addComponent(jLabel2)
+>>>>>>> 0521940258b18c6262bb6cdd422aa19b2e241760
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txNim, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+<<<<<<< HEAD
                 .addGap(85, 85, 85)
+=======
+                .addGap(58, 58, 58)
+>>>>>>> 0521940258b18c6262bb6cdd422aa19b2e241760
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btLanjut)
                     .addComponent(btKembali))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(146, Short.MAX_VALUE))
         );
 
         pack();

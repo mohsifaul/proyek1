@@ -33,15 +33,23 @@ public class Frame_1_3_1 extends javax.swing.JFrame {
         btTabung = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jLabel1.setText("Masukkan Jumlah Uang :");
 
+<<<<<<< HEAD
         btTabung.setText("Cetak Struk");
         btTabung.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btTabungActionPerformed(evt);
             }
         });
+=======
+        jButton1.setBackground(new java.awt.Color(241, 196, 15));
+        jButton1.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/printer.png"))); // NOI18N
+        jButton1.setText("Cetak Struk");
+>>>>>>> 0521940258b18c6262bb6cdd422aa19b2e241760
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -61,11 +69,19 @@ public class Frame_1_3_1 extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(96, Short.MAX_VALUE)
                 .addComponent(jLabel1)
+<<<<<<< HEAD
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txUang, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btTabung)
                 .addGap(69, 69, 69))
+=======
+                .addGap(35, 35, 35)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap(158, Short.MAX_VALUE))
+>>>>>>> 0521940258b18c6262bb6cdd422aa19b2e241760
         );
 
         pack();

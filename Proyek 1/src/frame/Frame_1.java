@@ -36,9 +36,16 @@ public class Frame_1 extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         btKeluar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(46, 204, 113));
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(600, 450));
 
+        btBayarUang.setBackground(new java.awt.Color(46, 204, 113));
+        btBayarUang.setFont(new java.awt.Font("Source Sans Pro", 1, 12)); // NOI18N
+        btBayarUang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/dollar.png"))); // NOI18N
         btBayarUang.setText("BAYAR BARANG");
         btBayarUang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -46,6 +53,9 @@ public class Frame_1 extends javax.swing.JFrame {
             }
         });
 
+        btKatalogBarang.setBackground(new java.awt.Color(46, 204, 113));
+        btKatalogBarang.setFont(new java.awt.Font("Source Sans Pro", 1, 12)); // NOI18N
+        btKatalogBarang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/shopping-bag.png"))); // NOI18N
         btKatalogBarang.setText("KATALOG BARANG");
         btKatalogBarang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -53,13 +63,23 @@ public class Frame_1 extends javax.swing.JFrame {
             }
         });
 
+<<<<<<< HEAD
         btMenabung.setText("CEK SALDO");
+=======
+        btMenabung.setBackground(new java.awt.Color(46, 204, 113));
+        btMenabung.setFont(new java.awt.Font("Source Sans Pro", 1, 12)); // NOI18N
+        btMenabung.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/sack-dollar.png"))); // NOI18N
+        btMenabung.setText("MENABUNG");
+>>>>>>> 0521940258b18c6262bb6cdd422aa19b2e241760
         btMenabung.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btMenabungActionPerformed(evt);
             }
         });
 
+        btAmbilUang.setBackground(new java.awt.Color(46, 204, 113));
+        btAmbilUang.setFont(new java.awt.Font("Source Sans Pro", 1, 12)); // NOI18N
+        btAmbilUang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/credit-card.png"))); // NOI18N
         btAmbilUang.setText("AMBIL UANG");
         btAmbilUang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,45 +91,67 @@ public class Frame_1 extends javax.swing.JFrame {
 
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Source Sans Pro", 0, 12)); // NOI18N
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
+<<<<<<< HEAD
         jTextArea1.setText("> Bayar Barang :\na. Bayar Barang apa saja yang \ningin kamu beli \n\n> Katalog Barang :\nMembantu anda dalam \nmencari letak dan harga barang tinggal masukkan kode barang\n\n> Menabung :\nGunakan ketika anda ingin \nmenabung dan setorkan uang \nke pada admin\n\n> Ambil Uang : \nGunakan Ketika ingin mengambil uang yang berada dalam tabungan mu");
         jTextArea1.setBorder(javax.swing.BorderFactory.createTitledBorder("Pemberitahuan"));
+=======
+        jTextArea1.setText("> Bayar Barang :\na. Bayar Barang apa saja yang \ningin kamu beli \n\n> Katalog Barang :\nMembantu anda dalam \nmencari letak dan harga barang \ntinggal masukkan kode barang\n\n> Menabung :\nGunakan ketika anda ingin \nmenabung dan setorkan uang \nke pada admin\n\n> Ambil Uang : \nGunakan Ketika ingin mengambil uang yang berada dalam\ntabungan mu");
+>>>>>>> 0521940258b18c6262bb6cdd422aa19b2e241760
         jScrollPane1.setViewportView(jTextArea1);
 
-        btKeluar.setText("Keluar");
+        btKeluar.setBackground(new java.awt.Color(231, 76, 60));
+        btKeluar.setFont(new java.awt.Font("Source Sans Pro", 1, 14)); // NOI18N
+        btKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/cross.png"))); // NOI18N
+        btKeluar.setText("  Keluar");
         btKeluar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btKeluarActionPerformed(evt);
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Source Sans Pro", 1, 24)); // NOI18N
+        jLabel1.setText("KOPERASI SEKOLAH");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(62, 62, 62)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btKatalogBarang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btBayarUang, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(35, 35, 35)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btAmbilUang, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btMenabung, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(btKeluar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(36, 36, 36)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btKatalogBarang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btBayarUang, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(35, 35, 35)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btAmbilUang, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btMenabung, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btKeluar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addComponent(jLabel1)))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jLabel1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+<<<<<<< HEAD
                         .addGap(110, 110, 110)
+=======
+                        .addGap(57, 57, 57)
+>>>>>>> 0521940258b18c6262bb6cdd422aa19b2e241760
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btBayarUang, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btMenabung, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -118,11 +160,12 @@ public class Frame_1 extends javax.swing.JFrame {
                             .addComponent(btAmbilUang, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btKatalogBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(btKeluar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                        .addComponent(btKeluar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48))))
         );
 
         pack();
@@ -204,6 +247,7 @@ public class Frame_1 extends javax.swing.JFrame {
     private javax.swing.JButton btKatalogBarang;
     private javax.swing.JButton btKeluar;
     private javax.swing.JButton btMenabung;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
