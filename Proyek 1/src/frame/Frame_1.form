@@ -7,6 +7,9 @@
       <Color blue="71" green="cc" red="2e" type="rgb"/>
     </Property>
     <Property name="undecorated" type="boolean" value="true"/>
+    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[600, 450]"/>
+    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -28,33 +31,43 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="btKatalogBarang" max="32767" attributes="0"/>
-                          <Component id="btBayarUang" min="-2" pref="136" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="btKatalogBarang" max="32767" attributes="0"/>
+                                  <Component id="btBayarUang" min="-2" pref="136" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="btAmbilUang" min="-2" pref="136" max="-2" attributes="0"/>
+                                  <Component id="btMenabung" min="-2" pref="136" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="btKeluar" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btAmbilUang" min="-2" pref="136" max="-2" attributes="0"/>
-                          <Component id="btMenabung" min="-2" pref="136" max="-2" attributes="0"/>
-                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="187" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="btKeluar" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="177" max="-2" attributes="0"/>
-              <EmptySpace pref="8" max="32767" attributes="0"/>
+              <EmptySpace pref="16" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btBayarUang" alignment="3" min="-2" pref="79" max="-2" attributes="0"/>
                           <Component id="btMenabung" alignment="3" min="-2" pref="79" max="-2" attributes="0"/>
@@ -66,13 +79,14 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btKeluar" min="-2" pref="36" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="411" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace pref="28" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="315" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="21" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -164,7 +178,7 @@
             </Property>
             <Property name="lineWrap" type="boolean" value="true"/>
             <Property name="rows" type="int" value="5"/>
-            <Property name="text" type="java.lang.String" value="&gt; Bayar Barang :&#xa;a. Bayar Barang apa saja yang &#xa;ingin kamu beli &#xa;&#xa;&gt; Katalog Barang :&#xa;Membantu anda dalam &#xa;mencari letak dan harga barang tinggal masukkan kode barang&#xa;&#xa;&gt; Menabung :&#xa;Gunakan ketika anda ingin &#xa;menabung dan setorkan uang &#xa;ke pada admin&#xa;&#xa;&gt; Ambil Uang : &#xa;Gunakan Ketika ingin mengambil uang yang berada dalam tabungan mu"/>
+            <Property name="text" type="java.lang.String" value="&gt; Bayar Barang :&#xa;a. Bayar Barang apa saja yang &#xa;ingin kamu beli &#xa;&#xa;&gt; Katalog Barang :&#xa;Membantu anda dalam &#xa;mencari letak dan harga barang &#xa;tinggal masukkan kode barang&#xa;&#xa;&gt; Menabung :&#xa;Gunakan ketika anda ingin &#xa;menabung dan setorkan uang &#xa;ke pada admin&#xa;&#xa;&gt; Ambil Uang : &#xa;Gunakan Ketika ingin mengambil uang yang berada dalam&#xa;tabungan mu"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -185,6 +199,14 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btKeluarActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Source Sans Pro" size="24" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="KOPERASI SEKOLAH"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
