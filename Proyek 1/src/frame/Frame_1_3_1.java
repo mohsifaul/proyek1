@@ -139,7 +139,6 @@ public class Frame_1_3_1 extends javax.swing.JFrame {
             System.out.println("Saldo Update : " + saldoUpdate);
             ClassAnggota ca = new ClassAnggota();
             ca.userNabung(akun, saldoUpdate);
-//            JOptionPane.showMessageDialog(rootPane, "Berhasil Menabung", "Informasi", JOptionPane.INFORMATION_MESSAGE);
             new Frame_1_3_0(saldoAkhir, akun).setVisible(true);
             dispose();
         }

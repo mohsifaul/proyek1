@@ -17,9 +17,11 @@ import javax.swing.JOptionPane;
  * @author MSIFAULK
  */
 public class ClassAnggota {
-    private String username, userpass;
+    private String username, userpass, nama, kelas;
     private Connection conn;
     private Statement st;
+    private int ndata = 0;
+    private Object[][] data;
     public ClassAnggota(){
         
     }
@@ -62,6 +64,62 @@ public class ClassAnggota {
 //            System.out.println("Data gagal di Update");
             JOptionPane.showMessageDialog(null, "Gagal Setor");
         }
+    }
+    public void TampilAnggota(){
+        try{
+            conn = ClassConnection.getKoneksi();
+            st = conn.createStatement();
+            String sql = "SELECT COUNT(*) FROM anggota";
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()){
+                ndata = rs.getInt("COUNT(*)");
+            }
+            sql = "SELECT * FROM anggota";
+            rs = st.executeQuery(sql);
+            data = new Object[ndata][3];
+            int idx = 0;
+            while(rs.next()){
+                data[idx][0] = rs.getString("username");
+                data[idx][1] = rs.getString("nama");
+                data[idx][2] = rs.getString("kelas");
+                idx++;
+            }
+            rs.close();
+            st.close();
+        } catch (SQLException ex){
+//            System.out.println("Data gagal tampil");
+        }
+    }
+    
+//  Fungsi Untuk Tambah Data Anggota  
+    public void insertAnggota(String NIS, String pass, String namaAnggota, String kelasAnggota, int saldo){
+        try{
+            String saldoAwal = String.valueOf(saldo);
+            conn = ClassConnection.getKoneksi();
+            st = conn.createStatement();
+            
+            String sql = "INSERT INTO anggota VALUES (?, ?, ?, ?, ?)";
+//            System.out.println(sql);
+            try(PreparedStatement p = conn.prepareStatement(sql)){
+                p.setString(1, NIS);
+                p.setString(2, pass);
+                p.setString(3, namaAnggota);
+                p.setString(4, kelasAnggota);
+                p.setInt(5, saldo);
+                p.execute();
+//                System.out.println("Data Berhasil Di Update");
+                JOptionPane.showMessageDialog(null, "Anggota berhasil ditambahkan");
+            }
+        } catch (SQLException ex){
+//            System.out.println("Data gagal di Update");
+            JOptionPane.showMessageDialog(null, "Gagal Tambah Anggota");
+        }
+    }
+    public int getNumberDataAnggota(){
+        return ndata;
+    }
+    public Object[][] getAllDataAngggota(){
+        return data;
     }
 }
 

@@ -41,7 +41,7 @@ public class Frame_2 extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btBayarUang = new javax.swing.JButton();
+        btAnggota = new javax.swing.JButton();
         btMenabung = new javax.swing.JButton();
         btAmbilUang = new javax.swing.JButton();
         btKatalogBarang = new javax.swing.JButton();
@@ -58,7 +58,12 @@ public class Frame_2 extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
-        btBayarUang.setText("DAFTAR ANGGOTA");
+        btAnggota.setText("DAFTAR ANGGOTA");
+        btAnggota.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAnggotaActionPerformed(evt);
+            }
+        });
 
         btMenabung.setText("TABUNGAN");
 
@@ -110,7 +115,7 @@ public class Frame_2 extends javax.swing.JFrame {
                 .addGap(98, 98, 98)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(btKatalogBarang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btBayarUang, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btAnggota, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btMenabung, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -142,7 +147,7 @@ public class Frame_2 extends javax.swing.JFrame {
                         .addGap(48, 48, 48))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btBayarUang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btAnggota, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btMenabung, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(27, 27, 27)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -168,6 +173,12 @@ public class Frame_2 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btAnggotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAnggotaActionPerformed
+        // TODO add your handling code here:
+        new Frame_2_1().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btAnggotaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -206,7 +217,7 @@ public class Frame_2 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAmbilUang;
-    private javax.swing.JButton btBayarUang;
+    private javax.swing.JButton btAnggota;
     private javax.swing.JButton btKatalogBarang;
     private javax.swing.JButton btMenabung;
     private javax.swing.JLabel jLabel1;
