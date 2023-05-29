@@ -4,6 +4,9 @@
  */
 package frame;
 
+import code.ClassAnggota;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author MSIFAULK
@@ -15,8 +18,39 @@ public class Frame_2_1 extends javax.swing.JFrame {
      */
     public Frame_2_1() {
         initComponents();
+        loadData();
     }
-
+    DefaultTableModel tableModel;
+    void ModelTableUser(){
+        tableModel = new DefaultTableModel();
+        tbAnggota.setModel(tableModel);
+        tableModel.addColumn("No");
+        tableModel.addColumn("NIS");
+        tableModel.addColumn("Nama Lengkap");
+        tableModel.addColumn("Kelas");
+        tableModel.getDataVector().removeAllElements();
+        tableModel.fireTableDataChanged();
+    }
+    void loadData() {
+        ModelTableUser();
+        ClassAnggota ca = new ClassAnggota();
+        ca.TampilAnggota();
+        int no = 1;
+        int ndata = ca.getNumberDataAnggota();
+        Object[][] data = ca.getAllDataAngggota();
+        Object[] data1 = new Object[4];
+        for (int i = 0; i < ndata; i++) {
+            data1[0] = no;
+            for (int j = 1; j < 4; j++) {
+                data1[j] = data[i][j - 1];
+//                System.out.println(data1[j]);
+            }
+            tableModel.addRow(data1);
+            no++;
+        }
+        int jumlah = tableModel.getRowCount(); 
+       txTotalAnggota.setText(Integer.toString(jumlah));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,17 +61,25 @@ public class Frame_2_1 extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        txTotalAnggota = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbAnggota = new javax.swing.JTable();
         btKelolaAnggota = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
+
+        jLabel10.setFont(new java.awt.Font("Source Sans Pro", 1, 18)); // NOI18N
+        jLabel10.setText("Total Anggota");
+
+        txTotalAnggota.setFont(new java.awt.Font("Source Sans Pro", 1, 18)); // NOI18N
+        txTotalAnggota.setText("1");
 
         jLabel1.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/search-interface-symbol.png"))); // NOI18N
@@ -46,7 +88,7 @@ public class Frame_2_1 extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Source Sans Pro", 1, 18)); // NOI18N
         jLabel2.setText("Daftar Anggota");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbAnggota.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -57,7 +99,7 @@ public class Frame_2_1 extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbAnggota);
 
         btKelolaAnggota.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
         btKelolaAnggota.setText("kelola Anggota");
@@ -86,18 +128,21 @@ public class Frame_2_1 extends javax.swing.JFrame {
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 619, Short.MAX_VALUE)
                         .addComponent(jLabel2))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txTotalAnggota)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 521, Short.MAX_VALUE)
                                 .addComponent(btKelolaAnggota)
                                 .addGap(39, 39, 39)
                                 .addComponent(jButton1)
                                 .addGap(18, 18, 18))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 983, Short.MAX_VALUE))))
+                            .addComponent(jScrollPane1))))
                 .addGap(19, 19, 19))
         );
         jPanel1Layout.setVerticalGroup(
@@ -109,12 +154,15 @@ public class Frame_2_1 extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(btKelolaAnggota))
-                .addGap(40, 40, 40))
+                    .addComponent(btKelolaAnggota)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txTotalAnggota, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(38, 38, 38))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -180,10 +228,12 @@ public class Frame_2_1 extends javax.swing.JFrame {
     private javax.swing.JButton btKelolaAnggota;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tbAnggota;
+    private javax.swing.JLabel txTotalAnggota;
     // End of variables declaration//GEN-END:variables
 }
