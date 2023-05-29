@@ -42,15 +42,25 @@ public class ClassAnggota {
         }
         return userData;
     }
-    public void tabungUang(String nominal){
-        int saldoTabung = parseInt(nominal);
+    public void userNabung(String namaAkun, int saldo){
         try{
+            String saldoBaru = String.valueOf(saldo);
             conn = ClassConnection.getKoneksi();
             st = conn.createStatement();
             
+            String sql = "UPDATE anggota SET saldo=? WHERE username=?";
+//            System.out.println(sql);
+            try(PreparedStatement p = conn.prepareStatement(sql)){
+                p.setString(1, saldoBaru);
+                p.setString(2, namaAkun);
+                p.executeUpdate();
+                p.close();
+//                System.out.println("Data Berhasil Di Update");
+                JOptionPane.showMessageDialog(null, "Berhasil Menabung");
+            }
         } catch (SQLException ex){
 //            System.out.println("Data gagal di Update");
-            JOptionPane.showMessageDialog(null, "Data Gagal Di Ubah");
+            JOptionPane.showMessageDialog(null, "Gagal Setor");
         }
     }
 }

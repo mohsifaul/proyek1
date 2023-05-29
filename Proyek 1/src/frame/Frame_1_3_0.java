@@ -4,11 +4,10 @@
  */
 package frame;
 
-import static java.lang.Integer.parseInt;
+//import static java.lang.Integer.parseInt;
 import java.text.NumberFormat;
 import java.util.Locale;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+//import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,16 +21,19 @@ public class Frame_1_3_0 extends javax.swing.JFrame {
     public Frame_1_3_0() {
         if (saldoTabung == null) {
             new Frame_1().setVisible(true);
+            dispose();
         } else {
             initComponents();
         }
     }
     private String saldoTabung;
-    public Frame_1_3_0(String saldo) {
+    private String namaAkun;
+    public Frame_1_3_0(String saldo, String nama) {
         initComponents();
         // Mengubah saldo menjadi tipe data String
         saldoTabung = saldo;
-        System.out.println(saldo);
+        namaAkun = nama;
+//        System.out.println(saldo);
         // Membuat format rupiah
         Locale locale = new Locale("id", "ID"); // Atur locale ke Indonesia
         NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(locale);
@@ -76,6 +78,11 @@ public class Frame_1_3_0 extends javax.swing.JFrame {
         });
 
         btAjuanTarik.setText("Tarik");
+        btAjuanTarik.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAjuanTarikActionPerformed(evt);
+            }
+        });
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/saldo.png"))); // NOI18N
 
@@ -83,6 +90,11 @@ public class Frame_1_3_0 extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/angle-left.png"))); // NOI18N
         jButton1.setText("Kembali");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -141,9 +153,22 @@ public class Frame_1_3_0 extends javax.swing.JFrame {
 
     private void btTabungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTabungActionPerformed
         // TODO add your handling code here:
-        new Frame_1_3_1().setVisible(true);
+//        int TotSaldo = Integer.parseInt(txTotSaldo.getText());
+        new Frame_1_3_1(saldoTabung, namaAkun).setVisible(true);
         dispose();
     }//GEN-LAST:event_btTabungActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        new Frame_1_3_0().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btAjuanTarikActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAjuanTarikActionPerformed
+        // TODO add your handling code here:
+        new Frame_1_3_2().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btAjuanTarikActionPerformed
 
     /**
      * @param args the command line arguments
