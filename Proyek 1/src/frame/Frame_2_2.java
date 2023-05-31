@@ -62,6 +62,11 @@ public class Frame_2_2 extends javax.swing.JFrame {
         btKelola.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
         btKelola.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/pencil.png"))); // NOI18N
         btKelola.setText("Kelola");
+        btKelola.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btKelolaActionPerformed(evt);
+            }
+        });
 
         jButton1.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/printer.png"))); // NOI18N
@@ -138,6 +143,11 @@ public class Frame_2_2 extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btKelolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btKelolaActionPerformed
+        // TODO add your handling code here:
+        new Frame_2_2_2().setVisible(true);
+    }//GEN-LAST:event_btKelolaActionPerformed
 
     /**
      * @param args the command line arguments

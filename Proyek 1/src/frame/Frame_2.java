@@ -70,6 +70,11 @@ public class Frame_2 extends javax.swing.JFrame {
         btAmbilUang.setText("TRANSAKSI BARANG");
 
         btKatalogBarang.setText("KATALOG BARANG");
+        btKatalogBarang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btKatalogBarangActionPerformed(evt);
+            }
+        });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/frameadmin.png"))); // NOI18N
 
@@ -179,6 +184,11 @@ public class Frame_2 extends javax.swing.JFrame {
         new Frame_2_1().setVisible(true);
         dispose();
     }//GEN-LAST:event_btAnggotaActionPerformed
+
+    private void btKatalogBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btKatalogBarangActionPerformed
+        // TODO add your handling code here:
+        new Frame_2_2().setVisible(true);
+    }//GEN-LAST:event_btKatalogBarangActionPerformed
 
     /**
      * @param args the command line arguments

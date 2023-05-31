@@ -27,6 +27,7 @@ public class Frame_2_1 extends javax.swing.JFrame {
         tableModel.addColumn("No");
         tableModel.addColumn("NIS");
         tableModel.addColumn("Nama Lengkap");
+        tableModel.addColumn("Jenis Kelamin");
         tableModel.addColumn("Kelas");
         tableModel.getDataVector().removeAllElements();
         tableModel.fireTableDataChanged();
@@ -38,18 +39,21 @@ public class Frame_2_1 extends javax.swing.JFrame {
         int no = 1;
         int ndata = ca.getNumberDataAnggota();
         Object[][] data = ca.getAllDataAngggota();
-        Object[] data1 = new Object[4];
+        Object[] data1 = new Object[5];
         for (int i = 0; i < ndata; i++) {
             data1[0] = no;
-            for (int j = 1; j < 4; j++) {
-                data1[j] = data[i][j - 1];
-//                System.out.println(data1[j]);
+            int dataIndex = 1; // Indeks untuk mengisi data pada data1
+            for (int j = 0; j < 5; j++) {
+                if (j != 1) { // Mengabaikan data1[2]
+                    data1[dataIndex] = data[i][j];
+                    dataIndex++;                    
+                }
             }
             tableModel.addRow(data1);
             no++;
         }
         int jumlah = tableModel.getRowCount(); 
-       txTotalAnggota.setText(Integer.toString(jumlah));
+        txTotalAnggota.setText(Integer.toString(jumlah));
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -156,12 +160,13 @@ public class Frame_2_1 extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(btKelolaAnggota)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txTotalAnggota, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton1)
+                        .addComponent(btKelolaAnggota)))
                 .addGap(38, 38, 38))
         );
 
