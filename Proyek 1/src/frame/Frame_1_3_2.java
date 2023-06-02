@@ -4,6 +4,13 @@
  */
 package frame;
 
+import code.ClassPengajuan;
+import code.ClassTransaksi;
+import static java.lang.Thread.sleep;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author MSIFAULK
@@ -14,9 +21,54 @@ public class Frame_1_3_2 extends javax.swing.JFrame {
      * Creates new form Frame_1_3_1
      */
     public Frame_1_3_2() {
-        initComponents();
+        if (saldoTabungan == null) {
+            new Frame_1().setVisible(true);
+            dispose();
+        } else {
+            tampiljamtanggal();
+            initComponents();
+        }
     }
-
+    private String namaAkun, saldoTabungan, jam, tanggal, idPengajuan;
+    private int ndata;
+    public Frame_1_3_2(String nama, String saldo) {
+        initComponents();
+        namaAkun = nama;
+        saldoTabungan = saldo;
+        tampiljamtanggal();
+        loadData();
+        System.out.println(saldoTabungan);
+    }
+    private void tampiljamtanggal(){
+        jam = null;
+        tanggal = null;
+        Thread thread = new Thread(){
+            public void run(){
+                for(;;) {
+                    try{
+                        Calendar cal = new GregorianCalendar();
+                        tanggal = (cal.get(Calendar.YEAR) 
+                                + "-" + (cal.get(Calendar.MONTH) + 1)
+                                + "-" + cal.get(Calendar.DATE));
+                        jam = (cal.get(Calendar.HOUR) 
+                                + ":" + (cal.get(Calendar.MINUTE))
+                                + ":" + cal.get(Calendar.SECOND));
+                        lbJamTanggal.setText(jam + " " + tanggal);
+                        sleep(1000);
+                    } catch(InterruptedException ex){
+                        System.out.println("Jam Gagal");
+                    }   
+                }
+            };
+        };
+        thread.start();
+    }
+    private void loadData() {
+        ClassPengajuan cp = new ClassPengajuan();
+        cp.getDataPengajuan();
+        ndata = cp.getNumberDataPengajuan();
+        idPengajuan = "P000" + (ndata + 1);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,10 +80,11 @@ public class Frame_1_3_2 extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txAmbilUang = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        lbJamTanggal = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -44,11 +97,19 @@ public class Frame_1_3_2 extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/file.png"))); // NOI18N
         jButton1.setText("Ajukan");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/saldo.png"))); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Source Sans Pro Black", 1, 36)); // NOI18N
         jLabel3.setText("AMBIL UANG");
+
+        lbJamTanggal.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
+        lbJamTanggal.setText("Jam");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -61,14 +122,19 @@ public class Frame_1_3_2 extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txAmbilUang, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(102, 102, 102)
                                 .addComponent(jLabel3)))
                         .addGap(95, 95, 95))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(jLabel1)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(69, 69, 69)
+                                .addComponent(jLabel1))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(187, 187, 187)
+                                .addComponent(lbJamTanggal)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jLabel2)
                 .addGap(68, 68, 68))
@@ -81,10 +147,12 @@ public class Frame_1_3_2 extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3)
-                        .addGap(75, 75, 75)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbJamTanggal)
+                        .addGap(50, 50, 50)
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txAmbilUang, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton1)))
                 .addGap(57, 57, 57))
@@ -105,6 +173,21 @@ public class Frame_1_3_2 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String uang = txAmbilUang.getText();
+        if (uang.equals("")) {
+            JOptionPane.showInternalMessageDialog(rootPane, "Silahkan Masukkan Jumlah Uang", "Informasi", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            int uangAmbil = Integer.valueOf(uang);
+            ClassPengajuan cp = new ClassPengajuan();
+            cp.InsertPengajuan(idPengajuan, tanggal, namaAkun, uangAmbil, "Pengajuan");
+//            txAmbilUang.setText("");
+            new Frame_1_3_0(saldoTabungan, namaAkun).setVisible(true);
+            dispose();
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -148,6 +231,7 @@ public class Frame_1_3_2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lbJamTanggal;
+    private javax.swing.JTextField txAmbilUang;
     // End of variables declaration//GEN-END:variables
 }

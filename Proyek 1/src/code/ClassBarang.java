@@ -55,7 +55,7 @@ public class ClassBarang {
 //            System.out.println("Data gagal tampil");
         }
     }
-    public void CariBarang(String key){
+    public void CariBarang(String key){ // Cari Barang Pada Tabel
         try{
             conn = ClassConnection.getKoneksi();
             st = conn.createStatement();
@@ -84,7 +84,7 @@ public class ClassBarang {
             System.out.println("Data gagal tampil");
         }
     }
-    public void CariKode(String key){
+    public void CariKode(String key){ // Cari barang berdasar id_Barang
         try{
             conn = ClassConnection.getKoneksi();
             st = conn.createStatement();
@@ -139,25 +139,44 @@ public class ClassBarang {
     }
     public void InsertBarang(String idBarang, String namaBarang, String jenisBarang, String rakBarang, 
             int stokBarang, int hargaBarang, int hargaJual){
-      try{
+        try {
             conn = ClassConnection.getKoneksi();
             st = conn.createStatement();
-            String sql = "INSERT INTO barang VALUES (?, ?, ?, ?, ?, ?, ?)";
-            try(PreparedStatement p = conn.prepareStatement(sql)){
-                p.setString(1, idBarang);
-                p.setString(2, namaBarang);
-                p.setString(3, jenisBarang);
-                p.setString(4, rakBarang);
-                p.setInt(5, stokBarang);
-                p.setInt(6, hargaBarang);
-                p.setInt(7, hargaJual);
-                p.execute();
-                JOptionPane.showMessageDialog(null, "Data Berhasil Di Tambahkan");
+
+            // Query untuk mencari data berdasarkan ID barang
+            String searchQuery = "SELECT COUNT(*) FROM barang WHERE id_barang = ?";
+            try (PreparedStatement searchStatement = conn.prepareStatement(searchQuery)) {
+                searchStatement.setString(1, idBarang);
+                ResultSet searchResult = searchStatement.executeQuery();
+
+                searchResult.next();
+                int count = searchResult.getInt(1);
+
+                // Jika data dengan ID barang yang sama telah ditemukan
+                if (count > 0) {
+//                    System.out.println("Data sudah ada");
+                    JOptionPane.showMessageDialog(null, "Data sudah ada");
+                } else {
+                    // Jika data belum ada, lakukan penambahan data
+                    String sql = "INSERT INTO barang VALUES (?, ?, ?, ?, ?, ?, ?)";
+                    try (PreparedStatement p = conn.prepareStatement(sql)) {
+                        p.setString(1, idBarang);
+                        p.setString(2, namaBarang);
+                        p.setString(3, jenisBarang);
+                        p.setString(4, rakBarang);
+                        p.setInt(5, stokBarang);
+                        p.setInt(6, hargaBarang);
+                        p.setInt(7, hargaJual);
+                        p.execute();
+                        JOptionPane.showMessageDialog(null, "Data berhasil ditambahkan");
+                    }
+                }
             }
-        } catch (SQLException ex){
-            System.out.println("Data gagal di tambahkan");
-            JOptionPane.showMessageDialog(null, "Data Gagal Di Tambahkan");
-        }  
+        } catch (SQLException ex) {
+            System.out.println("Data gagal ditambahkan");
+            JOptionPane.showMessageDialog(null, "Data gagal ditambahkan");
+        }
+ 
     }
     public void UpdateBarang(String idBarang, String namaBarang, String jenisBarang, String rakBarang,
             int stokBarang, int hargaBarang, int hargaJual){
@@ -187,7 +206,7 @@ public class ClassBarang {
         try{
             conn = ClassConnection.getKoneksi();
             st = conn.createStatement();
-            String sql = "DELETE FROM barang WHERE id=?";
+            String sql = "DELETE FROM barang WHERE id_barang=?";
             try(PreparedStatement p = conn.prepareStatement(sql)){
                 p.setString(1, kode);
                 p.executeUpdate();

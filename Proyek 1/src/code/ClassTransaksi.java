@@ -79,7 +79,7 @@ public class ClassTransaksi {
             }
             rs.close();
             st.close();
-        }catch(SQLException ex){
+        } catch(SQLException ex){
             System.out.println("Data gagal tampil");
         }
     } // end getDataLog

@@ -61,7 +61,7 @@ public class Frame_1_3_1 extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(241, 196, 15));
         jButton1.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/printer.png"))); // NOI18N
-        jButton1.setText("Cetak Struk");
+        jButton1.setText("Tabung");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -139,6 +139,7 @@ public class Frame_1_3_1 extends javax.swing.JFrame {
             System.out.println("Saldo Update : " + saldoUpdate);
             ClassAnggota ca = new ClassAnggota();
             ca.userNabung(akun, saldoUpdate);
+            JOptionPane.showMessageDialog(null, "Proses Menabung Berhasil.\nTotal Saldo : " + saldoUpdate, "Informasi", JOptionPane.INFORMATION_MESSAGE);
             new Frame_1_3_0(saldoAkhir, akun).setVisible(true);
             dispose();
         }

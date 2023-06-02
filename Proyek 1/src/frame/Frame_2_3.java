@@ -4,6 +4,11 @@
  */
 package frame;
 
+import code.ClassBarang;
+import code.ClassPengajuan;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author MSIFAULK
@@ -15,8 +20,38 @@ public class Frame_2_3 extends javax.swing.JFrame {
      */
     public Frame_2_3() {
         initComponents();
+        loadData();
     }
-
+    DefaultTableModel tableModel;
+    int idx_table;
+    private String idPengajuan;
+    public void ModelTablePengajuan(){
+        tableModel = new DefaultTableModel();
+        tbPengajuan.setModel(tableModel);
+        tableModel.addColumn("Id Pengajuan");
+        tableModel.addColumn("Tanggal Pengajuan");
+        tableModel.addColumn("Id Anggota");
+        tableModel.addColumn("Total Pengajuan");
+        tableModel.addColumn("Status");
+        tableModel.getDataVector().removeAllElements();
+        tableModel.fireTableDataChanged();
+    }
+    void loadData() {
+        ModelTablePengajuan();
+        ClassPengajuan cp = new ClassPengajuan();
+        cp.TampilPengajuan();
+        int ndata = cp.getNumberDataPengajuan();
+        Object[][] data = cp.getAllDataPengajuan();
+        Object[] data1 = new Object[5];
+        for (int i = 0; i < ndata; i++) {
+            for (int j = 0; j < 5; j++) {
+                data1[j] = data[i][j];
+            }
+            tableModel.addRow(data1);
+        }
+        int jumlah = tableModel.getRowCount(); 
+       txTotalPengajuan.setText(Integer.toString(jumlah));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,9 +66,11 @@ public class Frame_2_3 extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        tbPengajuan = new javax.swing.JTable();
+        btTolak = new javax.swing.JButton();
+        btTerima = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        txTotalPengajuan = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,7 +83,7 @@ public class Frame_2_3 extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Source Sans Pro", 1, 24)); // NOI18N
         jLabel2.setText("Daftar Pengajuan");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbPengajuan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -57,19 +94,35 @@ public class Frame_2_3 extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
-
-        jButton2.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/cross.png"))); // NOI18N
-        jButton2.setText("Tolak");
-
-        jButton1.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
-        jButton1.setText("Terima");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        tbPengajuan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbPengajuanMouseClicked(evt);
             }
         });
+        jScrollPane1.setViewportView(tbPengajuan);
+
+        btTolak.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
+        btTolak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/cross.png"))); // NOI18N
+        btTolak.setText("Tolak");
+        btTolak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btTolakActionPerformed(evt);
+            }
+        });
+
+        btTerima.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
+        btTerima.setText("Terima");
+        btTerima.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btTerimaActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setFont(new java.awt.Font("Source Sans Pro", 1, 18)); // NOI18N
+        jLabel10.setText("Total Pengajuan");
+
+        txTotalPengajuan.setFont(new java.awt.Font("Source Sans Pro", 1, 18)); // NOI18N
+        txTotalPengajuan.setText("1");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -80,13 +133,15 @@ public class Frame_2_3 extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 966, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 966, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButton2)
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txTotalPengajuan)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btTolak)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton1)
-                                .addGap(15, 15, 15)))
+                                .addComponent(btTerima)))
                         .addGap(19, 19, 19))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -108,12 +163,16 @@ public class Frame_2_3 extends javax.swing.JFrame {
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addGap(48, 48, 48))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txTotalPengajuan, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btTerima)
+                        .addComponent(btTolak)))
+                .addGap(46, 46, 46))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -134,9 +193,35 @@ public class Frame_2_3 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btTerimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTerimaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        if (idx_table == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Silahkan Pilih Data", "Informasi", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            System.out.println(idPengajuan);
+            ClassPengajuan cp = new ClassPengajuan();
+            cp.UpdatePengajuan(idPengajuan, "Diterima");
+            loadData();
+        }
+    }//GEN-LAST:event_btTerimaActionPerformed
+
+    private void tbPengajuanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbPengajuanMouseClicked
+        // TODO add your handling code here:
+        idx_table = tbPengajuan.getSelectedRow();
+        idPengajuan = (String) tableModel.getValueAt(idx_table, 0);
+    }//GEN-LAST:event_tbPengajuanMouseClicked
+
+    private void btTolakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTolakActionPerformed
+        // TODO add your handling code here:
+        if (idx_table == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Silahkan Pilih Data", "Informasi", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            System.out.println(idPengajuan);
+            ClassPengajuan cp = new ClassPengajuan();
+            cp.UpdatePengajuan(idPengajuan, "Ditolak");
+            loadData();
+        }
+    }//GEN-LAST:event_btTolakActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,13 +260,15 @@ public class Frame_2_3 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btTerima;
+    private javax.swing.JButton btTolak;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tbPengajuan;
+    private javax.swing.JLabel txTotalPengajuan;
     // End of variables declaration//GEN-END:variables
 }

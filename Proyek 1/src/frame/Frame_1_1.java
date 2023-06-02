@@ -7,6 +7,7 @@ package frame;
 import code.ClassBarang;
 import code.ClassConnection;
 import code.ClassTransaksi;
+import java.awt.event.KeyEvent;
 import static java.lang.Thread.sleep;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -38,6 +39,15 @@ public class Frame_1_1 extends javax.swing.JFrame {
         loadData();
         tampiljamtanggal();
         ModelTableTransaksi();
+        txTotHarga.setText("Rp 0");
+    }
+    // Fungsi filter angka
+    void filterAngka(KeyEvent b){ 
+        char input = b.getKeyChar();
+        if(Character.isAlphabetic(input) || input == '-'){
+            b.consume();
+            JOptionPane.showMessageDialog(null,"Hanya Bisa Memasukan Angka dengan Nilai Positif");
+        }
     }
     public void dataComboBox(){
         try{
@@ -187,6 +197,11 @@ public class Frame_1_1 extends javax.swing.JFrame {
         jLabel5.setText("jumlah");
 
         txJumlahBarang.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
+        txJumlahBarang.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txJumlahBarangKeyTyped(evt);
+            }
+        });
 
         btTambah.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
         btTambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/plus.png"))); // NOI18N
@@ -215,13 +230,17 @@ public class Frame_1_1 extends javax.swing.JFrame {
                 txUangActionPerformed(evt);
             }
         });
+        txUang.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txUangKeyTyped(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
         jLabel6.setText("Uang");
 
         txKembali.setEditable(false);
         txKembali.setFont(new java.awt.Font("Source Sans Pro", 1, 14)); // NOI18N
-        txKembali.setEnabled(false);
 
         jLabel7.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
         jLabel7.setText("Kembali");
@@ -402,34 +421,81 @@ public class Frame_1_1 extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (txKembali.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Selesesaikan Pembayaran");
+        } else {
+            JOptionPane.showMessageDialog(null,"Pembayaran Berhasil");
+            String[][] data = new String[jTable1.getRowCount()][jTable1.getColumnCount()];
+            for (int i = 0; i < jTable1.getRowCount(); i++) {
+                for (int j = 0; j < jTable1.getColumnCount(); j++) {
+                    data[i][j] = String.valueOf(tableModel.getValueAt(i, j));
+                }
+            }
+            ClassTransaksi ct = new ClassTransaksi();
+//            ct.InsertLog(tanggal, namalogin, lbKodeNota.getText(), data, jTable1.getRowCount());
+            ct.InsertLog(tanggal, txInvoice.getText(), data, jTable1.getRowCount());
+//            System.out.println(data);
+            ClassBarang cb = new ClassBarang();
+            cb.UpdateStock(data,jTable1.getRowCount());
+            data = new String[jTable1.getRowCount()][jTable1.getColumnCount()];
+            for(int i=0;i<jTable1.getRowCount();i++){
+                for(int j=0; j<jTable1.getColumnCount();j++){
+                    data[i][j] = String.valueOf(tableModel.getValueAt(i, j));
+                }
+            }
+//            String id = lbKodeNota.getText();
+//            ClassCetakPdf cetak = new ClassCetakPdf();
+//            int lHarga = Integer.parseInt(lbHarga.getText());
+//            int tUang = Integer.parseInt(txtUang.getText());
+//            String[] jdlTbl = {"Kode Barang", "Nama Barang", "Jumlah Barang", "Harga", "Sub Total"};
+//            cetak.CetakTabelTransaksi("kop_transaksi.jpg", "Data Transaksi " + id, "NOTA PEMBELIAN\n" + jam + " " + tanggal +
+//                    "\nKode   : " + id +"\nKasir   : " + namalogin, jdlTbl, data, jTable1.getRowCount(), jTable1.getColumnCount(),lHarga, tUang);
+            clearAllData();
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void btTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTambahActionPerformed
         // TODO add your handling code here:
         ClassBarang cb = new ClassBarang();
-        if (txIdBarang.getText().equals("")||txJumlahBarang.getText().equals("")) {
+        if (txIdBarang.getText().equals("") || txJumlahBarang.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Masukkan Data Dengan Lengkap");
         } else {
             String idBarang = txIdBarang.getText();
             String namaBarang = (String) comboNama.getSelectedItem();
             int jumlahB = Integer.parseInt(txJumlahBarang.getText());
             int harga = Integer.parseInt(txHargaBarang.getText());
-            clearData();
-            if (cb.getStok(idBarang) <= 0) {
-                JOptionPane.showMessageDialog(null, "Stok Habis");
-            } else if(cb.getStok(idBarang) < jumlahB){
-                JOptionPane.showMessageDialog(null, "Stok Tidak Mencukupi");
-            }else {
-                Object[] data = {idBarang, namaBarang, jumlahB, harga, jumlahB * harga};
-//                System.out.println(data);
-                tableModel.addRow(data);
-                int total = Integer.valueOf(txTotHarga.getText());
-                total = total + jumlahB * harga;
-                DecimalFormat decimalFormat = new DecimalFormat("#,###");
-                String formattedTotal = "Rp " + decimalFormat.format(total);
-                txTotHarga.setText(formattedTotal + "");
+
+            int existingRowIndex = -1; // Indeks baris yang sudah ada di tabel
+            for (int i = 0; i < tableModel.getRowCount(); i++) {
+                if (tableModel.getValueAt(i, 0).equals(idBarang)) {
+                    existingRowIndex = i;
+                    break;
+                }
             }
+
+            if (existingRowIndex != -1) { // Mengambil nilai jumlah barang yang sudah ada pada tabel
+                int existingJumlahB = (int) tableModel.getValueAt(existingRowIndex, 2); 
+                int newJumlahB = existingJumlahB + jumlahB; // JumlahB baru yang akan ditambahkan
+                if (cb.getStok(idBarang) < newJumlahB) {
+                    JOptionPane.showMessageDialog(null, "Stok Tidak Mencukupi");
+                    return; // Menghentikan eksekusi jika stok tidak mencukupi
+                }
+                tableModel.setValueAt(newJumlahB, existingRowIndex, 2);
+                tableModel.setValueAt(newJumlahB * harga, existingRowIndex, 4);
+            } else {
+                if (cb.getStok(idBarang) < jumlahB) {
+                    JOptionPane.showMessageDialog(null, "Stok Tidak Mencukupi");
+                    return; // Menghentikan eksekusi jika stok tidak mencukupi
+                }
+                Object[] data = { idBarang, namaBarang, jumlahB, harga, jumlahB * harga };
+                tableModel.addRow(data);
+            }
+            String textBayar = txTotHarga.getText();
+            String numericValue = textBayar.replaceAll("[^0-9]", ""); // mengambil nilai angka saja
+            int total = Integer.parseInt(numericValue);
+            total = total + jumlahB * harga;
+            DecimalFormat decimalFormat = new DecimalFormat("#,###");
+            String formattedTotal = "Rp " + decimalFormat.format(total);
+            txTotHarga.setText(formattedTotal);
+            clearData();
         }
     }//GEN-LAST:event_btTambahActionPerformed
 
@@ -438,8 +504,6 @@ public class Frame_1_1 extends javax.swing.JFrame {
         String pilihanBarang = (String) comboNama.getSelectedItem();
         System.out.println("Pilihan" + pilihanBarang);
         if (pilihanBarang == "Pilih Barang") {
-//            JOptionPane.showMessageDialog(rootPane, "Silahkan Pilih Barang!!", "Informasi", JOptionPane.INFORMATION_MESSAGE);
-//            System.out.println("Silahkan Pilih barang!!");
             txIdBarang.setText("");
             txHargaBarang.setText("");
         } else{
@@ -494,6 +558,16 @@ public class Frame_1_1 extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_txUangActionPerformed
+
+    private void txJumlahBarangKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txJumlahBarangKeyTyped
+        // TODO add your handling code here:
+        filterAngka(evt);
+    }//GEN-LAST:event_txJumlahBarangKeyTyped
+
+    private void txUangKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txUangKeyTyped
+        // TODO add your handling code here:
+        filterAngka(evt);
+    }//GEN-LAST:event_txUangKeyTyped
 
     /**
      * @param args the command line arguments

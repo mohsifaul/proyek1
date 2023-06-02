@@ -80,6 +80,9 @@ public class Frame_2_2_2 extends javax.swing.JFrame {
     }
     void clearData(){
         txIdBarang.setEnabled(true);
+        txIdBarang.setText("");
+        txJenisBarang.setText("");
+        txRakBarang.setText("");
         txNamaBarang.setText("");
         txStock.setValue(0);
         txHargaBeli.setText("");
@@ -188,6 +191,11 @@ public class Frame_2_2_2 extends javax.swing.JFrame {
         btHapus.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
         btHapus.setText("Hapus");
         btHapus.setEnabled(false);
+        btHapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btHapusActionPerformed(evt);
+            }
+        });
 
         jButton4.setBackground(new java.awt.Color(41, 128, 185));
         jButton4.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
@@ -431,7 +439,23 @@ public class Frame_2_2_2 extends javax.swing.JFrame {
 
     private void btEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditActionPerformed
         // TODO add your handling code here:
-        
+        String idBarang = txIdBarang.getText();
+        String namaBarang = txNamaBarang.getText();
+        String jenisBarang = txJenisBarang.getText();
+        int stokB = (int) txStock.getValue();
+        String hargaB = txHargaBeli.getText();
+        String hargaJ = txHargaJual.getText();
+        int hargaBeli = Integer.valueOf(hargaB);
+        int hargaJual = Integer.valueOf(hargaJ);
+        String rakBarang = txRakBarang.getText();
+        if (idBarang.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Pilih Data Yang Diedit", "Informasi", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            ClassBarang cb = new ClassBarang();
+            cb.UpdateBarang(idBarang, namaBarang, jenisBarang, rakBarang, stokB, hargaJual, hargaJual);
+            loadData();
+            clearData();
+        }
     }//GEN-LAST:event_btEditActionPerformed
 
     private void tbBarangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbBarangMouseClicked
@@ -465,6 +489,19 @@ public class Frame_2_2_2 extends javax.swing.JFrame {
     private void txRakBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txRakBarangActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txRakBarangActionPerformed
+
+    private void btHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btHapusActionPerformed
+        // TODO add your handling code here:
+        String idBarang = txIdBarang.getText();
+        if (idBarang.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Pilih Data yang Dihapus", "Informasi", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            ClassBarang cb = new ClassBarang();
+            cb.DeleteBarang(idBarang);
+            loadData();
+            clearData();
+        }
+    }//GEN-LAST:event_btHapusActionPerformed
 
     /**
      * @param args the command line arguments

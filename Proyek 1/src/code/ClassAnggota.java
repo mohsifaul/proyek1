@@ -58,7 +58,7 @@ public class ClassAnggota {
                 p.executeUpdate();
                 p.close();
 //                System.out.println("Data Berhasil Di Update");
-                JOptionPane.showMessageDialog(null, "Berhasil Menabung");
+//                JOptionPane.showMessageDialog(null, "Proses Menabung Berhasil.\n", "Informasi", JOptionPane.INFORMATION_MESSAGE);
             }
         } catch (SQLException ex){
 //            System.out.println("Data gagal di Update");

@@ -4,6 +4,18 @@
  */
 package frame;
 
+import code.ClassBarang;
+import code.ClassConnection;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Locale;
+import javax.swing.JOptionPane;
+
+
 /**
  *
  * @author BANI BANN
@@ -13,8 +25,33 @@ public class Frame_1_2_1 extends javax.swing.JFrame {
     /**
      * Creates new form KOCAK_1_2_1
      */
+    private String namaBarang;
+    private Connection conn;
+    private Statement st;
     public Frame_1_2_1() {
         initComponents();
+        dataComboBox();
+    }
+//    public Frame_1_2_1(String namaB) {
+//        initComponents();
+//        namaBarang = namaB;
+////        dataComboBox(namaBarang);
+//    }
+    public void dataComboBox(){
+        try{
+            conn = ClassConnection.getKoneksi();
+            st = conn.createStatement();
+            String sql = "SELECT * FROM barang";
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()){
+                comboNama.addItem(rs.getString("nama_barang"));
+            }
+            rs.last();
+            int jumlahdata = rs.getRow();
+            rs.first();
+        } catch (SQLException ex){
+//            System.out.println("Data gagal tampil");
+        }
     }
 
     /**
@@ -27,15 +64,17 @@ public class Frame_1_2_1 extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lbNamaBarang = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btKembali = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        lbTempatBarang = new javax.swing.JLabel();
+        lbHargaProduk = new javax.swing.JLabel();
+        comboNama = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(26, 188, 156));
@@ -43,11 +82,11 @@ public class Frame_1_2_1 extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 255));
 
-        jLabel1.setFont(new java.awt.Font("Source Sans Pro", 1, 24)); // NOI18N
-        jLabel1.setText("Hasil Cari");
+        lbNamaBarang.setFont(new java.awt.Font("Source Sans Pro", 1, 24)); // NOI18N
+        lbNamaBarang.setText("Barang Tidak Ada");
 
         jLabel3.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
-        jLabel3.setText("Nama Produk");
+        jLabel3.setText("Pilihan Produk");
 
         jLabel4.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
         jLabel4.setText("Tempat Produk");
@@ -55,12 +94,36 @@ public class Frame_1_2_1 extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
         jLabel5.setText("Harga Produk");
 
-        jButton1.setBackground(new java.awt.Color(231, 76, 60));
-        jButton1.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/angle-left.png"))); // NOI18N
-        jButton1.setText("Kembali");
+        btKembali.setBackground(new java.awt.Color(231, 76, 60));
+        btKembali.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
+        btKembali.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/angle-left.png"))); // NOI18N
+        btKembali.setText("Kembali");
+        btKembali.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btKembaliActionPerformed(evt);
+            }
+        });
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/cariBarang.png"))); // NOI18N
+
+        jLabel6.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
+        jLabel6.setText("Nama Produk");
+
+        jLabel7.setFont(new java.awt.Font("Source Sans Pro", 1, 24)); // NOI18N
+        jLabel7.setText("Hasil Cari");
+
+        lbTempatBarang.setFont(new java.awt.Font("Source Sans Pro", 1, 24)); // NOI18N
+        lbTempatBarang.setText("Barang Tidak Ada");
+
+        lbHargaProduk.setFont(new java.awt.Font("Source Sans Pro", 1, 24)); // NOI18N
+        lbHargaProduk.setText("Barang Tidak Ada");
+
+        comboNama.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Barang" }));
+        comboNama.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboNamaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -68,49 +131,51 @@ public class Frame_1_2_1 extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(49, 49, 49)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jButton1)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
-                            .addComponent(jTextField2)
-                            .addComponent(jTextField3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
-                        .addGap(37, 37, 37))))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel5)
+                    .addComponent(btKembali)
+                    .addComponent(jLabel4)
+                    .addComponent(lbNamaBarang, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
+                    .addComponent(lbTempatBarang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbHargaProduk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(comboNama, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 217, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(51, 51, 51))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(146, 146, 146)
-                .addComponent(jLabel1)
+                .addGap(155, 155, 155)
+                .addComponent(jLabel7)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(92, 92, 92)
-                .addComponent(jLabel1)
-                .addGap(31, 31, 31)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addComponent(jButton1)
-                .addContainerGap(156, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel2))
+                .addGap(49, 49, 49)
+                .addComponent(jLabel7)
+                .addGap(23, 23, 23)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(comboNama, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel6)
+                        .addGap(5, 5, 5)
+                        .addComponent(lbNamaBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4)
+                        .addGap(11, 11, 11)
+                        .addComponent(lbTempatBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lbHargaProduk, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37)
+                        .addComponent(btKembali))
+                    .addComponent(jLabel2))
+                .addContainerGap(128, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -130,6 +195,25 @@ public class Frame_1_2_1 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btKembaliActionPerformed
+        // TODO add your handling code here:
+        new Frame_1().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btKembaliActionPerformed
+
+    private void comboNamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboNamaActionPerformed
+        // TODO add your handling code here:
+        String pilihanBarang = (String) comboNama.getSelectedItem();
+        System.out.println("Pilihan" + pilihanBarang);
+        if (pilihanBarang == "Pilih Barang") {
+            lbNamaBarang.setText("Barang Tidak Terdaftar");
+            lbTempatBarang.setText("Barang Tidak Terdaftar");
+            lbHargaProduk.setText("Barang Tidak Terdaftar");
+        } else{
+            loadDataBarang(pilihanBarang);
+        }
+    }//GEN-LAST:event_comboNamaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,22 +240,6 @@ public class Frame_1_2_1 extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Frame_1_2_1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -182,15 +250,31 @@ public class Frame_1_2_1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btKembali;
+    private javax.swing.JComboBox<String> comboNama;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JLabel lbHargaProduk;
+    private javax.swing.JLabel lbNamaBarang;
+    private javax.swing.JLabel lbTempatBarang;
     // End of variables declaration//GEN-END:variables
+    public void loadDataBarang(String key) {
+        ClassBarang cb = new ClassBarang();
+        cb.CariKode(key);
+        Object[][] data = cb.getAllDataBarang();
+//        System.out.println(data);
+//        txtNamaB.setText(data[0][1] + "");
+        lbNamaBarang.setText(data[0][1] + "");
+        lbTempatBarang.setText(data[0][3] + "");
+        // Mengubah data[0][6] menjadi format rupiah
+        double harga = Double.parseDouble(data[0][6].toString());
+        NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(new Locale("id", "ID"));
+        String hargaRupiah = formatRupiah.format(harga);
+        lbHargaProduk.setText(hargaRupiah);
+    }
 }

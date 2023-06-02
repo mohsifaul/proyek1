@@ -4,6 +4,8 @@
  */
 package frame;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author BANI BANN
@@ -35,7 +37,7 @@ public class Frame_1_2 extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(26, 188, 156));
         setUndecorated(true);
 
@@ -58,6 +60,11 @@ public class Frame_1_2 extends javax.swing.JFrame {
         btCari.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
         btCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/search-interface-symbol.png"))); // NOI18N
         btCari.setText("Cari");
+        btCari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCariActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
         jLabel2.setText("Cari barang yang anda ingin beli ");
@@ -74,7 +81,7 @@ public class Frame_1_2 extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addComponent(jLabel3)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btKembali)
@@ -85,7 +92,7 @@ public class Frame_1_2 extends javax.swing.JFrame {
                             .addGap(19, 19, 19)
                             .addComponent(jLabel4))
                         .addComponent(inputBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,6 +144,17 @@ public class Frame_1_2 extends javax.swing.JFrame {
         new Frame_1().setVisible(true);
         dispose();
     }//GEN-LAST:event_btKembaliActionPerformed
+
+    private void btCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCariActionPerformed
+        // TODO add your handling code here:
+        String namaBarang = inputBarang.getText();
+        if (namaBarang.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Silahkan Isikan Data Barang yang Dicari!!", "Informasi", HEIGHT);
+        } else {
+            new Frame_1_2_1().setVisible(true);
+            dispose();
+        }
+    }//GEN-LAST:event_btCariActionPerformed
 
     /**
      * @param args the command line arguments
