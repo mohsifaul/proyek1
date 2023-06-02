@@ -37,15 +37,16 @@ public class ClassBarang {
             }
             sql = "SELECT * FROM barang";
             rs = st.executeQuery(sql);
-            data = new Object[ndata][6];
+            data = new Object[ndata][7];
             int idx = 0;
             while(rs.next()){
                 data[idx][0] = rs.getString("id_barang");
                 data[idx][1] = rs.getString("nama_barang");
                 data[idx][2] = rs.getString("jenis_barang");
-                data[idx][3] = rs.getString("stok_barang");
-                data[idx][4] = rs.getString("harga_barang");
-                data[idx][5] = rs.getString("harga_jual");
+                data[idx][3] = rs.getString("rak_barang");
+                data[idx][4] = rs.getString("stok_barang");
+                data[idx][5] = rs.getString("harga_barang");
+                data[idx][6] = rs.getString("harga_jual");
                 idx++;
             }
             rs.close();
@@ -65,15 +66,16 @@ public class ClassBarang {
             }
             sql = "SELECT * FROM barang WHERE nama_barang like '%" + key + "%' ";
             rs = st.executeQuery(sql);
-            data = new Object[ndata][5];
+            data = new Object[ndata][7];
             int idx = 0;
             while(rs.next()){
                 data[idx][0] = rs.getString("id_barang");
                 data[idx][1] = rs.getString("nama_barang");
                 data[idx][2] = rs.getString("jenis_barang");
-                data[idx][3] = rs.getString("stok_barang");
-                data[idx][4] = rs.getString("harga_barang");
-                data[idx][5] = rs.getString("harga_jual");
+                data[idx][3] = rs.getString("rak_barang");
+                data[idx][4] = rs.getString("stok_barang");
+                data[idx][5] = rs.getString("harga_barang");
+                data[idx][6] = rs.getString("harga_jual");
                 idx++;
             }
             rs.close();
@@ -86,22 +88,23 @@ public class ClassBarang {
         try{
             conn = ClassConnection.getKoneksi();
             st = conn.createStatement();
-            String sql = "SELECT COUNT(*) FROM barang WHERE id_barang like '%" + key + "%' ";
+            String sql = "SELECT COUNT(*) FROM barang WHERE nama_barang='" + key + "'";
             ResultSet rs = st.executeQuery(sql);
             while(rs.next()){
                 ndata = rs.getInt("COUNT(*)");
             }
-            sql = "SELECT * FROM barang WHERE id_barang like '%" + key + "%' ";
+            sql = "SELECT * FROM barang WHERE nama_barang='" + key + "'";
             rs = st.executeQuery(sql);
-            data = new Object[ndata][5];
+            data = new Object[ndata][7];
             int idx = 0;
             while(rs.next()){
                 data[idx][0] = rs.getString("id_barang");
                 data[idx][1] = rs.getString("nama_barang");
                 data[idx][2] = rs.getString("jenis_barang");
-                data[idx][3] = rs.getString("stok_barang");
-                data[idx][4] = rs.getString("harga_barang");
-                data[idx][5] = rs.getString("harga_jual");
+                data[idx][3] = rs.getString("rak_barang");
+                data[idx][4] = rs.getString("stok_barang");
+                data[idx][5] = rs.getString("harga_barang");
+                data[idx][6] = rs.getString("harga_jual");
                 idx++;
             }
             rs.close();
@@ -134,18 +137,20 @@ public class ClassBarang {
             JOptionPane.showMessageDialog(null, "Data Gagal Di Ubah");
         }
     }
-    public void InsertBarang(String idBarang, String namaBarang, String jenisBarang, int stokBarang, int hargaBarang, int hargaJual){
+    public void InsertBarang(String idBarang, String namaBarang, String jenisBarang, String rakBarang, 
+            int stokBarang, int hargaBarang, int hargaJual){
       try{
             conn = ClassConnection.getKoneksi();
             st = conn.createStatement();
-            String sql = "INSERT INTO barang VALUES (?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO barang VALUES (?, ?, ?, ?, ?, ?, ?)";
             try(PreparedStatement p = conn.prepareStatement(sql)){
                 p.setString(1, idBarang);
                 p.setString(2, namaBarang);
                 p.setString(3, jenisBarang);
-                p.setInt(4, stokBarang);
-                p.setInt(5, hargaBarang);
-                p.setInt(6, hargaJual);
+                p.setString(4, rakBarang);
+                p.setInt(5, stokBarang);
+                p.setInt(6, hargaBarang);
+                p.setInt(7, hargaJual);
                 p.execute();
                 JOptionPane.showMessageDialog(null, "Data Berhasil Di Tambahkan");
             }
@@ -154,18 +159,20 @@ public class ClassBarang {
             JOptionPane.showMessageDialog(null, "Data Gagal Di Tambahkan");
         }  
     }
-    public void UpdateBarang(String idBarang, String namaBarang, String jenisBarang, int stokBarang, int hargaBarang, int hargaJual){
+    public void UpdateBarang(String idBarang, String namaBarang, String jenisBarang, String rakBarang,
+            int stokBarang, int hargaBarang, int hargaJual){
         try{
             conn = ClassConnection.getKoneksi();
             st = conn.createStatement();
-            String sql = "UPDATE barang SET nama_barang=?, stok_barang=?, harga_barang=?, harga_jual=? WHERE id_barang=?";
+            String sql = "UPDATE barang SET nama_barang=?, jenis_barang=?, rak_barang=?, stok_barang=?, harga_barang=?, harga_jual=? WHERE id_barang=?";
             try(PreparedStatement p = conn.prepareStatement(sql)){
                 p.setString(1, namaBarang);
                 p.setString(2, jenisBarang);
-                p.setInt(3, stokBarang);
-                p.setInt(4, hargaBarang);
-                p.setInt(5, hargaJual);
-                p.setString(6, idBarang);
+                p.setString(3, rakBarang);
+                p.setInt(4, stokBarang);
+                p.setInt(5, hargaBarang);
+                p.setInt(6, hargaJual);
+                p.setString(7, idBarang);
                 p.executeUpdate();
                 p.close();
 //                System.out.println("Data Berhasil Di Update");
@@ -202,10 +209,10 @@ public class ClassBarang {
         try{
             conn = ClassConnection.getKoneksi();
             st = conn.createStatement();
-            String sql = "SELECT stok FROM barang WHERE id_barang='" + kode + "';";
+            String sql = "SELECT stok_barang FROM barang WHERE id_barang='" + kode + "';";
             ResultSet rs = st.executeQuery(sql);
             while(rs.next()){
-                stok = rs.getInt("stok");
+                stok = rs.getInt("stok_barang");
             }
             rs.close();
             st.close();

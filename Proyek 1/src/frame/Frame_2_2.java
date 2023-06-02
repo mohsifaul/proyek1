@@ -4,6 +4,10 @@
  */
 package frame;
 
+import code.ClassBarang;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
+
 /**
  *
  * @author MSIFAULK
@@ -15,6 +19,50 @@ public class Frame_2_2 extends javax.swing.JFrame {
      */
     public Frame_2_2() {
         initComponents();
+        loadData();
+    }
+    DefaultTableModel tableModel;
+    void ModelTableUser(){
+        tableModel = new DefaultTableModel();
+        tbBarang.setModel(tableModel);
+        tableModel.addColumn("No");
+        tableModel.addColumn("ID Barang");
+        tableModel.addColumn("Nama Barang");
+        tableModel.addColumn("Jenis Barang");
+        tableModel.addColumn("Stok");
+        tableModel.addColumn("Harga Beli");
+        tableModel.addColumn("Harga Jual");
+        tableModel.getDataVector().removeAllElements();
+        tableModel.fireTableDataChanged();
+        
+        // Mengatur ukuran kolom
+        TableColumnModel columnModel = tbBarang.getColumnModel();
+        columnModel.getColumn(0).setPreferredWidth(30);  // Kolom "No" dengan lebar 30 piksel
+        columnModel.getColumn(1).setPreferredWidth(80);  // Kolom "ID Barang" dengan lebar 80 piksel
+        columnModel.getColumn(2).setPreferredWidth(150); // Kolom "Nama Barang" dengan lebar 150 piksel
+        columnModel.getColumn(3).setPreferredWidth(100); // Kolom "Jenis Barang" dengan lebar 100 piksel
+        columnModel.getColumn(4).setPreferredWidth(50);  // Kolom "Stok" dengan lebar 50 piksel
+        columnModel.getColumn(5).setPreferredWidth(100); // Kolom "Harga Beli" dengan lebar 100 piksel
+        columnModel.getColumn(6).setPreferredWidth(100); // Kolom "Harga Jual" dengan lebar 100 piksel
+    }
+    void loadData() {
+        ModelTableUser();
+        ClassBarang cb = new ClassBarang();
+        cb.TampilBarang();
+        int no = 1;
+        int ndata = cb.getNumberDataBarang();
+        Object[][] data = cb.getAllDataBarang();
+        Object[] data1 = new Object[7];
+        for (int i = 0; i < ndata; i++) {
+            data1[0] = no;
+            for (int j = 1; j < 7; j++) {
+                data1[j] = data[i][j - 1];
+            }
+            tableModel.addRow(data1);
+            no++;
+        }
+        int jumlah = tableModel.getRowCount(); 
+       txTotalBarang.setText(Integer.toString(jumlah));
     }
 
     /**
@@ -31,9 +79,11 @@ public class Frame_2_2 extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbBarang = new javax.swing.JTable();
         btKelola = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        txTotalBarang = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,7 +96,7 @@ public class Frame_2_2 extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Source Sans Pro", 1, 24)); // NOI18N
         jLabel2.setText("Daftar Barang");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbBarang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -57,7 +107,8 @@ public class Frame_2_2 extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tbBarang.setEnabled(false);
+        jScrollPane1.setViewportView(tbBarang);
 
         btKelola.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
         btKelola.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/pencil.png"))); // NOI18N
@@ -77,6 +128,12 @@ public class Frame_2_2 extends javax.swing.JFrame {
             }
         });
 
+        jLabel10.setFont(new java.awt.Font("Source Sans Pro", 1, 18)); // NOI18N
+        jLabel10.setText("Total Barang");
+
+        txTotalBarang.setFont(new java.awt.Font("Source Sans Pro", 1, 18)); // NOI18N
+        txTotalBarang.setText("1");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -86,9 +143,12 @@ public class Frame_2_2 extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 966, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 966, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txTotalBarang)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btKelola)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton1)
@@ -114,12 +174,15 @@ public class Frame_2_2 extends javax.swing.JFrame {
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(btKelola))
-                .addGap(48, 48, 48))
+                    .addComponent(btKelola)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txTotalBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(46, 46, 46))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -147,6 +210,7 @@ public class Frame_2_2 extends javax.swing.JFrame {
     private void btKelolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btKelolaActionPerformed
         // TODO add your handling code here:
         new Frame_2_2_2().setVisible(true);
+        dispose();
     }//GEN-LAST:event_btKelolaActionPerformed
 
     /**
@@ -188,10 +252,12 @@ public class Frame_2_2 extends javax.swing.JFrame {
     private javax.swing.JButton btKelola;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tbBarang;
+    private javax.swing.JLabel txTotalBarang;
     // End of variables declaration//GEN-END:variables
 }
