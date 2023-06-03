@@ -35,7 +35,7 @@ public class ClassTransaksi {
                 ndata = rs.getInt("COUNT(DISTINCT idtrx)");
             }
             sql = "SELECT tanggal, idtrx, COUNT(idtrx) AS nJenis, " 
-                    + "SUM(itemBarang) AS nItem, SUM(total) AS pemasukan " 
+                    + "SUM(total) AS pemasukan " 
                     + "FROM transaksi GROUP BY idtrx";
             rs = st.executeQuery(sql);
             data = new Object[ndata][5];
@@ -44,8 +44,8 @@ public class ClassTransaksi {
                 data[idx][0] = rs.getString("tanggal");
                 data[idx][1] = rs.getString("idtrx");
                 data[idx][2] = rs.getString("nJenis");
-                data[idx][3] = rs.getString("nItem");
-                data[idx][4] = rs.getString("pemasukan");
+//                data[idx][3] = rs.getString("nItem");
+                data[idx][3] = rs.getString("pemasukan");
                 idx++;
             }
             rs.close();
@@ -94,7 +94,7 @@ public class ClassTransaksi {
             }
             sql = "SELECT * FROM transaksi WHERE idtrx = '" + key + "'";
             rs = st.executeQuery(sql);
-            data = new Object[ndata][8];
+            data = new Object[ndata][7];
             int idx = 0;
             while(rs.next()){
                 data[idx][0] = rs.getString("tanggal");

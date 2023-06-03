@@ -16,8 +16,8 @@ import javax.swing.JOptionPane;
  * @author MSIFAULK
  */
 public class ClassBarang {
-    private String kode;
-    int stok, harga, hargaJual;
+    private String kode, idBarang;
+    int stok, harga, hargaJual, hargaBarang;
     private Connection conn;
     private Statement st;
     private int ndata = 0;
@@ -240,4 +240,25 @@ public class ClassBarang {
         }
         return stok;
     }
+    public int getHargaBarangFromIdTrx(String idTrx) {
+        int hargaBarang = 0;
+
+        try {
+            conn = ClassConnection.getKoneksi();
+            st = conn.createStatement();
+            String sql = "SELECT b.harga_barang FROM barang b INNER JOIN idtrx i "
+                    + "ON b.id_barang = i.idBarang WHERE i.idtrx = '" + idTrx + "'";
+            ResultSet rs = st.executeQuery(sql);
+            if (rs.next()) {
+                hargaBarang = rs.getInt("harga_barang");
+                System.out.println("Harga Barang: " + hargaBarang);
+            }
+            rs.close();
+            st.close();
+        } catch (SQLException ex) {
+            System.out.println("Data gagal tampil");
+        }
+        return hargaBarang;
+    }
+
 }
