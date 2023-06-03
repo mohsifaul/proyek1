@@ -23,6 +23,12 @@ public class Frame_2_3 extends javax.swing.JFrame {
         initComponents();
         loadData();
     }
+    private String namaAkun;
+    public Frame_2_3(String nama) {
+        initComponents();
+        namaAkun = nama;
+        loadData();
+    }
     DefaultTableModel tableModel;
     int idx_table;
     private String idPengajuan, idAnggota, totalPengajuan, statusPengajuan;
@@ -72,6 +78,7 @@ public class Frame_2_3 extends javax.swing.JFrame {
         btTerima = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         txTotalPengajuan = new javax.swing.JLabel();
+        btKembali1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -125,15 +132,37 @@ public class Frame_2_3 extends javax.swing.JFrame {
         txTotalPengajuan.setFont(new java.awt.Font("Source Sans Pro", 1, 18)); // NOI18N
         txTotalPengajuan.setText("1");
 
+        btKembali1.setBackground(new java.awt.Color(231, 76, 60));
+        btKembali1.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
+        btKembali1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/angle-left.png"))); // NOI18N
+        btKembali1.setText("Kembali");
+        btKembali1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btKembali1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(405, 405, 405)
+                .addComponent(jLabel2)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btKembali1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel1))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 966, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -143,21 +172,14 @@ public class Frame_2_3 extends javax.swing.JFrame {
                                 .addComponent(btTolak)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btTerima)))
-                        .addGap(19, 19, 19))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(405, 405, 405)
-                .addComponent(jLabel2)
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(19, 19, 19))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addContainerGap()
+                .addComponent(btKembali1)
+                .addGap(3, 3, 3)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -238,6 +260,12 @@ public class Frame_2_3 extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btTolakActionPerformed
 
+    private void btKembali1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btKembali1ActionPerformed
+        // TODO add your handling code here:
+        new Frame_2(namaAkun).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btKembali1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -275,6 +303,7 @@ public class Frame_2_3 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btKembali1;
     private javax.swing.JButton btTerima;
     private javax.swing.JButton btTolak;
     private javax.swing.JLabel jLabel1;

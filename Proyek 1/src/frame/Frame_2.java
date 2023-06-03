@@ -53,6 +53,7 @@ public class Frame_2 extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         txNamaAdmin = new javax.swing.JLabel();
+        btKembali = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,6 +74,11 @@ public class Frame_2 extends javax.swing.JFrame {
         });
 
         btAmbilUang.setText("TRANSAKSI BARANG");
+        btAmbilUang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAmbilUangActionPerformed(evt);
+            }
+        });
 
         btKatalogBarang.setText("KATALOG BARANG");
         btKatalogBarang.addActionListener(new java.awt.event.ActionListener() {
@@ -98,6 +104,16 @@ public class Frame_2 extends javax.swing.JFrame {
 
         txNamaAdmin.setText("Nama Admin");
 
+        btKembali.setBackground(new java.awt.Color(231, 76, 60));
+        btKembali.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
+        btKembali.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/angle-left.png"))); // NOI18N
+        btKembali.setText("Keluar");
+        btKembali.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btKembaliActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -105,37 +121,44 @@ public class Frame_2 extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(164, 164, 164)
-                        .addComponent(jLabel6))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(66, 66, 66)
+                                .addComponent(jLabel1))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(164, 164, 164)
+                                .addComponent(jLabel6))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(79, 79, 79)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(203, 203, 203)
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txNamaAdmin)))
+                        .addGap(98, 98, 98)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btKatalogBarang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btAnggota, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(32, 32, 32)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btMenabung, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btAmbilUang, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(203, 203, 203)
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txNamaAdmin)))
-                .addGap(98, 98, 98)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(btKatalogBarang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btAnggota, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btMenabung, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btAmbilUang, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap()
+                        .addComponent(btKembali)))
                 .addContainerGap(83, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addContainerGap()
+                .addComponent(btKembali)
+                .addGap(4, 4, 4)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 6, Short.MAX_VALUE)
@@ -186,21 +209,39 @@ public class Frame_2 extends javax.swing.JFrame {
 
     private void btAnggotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAnggotaActionPerformed
         // TODO add your handling code here:
-        new Frame_2_1().setVisible(true);
+        new Frame_2_1(userNama).setVisible(true);
         dispose();
     }//GEN-LAST:event_btAnggotaActionPerformed
 
     private void btKatalogBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btKatalogBarangActionPerformed
         // TODO add your handling code here:
-        new Frame_2_2().setVisible(true);
+        new Frame_2_2(userNama).setVisible(true);
         dispose();
     }//GEN-LAST:event_btKatalogBarangActionPerformed
 
     private void btMenabungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMenabungActionPerformed
         // TODO add your handling code here:
-        new Frame_2_3().setVisible(true);
+        new Frame_2_3(userNama).setVisible(true);
         dispose();
     }//GEN-LAST:event_btMenabungActionPerformed
+
+    private void btKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btKembaliActionPerformed
+        // TODO add your handling code here:
+        int konfirmasi = JOptionPane.showConfirmDialog(this, "Anda yakin ingin keluar?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+    
+        // Jika tombol "Ya" diklik
+        if (konfirmasi == JOptionPane.YES_OPTION) {
+            // Tutup jendela
+            new MainFrame().setVisible(true);
+            dispose();
+        }
+    }//GEN-LAST:event_btKembaliActionPerformed
+
+    private void btAmbilUangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAmbilUangActionPerformed
+        // TODO add your handling code here:
+        new Frame_2_4(userNama).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btAmbilUangActionPerformed
 
     /**
      * @param args the command line arguments
@@ -241,6 +282,7 @@ public class Frame_2 extends javax.swing.JFrame {
     private javax.swing.JButton btAmbilUang;
     private javax.swing.JButton btAnggota;
     private javax.swing.JButton btKatalogBarang;
+    private javax.swing.JButton btKembali;
     private javax.swing.JButton btMenabung;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

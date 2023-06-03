@@ -99,19 +99,34 @@ public class ClassAnggota {
             conn = ClassConnection.getKoneksi();
             st = conn.createStatement();
             
-            String sql = "INSERT INTO anggota VALUES (?, ?, ?, ?, ?, ?)";
-//            System.out.println(sql);
-            try(PreparedStatement p = conn.prepareStatement(sql)){
-                p.setString(1, NIS);
-                p.setString(2, pass);
-                p.setString(3, namaAnggota);
-                p.setString(4, jenisKelamin);
-                p.setString(5, kelasAnggota);
-                p.setInt(6, saldo);
-                p.execute();
-//                System.out.println("Data Berhasil Di Update");
-                JOptionPane.showMessageDialog(null, "Anggota berhasil ditambahkan");
-           }
+            // Query untuk mencari data berdasarkan ID barang
+            String searchQuery = "SELECT COUNT(*) FROM anggota WHERE username = ?";
+            try (PreparedStatement searchStatement = conn.prepareStatement(searchQuery)) {
+                searchStatement.setString(1, NIS);
+                ResultSet searchResult = searchStatement.executeQuery();
+
+                searchResult.next();
+                int count = searchResult.getInt(1);
+
+                // Jika data dengan ID barang yang sama telah ditemukan
+                if (count > 0) {
+//                    System.out.println("Data sudah ada");
+                    JOptionPane.showMessageDialog(null, "Data sudah ada");
+                } else {
+                    // Jika data belum ada, lakukan penambahan data
+                    String sql = "INSERT INTO anggota VALUES (?, ?, ?, ?, ?, ?)";
+                    try (PreparedStatement p = conn.prepareStatement(sql)) {
+                        p.setString(1, NIS);
+                        p.setString(2, pass);
+                        p.setString(3, namaAnggota);
+                        p.setString(4, jenisKelamin);
+                        p.setString(5, kelasAnggota);
+                        p.setInt(6, saldo);
+                        p.execute();
+                        JOptionPane.showMessageDialog(null, "Data berhasil ditambahkan");
+                    }
+                }
+            }
         } catch (SQLException ex){
 //            System.out.println("Data gagal di Update");
             JOptionPane.showMessageDialog(null, "Gagal Tambah Anggota");
