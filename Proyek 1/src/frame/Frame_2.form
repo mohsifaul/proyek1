@@ -142,8 +142,11 @@
         </Component>
         <Component class="javax.swing.JButton" name="btMenabung">
           <Properties>
-            <Property name="text" type="java.lang.String" value="TABUNGAN"/>
+            <Property name="text" type="java.lang.String" value="DAFTAR PENGAJUAN"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btMenabungActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btAmbilUang">
           <Properties>
@@ -177,7 +180,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
-            <Property name="text" type="java.lang.String" value="&gt; Tabungan : Digunakan untuk cek saldo pengajuan ambil uang "/>
+            <Property name="text" type="java.lang.String" value="&gt; Daftar Pengajuan : Digunakan untuk cek pengajuan ambil uang Anggota"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">

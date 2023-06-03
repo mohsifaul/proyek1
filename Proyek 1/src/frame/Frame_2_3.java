@@ -4,6 +4,7 @@
  */
 package frame;
 
+import code.ClassAnggota;
 import code.ClassBarang;
 import code.ClassPengajuan;
 import javax.swing.JOptionPane;
@@ -24,7 +25,7 @@ public class Frame_2_3 extends javax.swing.JFrame {
     }
     DefaultTableModel tableModel;
     int idx_table;
-    private String idPengajuan;
+    private String idPengajuan, idAnggota, totalPengajuan, statusPengajuan;
     public void ModelTablePengajuan(){
         tableModel = new DefaultTableModel();
         tbPengajuan.setModel(tableModel);
@@ -198,9 +199,20 @@ public class Frame_2_3 extends javax.swing.JFrame {
         if (idx_table == -1) {
             JOptionPane.showMessageDialog(rootPane, "Silahkan Pilih Data", "Informasi", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            System.out.println(idPengajuan);
-            ClassPengajuan cp = new ClassPengajuan();
-            cp.UpdatePengajuan(idPengajuan, "Diterima");
+            if (statusPengajuan.equals("Diterima")) {
+                JOptionPane.showMessageDialog(rootPane, "Pengajuan Telah Diterima", "Informasi", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                ClassPengajuan cp = new ClassPengajuan();
+                cp.UpdatePengajuan(idPengajuan, "Diterima");
+                ClassAnggota ca = new ClassAnggota();
+                int saldoAnggota = ca.getSaldo(idAnggota);
+                int saldoPengajuan = Integer.parseInt(totalPengajuan);
+                int saldoUpdate = saldoAnggota - saldoPengajuan;
+                System.out.println("Saldo Anggota" + saldoAnggota);
+                System.out.println("Saldo Pengajuan " + saldoPengajuan);
+                System.out.println("Saldo Update" + saldoUpdate);
+                ca.userNabung(idAnggota, saldoUpdate);
+            }
             loadData();
         }
     }//GEN-LAST:event_btTerimaActionPerformed
@@ -209,6 +221,9 @@ public class Frame_2_3 extends javax.swing.JFrame {
         // TODO add your handling code here:
         idx_table = tbPengajuan.getSelectedRow();
         idPengajuan = (String) tableModel.getValueAt(idx_table, 0);
+        idAnggota = (String) tableModel.getValueAt(idx_table, 2);
+        totalPengajuan = (String) tableModel.getValueAt(idx_table, 3);
+        statusPengajuan = (String) tableModel.getValueAt(idx_table, 4);
     }//GEN-LAST:event_tbPengajuanMouseClicked
 
     private void btTolakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTolakActionPerformed

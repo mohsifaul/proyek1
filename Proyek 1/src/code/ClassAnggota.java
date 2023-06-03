@@ -20,7 +20,7 @@ public class ClassAnggota {
     private String username, userpass, nama, kelas;
     private Connection conn;
     private Statement st;
-    private int ndata = 0;
+    private int ndata = 0, saldo;
     private Object[][] data;
     public ClassAnggota(){
         
@@ -165,6 +165,22 @@ public class ClassAnggota {
     }
     public Object[][] getAllDataAngggota(){
         return data;
+    }
+    public int getSaldo(String idAnggota){
+        try{
+            conn = ClassConnection.getKoneksi();
+            st = conn.createStatement();
+            String sql = "SELECT saldo FROM anggota WHERE username='" + idAnggota + "';";
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()){
+                saldo = rs.getInt("saldo");
+            }
+            rs.close();
+            st.close();
+        } catch (SQLException ex){
+            System.out.println("Data gagal di Update");
+        }
+        return saldo;
     }
 }
 

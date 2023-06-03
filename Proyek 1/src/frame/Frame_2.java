@@ -65,7 +65,12 @@ public class Frame_2 extends javax.swing.JFrame {
             }
         });
 
-        btMenabung.setText("TABUNGAN");
+        btMenabung.setText("DAFTAR PENGAJUAN");
+        btMenabung.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btMenabungActionPerformed(evt);
+            }
+        });
 
         btAmbilUang.setText("TRANSAKSI BARANG");
 
@@ -82,7 +87,7 @@ public class Frame_2 extends javax.swing.JFrame {
 
         jLabel3.setText("> Katalog Barang : Digunakan untuk membuat barang dan jumlah stok ");
 
-        jLabel4.setText("> Tabungan : Digunakan untuk cek saldo pengajuan ambil uang ");
+        jLabel4.setText("> Daftar Pengajuan : Digunakan untuk cek pengajuan ambil uang Anggota");
 
         jLabel5.setText("> Transaksi Barang : digunakan untuk melihat riwayat transaksi yang  telah berjalan");
 
@@ -188,7 +193,14 @@ public class Frame_2 extends javax.swing.JFrame {
     private void btKatalogBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btKatalogBarangActionPerformed
         // TODO add your handling code here:
         new Frame_2_2().setVisible(true);
+        dispose();
     }//GEN-LAST:event_btKatalogBarangActionPerformed
+
+    private void btMenabungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMenabungActionPerformed
+        // TODO add your handling code here:
+        new Frame_2_3().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btMenabungActionPerformed
 
     /**
      * @param args the command line arguments

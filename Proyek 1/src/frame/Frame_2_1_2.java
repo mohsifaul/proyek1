@@ -63,6 +63,7 @@ public class Frame_2_1_2 extends javax.swing.JFrame {
     }
     void clearData(){
         txNIS.setEnabled(true);
+        txNIS.setEditable(true);
         rbJkL.setSelected(false);
         rbJkP.setSelected(false);
         txNIS.setText("");
@@ -417,7 +418,6 @@ public class Frame_2_1_2 extends javax.swing.JFrame {
             ca.updateAnggota(NIS, pass, namaAnggota, jenisKelamin, kelasAnggota);
             loadData();
             clearData();
-            txNIS.setEditable(true);
         }
     }//GEN-LAST:event_btEditActionPerformed
 
