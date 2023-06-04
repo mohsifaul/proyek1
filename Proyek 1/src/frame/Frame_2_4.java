@@ -25,12 +25,15 @@ public class Frame_2_4 extends javax.swing.JFrame {
         sum();
     }
     private String namaAkun, idInvoice, idBarang;
-    private int index;
+    private int index, hargaBarang;
+    private int[] hargaBarangArray;
+    private String[] idBarangArray;
     public Frame_2_4(String nama) {
         initComponents();
         namaAkun = nama;
         loadData();
         sum();
+        
     }
     DefaultTableModel tableModel;
     void ModelTableUser(){
@@ -284,8 +287,8 @@ public class Frame_2_4 extends javax.swing.JFrame {
             return;
         }
         idInvoice = (String) tableModel.getValueAt(index, 2);
-//        idBarang = (String) tableModel.getValueAt(index, 3);
-        System.out.println("Terpilih" + idInvoice + "Dan" + idBarang);
+        System.out.println("Terpilih " + idInvoice);
+//        idBarang = (String) tableModel.getValueAt(index, 3);        
     }//GEN-LAST:event_tbTransaksiMouseClicked
 
     /**

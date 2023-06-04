@@ -460,7 +460,7 @@ public class Frame_2_2_2 extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Pilih Data Yang Diedit", "Informasi", JOptionPane.INFORMATION_MESSAGE);
         } else {
             ClassBarang cb = new ClassBarang();
-//            cb.UpdateBarang(idBarang, namaBarang, jenisBarang, rakBarang, stokB, hargaJual, hargaJual);
+            cb.UpdateBarang(idBarang, namaBarang, jenisBarang, rakBarang, stokB, hargaBeli, hargaJual);
             System.out.println("Data" + idBarang + namaBarang+ jenisBarang+ rakBarang+ stokB+ hargaJual+ hargaJual);
             loadData();
             clearData();

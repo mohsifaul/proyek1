@@ -240,25 +240,74 @@ public class ClassBarang {
         }
         return stok;
     }
-    public int getHargaBarangFromIdTrx(String idTrx) {
-        int hargaBarang = 0;
-
+    public String[][] getHargaBarangJumlahFromIdTrx(String idTrx) {
+        String[][] hargaBarangJumlahArray = null;
         try {
             conn = ClassConnection.getKoneksi();
             st = conn.createStatement();
-            String sql = "SELECT b.harga_barang FROM barang b INNER JOIN idtrx i "
-                    + "ON b.id_barang = i.idBarang WHERE i.idtrx = '" + idTrx + "'";
+            String sql = "SELECT COUNT(*) as count FROM barang b INNER JOIN transaksi t "
+                    + "ON b.id_barang = t.idBarang WHERE t.idtrx = '" + idTrx + "'";
             ResultSet rs = st.executeQuery(sql);
             if (rs.next()) {
-                hargaBarang = rs.getInt("harga_barang");
-                System.out.println("Harga Barang: " + hargaBarang);
+                int count = rs.getInt("count");
+                hargaBarangJumlahArray = new String[count][4]; // Ubah tipe data menjadi String dan tambahkan kolom untuk id_barang
+            }
+            rs.close();
+
+            sql = "SELECT b.harga_barang, t.itemBarang, t.hargaItem, b.id_barang FROM barang b INNER JOIN transaksi t "
+                    + "ON b.id_barang = t.idBarang WHERE t.idtrx = '" + idTrx + "'";
+            rs = st.executeQuery(sql);
+            int index = 0;
+            while (rs.next()) {
+                int hargaBeli = rs.getInt("harga_barang");
+                int jumlah = rs.getInt("itemBarang");
+                int hargaItem = rs.getInt("hargaItem");
+                String idB = rs.getString("id_barang");
+                hargaBarangJumlahArray[index][0] = Integer.toString(hargaBeli);
+                hargaBarangJumlahArray[index][1] = Integer.toString(jumlah);
+                hargaBarangJumlahArray[index][2] = Integer.toString(hargaItem);
+                hargaBarangJumlahArray[index][3] = idB;
+                index++;
             }
             rs.close();
             st.close();
         } catch (SQLException ex) {
             System.out.println("Data gagal tampil");
         }
-        return hargaBarang;
+        return hargaBarangJumlahArray;
     }
 
+    
+//    public String[] getIdBarangFromIdTrx(String idTrx) {
+//        String[] idBarangArray = null;
+//        try {
+//            conn = ClassConnection.getKoneksi();
+//            st = conn.createStatement();
+//            String sql = "SELECT COUNT(*) as count FROM barang b INNER JOIN transaksi t "
+//                    + "ON b.id_barang = t.idBarang WHERE t.idtrx = '" + idTrx + "'";
+//            ResultSet rs = st.executeQuery(sql);
+//            if (rs.next()) {
+//                int count = rs.getInt("count");
+//                idBarangArray = new String[count];
+//            }
+//            rs.close();
+//
+//            sql = "SELECT b.id_barang FROM barang b INNER JOIN transaksi t "
+//                    + "ON b.id_barang = t.idBarang WHERE t.idtrx = '" + idTrx + "'";
+//            rs = st.executeQuery(sql);
+//            int index = 0;
+//            while (rs.next()) {
+//                String idBarang = rs.getString("id_barang");
+//                idBarangArray[index] = idBarang;
+//                System.out.println("ID Barang: " + idBarang);
+//                index++;
+//            }
+//            rs.close();
+//            st.close();
+//        } catch (SQLException ex) {
+//            System.out.println("Data gagal tampil");
+//        }
+//        return idBarangArray;
+//    }
+    
 }
