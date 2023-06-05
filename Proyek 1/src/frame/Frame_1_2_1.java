@@ -80,22 +80,22 @@ public class Frame_1_2_1 extends javax.swing.JFrame {
         setBackground(new java.awt.Color(26, 188, 156));
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(153, 153, 255));
+        jPanel1.setBackground(new java.awt.Color(169, 226, 245));
 
         lbNamaBarang.setFont(new java.awt.Font("Source Sans Pro", 1, 24)); // NOI18N
         lbNamaBarang.setText("Barang Tidak Ada");
 
-        jLabel3.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Source Sans Pro", 0, 16)); // NOI18N
         jLabel3.setText("Pilihan Produk");
 
-        jLabel4.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Source Sans Pro", 0, 16)); // NOI18N
         jLabel4.setText("Tempat Produk");
 
-        jLabel5.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Source Sans Pro", 0, 16)); // NOI18N
         jLabel5.setText("Harga Produk");
 
-        btKembali.setBackground(new java.awt.Color(231, 76, 60));
-        btKembali.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
+        btKembali.setBackground(new java.awt.Color(255, 99, 129));
+        btKembali.setFont(new java.awt.Font("Source Sans Pro", 0, 16)); // NOI18N
         btKembali.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/angle-left.png"))); // NOI18N
         btKembali.setText("Kembali");
         btKembali.addActionListener(new java.awt.event.ActionListener() {
@@ -106,7 +106,7 @@ public class Frame_1_2_1 extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/cariBarang.png"))); // NOI18N
 
-        jLabel6.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Source Sans Pro", 0, 16)); // NOI18N
         jLabel6.setText("Nama Produk");
 
         jLabel7.setFont(new java.awt.Font("Source Sans Pro", 1, 24)); // NOI18N
@@ -152,9 +152,9 @@ public class Frame_1_2_1 extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(49, 49, 49)
+                .addGap(79, 79, 79)
                 .addComponent(jLabel7)
-                .addGap(23, 23, 23)
+                .addGap(47, 47, 47)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3)
@@ -175,7 +175,7 @@ public class Frame_1_2_1 extends javax.swing.JFrame {
                         .addGap(37, 37, 37)
                         .addComponent(btKembali))
                     .addComponent(jLabel2))
-                .addContainerGap(128, Short.MAX_VALUE))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

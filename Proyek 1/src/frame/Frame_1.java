@@ -38,8 +38,11 @@ public class Frame_1 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(242, 26, 168));
+        jPanel1.setBackground(new java.awt.Color(169, 226, 245));
 
+        btBayarUang.setBackground(new java.awt.Color(253, 186, 168));
+        btBayarUang.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
+        btBayarUang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/money-check-edit.png"))); // NOI18N
         btBayarUang.setText("TRANSAKSI BARANG");
         btBayarUang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -47,6 +50,9 @@ public class Frame_1 extends javax.swing.JFrame {
             }
         });
 
+        btMenabung.setBackground(new java.awt.Color(246, 253, 168));
+        btMenabung.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
+        btMenabung.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/sack-dollar.png"))); // NOI18N
         btMenabung.setText("TABUNGAN");
         btMenabung.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -54,6 +60,9 @@ public class Frame_1 extends javax.swing.JFrame {
             }
         });
 
+        btKatalogBarang.setBackground(new java.awt.Color(167, 253, 204));
+        btKatalogBarang.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
+        btKatalogBarang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/search-interface-symbol.png"))); // NOI18N
         btKatalogBarang.setText("CARI BARANG");
         btKatalogBarang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,18 +73,20 @@ public class Frame_1 extends javax.swing.JFrame {
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         jTextArea1.setEditable(false);
+        jTextArea1.setBackground(new java.awt.Color(169, 226, 245));
         jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
-        jTextArea1.setText("> Transaksi Barang :\nMelakukan Pembelian Barang apa saja yang ingin kamu beli \n\n> Katalog Barang :\nMembantu anda dalam \nmencari letak dan harga barang \ntinggal memilih nama barang \nyang dicari\n\n> Tabungan :\nGunakan ketika anda ingin \nmenabung dan setorkan uang \nke pada admin serta melakukan penarikan\n");
+        jTextArea1.setText("> Transaksi Barang :\nMelakukan Pembelian Barang apa saja \nyang ingin kamu beli \n\n> Katalog Barang :\nMembantu anda dalam \nmencari letak dan harga barang, \ntinggal memilih nama barang\n yang dicari\n\n> Tabungan :\nGunakan ketika anda ingin \nmenabung dan setorkan uang \nkepada admin serta melakukan \npenarikan\n");
         jScrollPane1.setViewportView(jTextArea1);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/frameanggota.png"))); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Source Sans Pro", 1, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Source Sans Pro", 1, 36)); // NOI18N
         jLabel2.setText("APA YANG KAMU BUTUHKAN?");
 
-        btKembali.setBackground(new java.awt.Color(231, 76, 60));
+        btKembali.setBackground(new java.awt.Color(255, 99, 129));
         btKembali.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
         btKembali.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/angle-left.png"))); // NOI18N
         btKembali.setText("Kembali");
@@ -97,16 +108,16 @@ public class Frame_1 extends javax.swing.JFrame {
                     .addComponent(btKatalogBarang, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btBayarUang, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btMenabung, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17))
+                .addGap(29, 29, 29)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
+                        .addGap(40, 40, 40)
                         .addComponent(jLabel2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(15, 15, 15)
                         .addComponent(btKembali)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -115,25 +126,26 @@ public class Frame_1 extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(15, 15, 15)
                         .addComponent(btKembali)
-                        .addGap(26, 26, 26)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel2)
-                        .addGap(28, 28, 28)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(117, 117, 117)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btMenabung, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(28, 28, 28)
-                                .addComponent(btKatalogBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btBayarUang, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(59, Short.MAX_VALUE))
+                                .addGap(27, 27, 27)
+                                .addComponent(jLabel1))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(17, 17, 17))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(117, 117, 117)
+                        .addComponent(btMenabung, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(btKatalogBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btBayarUang, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

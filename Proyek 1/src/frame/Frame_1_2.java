@@ -41,13 +41,13 @@ public class Frame_1_2 extends javax.swing.JFrame {
         setBackground(new java.awt.Color(26, 188, 156));
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel1.setBackground(new java.awt.Color(169, 226, 245));
 
         jLabel1.setFont(new java.awt.Font("Source Sans Pro Black", 1, 24)); // NOI18N
         jLabel1.setText("Cari Barang");
 
-        btKembali.setBackground(new java.awt.Color(231, 76, 60));
-        btKembali.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
+        btKembali.setBackground(new java.awt.Color(255, 99, 129));
+        btKembali.setFont(new java.awt.Font("Source Sans Pro", 0, 16)); // NOI18N
         btKembali.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/angle-left.png"))); // NOI18N
         btKembali.setText("Kembali");
         btKembali.addActionListener(new java.awt.event.ActionListener() {
@@ -56,8 +56,8 @@ public class Frame_1_2 extends javax.swing.JFrame {
             }
         });
 
-        btCari.setBackground(new java.awt.Color(241, 196, 15));
-        btCari.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
+        btCari.setBackground(new java.awt.Color(255, 239, 99));
+        btCari.setFont(new java.awt.Font("Source Sans Pro", 0, 16)); // NOI18N
         btCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/search-interface-symbol.png"))); // NOI18N
         btCari.setText("Cari");
         btCari.addActionListener(new java.awt.event.ActionListener() {
@@ -105,7 +105,7 @@ public class Frame_1_2 extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addGap(29, 29, 29)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
@@ -122,7 +122,7 @@ public class Frame_1_2 extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(47, 47, 47)
                         .addComponent(jLabel3)))
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

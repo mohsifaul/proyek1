@@ -99,7 +99,7 @@ public class Frame_1_3_0 extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Total Saldo");
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel1.setBackground(new java.awt.Color(169, 226, 245));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Tabungan");
@@ -123,8 +123,8 @@ public class Frame_1_3_0 extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/saldo.png"))); // NOI18N
 
-        jButton1.setBackground(new java.awt.Color(231, 76, 60));
-        jButton1.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
+        jButton1.setBackground(new java.awt.Color(255, 99, 129));
+        jButton1.setFont(new java.awt.Font("Source Sans Pro", 0, 16)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/angle-left.png"))); // NOI18N
         jButton1.setText("Kembali");
         jButton1.addActionListener(new java.awt.event.ActionListener() {

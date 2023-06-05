@@ -110,7 +110,7 @@ public class Frame_2_4 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel1.setBackground(new java.awt.Color(169, 226, 245));
 
         jLabel1.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/search-interface-symbol.png"))); // NOI18N
@@ -137,7 +137,8 @@ public class Frame_2_4 extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tbTransaksi);
 
-        btDetail.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
+        btDetail.setBackground(new java.awt.Color(167, 253, 204));
+        btDetail.setFont(new java.awt.Font("Source Sans Pro", 0, 16)); // NOI18N
         btDetail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/pencil.png"))); // NOI18N
         btDetail.setText("Detail");
         btDetail.addActionListener(new java.awt.event.ActionListener() {
@@ -146,6 +147,7 @@ public class Frame_2_4 extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setBackground(new java.awt.Color(246, 253, 168));
         jButton1.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/printer.png"))); // NOI18N
         jButton1.setText("Cetak Struk");
@@ -155,8 +157,8 @@ public class Frame_2_4 extends javax.swing.JFrame {
             }
         });
 
-        btKembali1.setBackground(new java.awt.Color(231, 76, 60));
-        btKembali1.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
+        btKembali1.setBackground(new java.awt.Color(255, 99, 129));
+        btKembali1.setFont(new java.awt.Font("Source Sans Pro", 0, 16)); // NOI18N
         btKembali1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/angle-left.png"))); // NOI18N
         btKembali1.setText("Kembali");
         btKembali1.addActionListener(new java.awt.event.ActionListener() {
@@ -185,8 +187,7 @@ public class Frame_2_4 extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btKembali1)
-                        .addGap(283, 283, 283)
+                        .addGap(382, 382, 382)
                         .addComponent(jLabel2)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -201,6 +202,8 @@ public class Frame_2_4 extends javax.swing.JFrame {
                                     .addComponent(txTotalPemasukkan)
                                     .addComponent(txTotalBarang))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btKembali1)
+                                .addGap(18, 18, 18)
                                 .addComponent(btDetail)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton1)
@@ -215,13 +218,8 @@ public class Frame_2_4 extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jLabel2))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btKembali1)))
+                .addGap(30, 30, 30)
+                .addComponent(jLabel2)
                 .addGap(9, 9, 9)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -233,7 +231,8 @@ public class Frame_2_4 extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton1)
-                            .addComponent(btDetail)))
+                            .addComponent(btDetail)
+                            .addComponent(btKembali1)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(7, 7, 7)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)

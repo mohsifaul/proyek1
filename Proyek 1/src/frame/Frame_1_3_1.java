@@ -54,13 +54,13 @@ public class Frame_1_3_1 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel1.setBackground(new java.awt.Color(169, 226, 245));
 
         jLabel1.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
         jLabel1.setText("Masukkan Jumlah Uang :");
 
-        jButton1.setBackground(new java.awt.Color(241, 196, 15));
-        jButton1.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
+        jButton1.setBackground(new java.awt.Color(255, 239, 99));
+        jButton1.setFont(new java.awt.Font("Source Sans Pro", 0, 16)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/printer.png"))); // NOI18N
         jButton1.setText("Tabung");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -74,8 +74,8 @@ public class Frame_1_3_1 extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Source Sans Pro Black", 1, 36)); // NOI18N
         jLabel3.setText("MENABUNG");
 
-        btKembali.setBackground(new java.awt.Color(231, 76, 60));
-        btKembali.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
+        btKembali.setBackground(new java.awt.Color(255, 99, 129));
+        btKembali.setFont(new java.awt.Font("Source Sans Pro", 0, 16)); // NOI18N
         btKembali.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/angle-left.png"))); // NOI18N
         btKembali.setText("Kembali");
         btKembali.addActionListener(new java.awt.event.ActionListener() {
@@ -106,7 +106,7 @@ public class Frame_1_3_1 extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addGap(107, 107, 107))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(20, 20, 20)
                 .addComponent(btKembali)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -117,11 +117,11 @@ public class Frame_1_3_1 extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addGap(62, 62, 62))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(25, 25, 25)
                 .addComponent(btKembali)
-                .addGap(46, 46, 46)
+                .addGap(27, 27, 27)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(txNominal, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)

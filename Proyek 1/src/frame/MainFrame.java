@@ -33,10 +33,10 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(169, 226, 245));
         setPreferredSize(new java.awt.Dimension(1280, 720));
 
-        btAdmin.setBackground(new java.awt.Color(0, 131, 176));
+        btAdmin.setBackground(new java.awt.Color(246, 253, 168));
         btAdmin.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
         btAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/admin.png"))); // NOI18N
         btAdmin.setText("ADMIN");
@@ -46,7 +46,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        btAnggota.setBackground(new java.awt.Color(0, 180, 219));
+        btAnggota.setBackground(new java.awt.Color(167, 253, 204));
         btAnggota.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
         btAnggota.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/group-chat.png"))); // NOI18N
         btAnggota.setText("ANGGOTA");
