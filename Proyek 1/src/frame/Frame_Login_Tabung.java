@@ -18,6 +18,7 @@ public class Frame_Login_Tabung extends javax.swing.JFrame {
      */
     public Frame_Login_Tabung() {
         initComponents();
+        this.setExtendedState(WIDTH);
     }
 
     /**
@@ -217,6 +218,14 @@ public class Frame_Login_Tabung extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Frame_Login_Tabung().setVisible(true);
+//                utama utm=new utama();
+//
+//                utm.pack();
+//                    utm.setSize(1280, 720);
+//
+//                utm.setLocationRelativeTo(nulll);
+//
+//                utm.setVisible(true);
             }
         });
     }
