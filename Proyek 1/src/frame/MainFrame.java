@@ -15,7 +15,7 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() {
         initComponents();
-        this.setExtendedState(WIDTH);
+//        this.setExtendedState(WIDTH);
     }
 
     /**

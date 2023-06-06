@@ -17,7 +17,7 @@ public class Frame_1_3_1 extends javax.swing.JFrame {
      * Creates new form Frame_1_3_1
      */
     public Frame_1_3_1() {
-        this.setExtendedState(WIDTH);
+//        this.setExtendedState(WIDTH);
         if (akun == null) { //Jika Akun bernilai kosong
             System.out.println("Silahkan Login Dulu");
             new Frame_1_3_0().setVisible(true);

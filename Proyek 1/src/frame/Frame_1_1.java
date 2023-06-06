@@ -35,7 +35,7 @@ public class Frame_1_1 extends javax.swing.JFrame {
     DefaultTableModel tableModel;
     public Frame_1_1() {
         initComponents();
-        this.setExtendedState(WIDTH);
+//        this.setExtendedState(WIDTH);
         dataComboBox();
         loadData();
         tampiljamtanggal();

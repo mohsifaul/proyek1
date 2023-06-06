@@ -20,7 +20,7 @@ public class Frame_2_5 extends javax.swing.JFrame {
      */
     public Frame_2_5() {
         initComponents();
-        this.setExtendedState(WIDTH);
+//        this.setExtendedState(WIDTH);
         loadData();
         sum();
     }

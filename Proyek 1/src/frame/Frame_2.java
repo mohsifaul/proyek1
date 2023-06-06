@@ -16,7 +16,7 @@ public class Frame_2 extends javax.swing.JFrame {
      * Creates new form Frame_2
      */
     public Frame_2() {
-        this.setExtendedState(WIDTH);
+//        this.setExtendedState(WIDTH);
         if (userNama == null) {
             JOptionPane.showMessageDialog(rootPane, "Silahkan Login Dulu!!", "Peringatan", JOptionPane.ERROR_MESSAGE);
             new Frame_Login().setVisible(true);

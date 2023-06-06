@@ -17,7 +17,7 @@ public class Frame_1_2 extends javax.swing.JFrame {
      */
     public Frame_1_2() {
         initComponents();
-        this.setExtendedState(WIDTH);
+//        this.setExtendedState(WIDTH);
     }
 
     /**

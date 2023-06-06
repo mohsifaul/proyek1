@@ -30,7 +30,7 @@ public class Frame_1_2_1 extends javax.swing.JFrame {
     private Statement st;
     public Frame_1_2_1() {
         initComponents();
-        this.setExtendedState(WIDTH);
+//        this.setExtendedState(WIDTH);
         dataComboBox();
     }
 //    public Frame_1_2_1(String namaB) {
