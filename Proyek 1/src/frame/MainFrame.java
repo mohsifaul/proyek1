@@ -130,7 +130,8 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void btAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdminActionPerformed
         // TODO add your handling code here:
-        new Frame_Login().setVisible(true);
+        String id = "Anggota";
+        new Frame_Login(id).setVisible(true);
         dispose();
     }//GEN-LAST:event_btAdminActionPerformed
 
