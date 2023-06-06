@@ -20,7 +20,7 @@ public class Frame_2_1_2 extends javax.swing.JFrame {
      */
     public Frame_2_1_2() {
         initComponents();
-        this.setExtendedState(WIDTH);
+//        this.setExtendedState(WIDTH);
         loadData();
     }
     void filterangka(KeyEvent b){

@@ -21,7 +21,7 @@ public class Frame_2_3 extends javax.swing.JFrame {
      */
     public Frame_2_3() {
         initComponents();
-        this.setExtendedState(WIDTH);
+//        this.setExtendedState(WIDTH);
         loadData();
     }
     private String namaAkun;
