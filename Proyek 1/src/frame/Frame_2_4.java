@@ -21,6 +21,7 @@ public class Frame_2_4 extends javax.swing.JFrame {
      */
     public Frame_2_4() {
         initComponents();
+        this.setExtendedState(WIDTH);
         loadData();
         sum();
     }

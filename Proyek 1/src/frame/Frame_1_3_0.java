@@ -107,6 +107,9 @@ public class Frame_1_3_0 extends javax.swing.JFrame {
         txTotSaldo.setFont(new java.awt.Font("Segoe UI", 1, 60)); // NOI18N
         txTotSaldo.setText("Total Saldo");
 
+        btTabung.setBackground(new java.awt.Color(167, 253, 204));
+        btTabung.setFont(new java.awt.Font("Source Sans Pro", 0, 16)); // NOI18N
+        btTabung.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/sack-dollar.png"))); // NOI18N
         btTabung.setText("Menabung");
         btTabung.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,6 +117,9 @@ public class Frame_1_3_0 extends javax.swing.JFrame {
             }
         });
 
+        btAjuanTarik.setBackground(new java.awt.Color(246, 253, 168));
+        btAjuanTarik.setFont(new java.awt.Font("Source Sans Pro", 0, 16)); // NOI18N
+        btAjuanTarik.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/file-invoice-dollar.png"))); // NOI18N
         btAjuanTarik.setText("Tarik");
         btAjuanTarik.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

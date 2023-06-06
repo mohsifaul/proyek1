@@ -20,6 +20,7 @@ public class Frame_2_5 extends javax.swing.JFrame {
      */
     public Frame_2_5() {
         initComponents();
+        this.setExtendedState(WIDTH);
         loadData();
         sum();
     }
@@ -101,7 +102,7 @@ public class Frame_2_5 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel1.setBackground(new java.awt.Color(169, 226, 245));
 
         jLabel1.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/search-interface-symbol.png"))); // NOI18N

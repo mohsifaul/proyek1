@@ -21,6 +21,7 @@ public class Frame_1_3_2 extends javax.swing.JFrame {
      * Creates new form Frame_1_3_1
      */
     public Frame_1_3_2() {
+        this.setExtendedState(WIDTH);
         if (saldoTabungan == null) {
             new Frame_1().setVisible(true);
             dispose();

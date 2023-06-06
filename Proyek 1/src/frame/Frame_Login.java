@@ -18,6 +18,7 @@ public class Frame_Login extends javax.swing.JFrame {
      */
     public Frame_Login() {
         initComponents();
+        this.setExtendedState(WIDTH);
     }
 
     /**

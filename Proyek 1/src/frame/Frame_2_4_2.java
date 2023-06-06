@@ -27,6 +27,7 @@ public class Frame_2_4_2 extends javax.swing.JFrame {
     private String[] barang;
     private int subTotal;
     public Frame_2_4_2() {
+        this.setExtendedState(WIDTH);
         if (idInvoice == null) {
             JOptionPane.showMessageDialog(rootPane, "Silahkan Pilih Barang dulu", "Informasi", JOptionPane.INFORMATION_MESSAGE);
             new Frame_2_4().setVisible(true);
