@@ -62,14 +62,17 @@ public class ClassPengajuan {
             while(rs.next()){
                 ndata = rs.getInt("COUNT(*)");
             }
-            sql = "SELECT * FROM pengajuan WHERE id_anggota= '" + idAnggota + "'";
+            sql = "SELECT pengajuan.*, anggota.nama " +
+                "FROM pengajuan " +
+                "JOIN anggota ON pengajuan.id_anggota = anggota.username " +
+                "WHERE pengajuan.id_anggota = '" + idAnggota + "'";
             rs = st.executeQuery(sql);
             data = new Object[ndata][5];
             int idx = 0;
             while(rs.next()){
                 data[idx][0] = rs.getString("id_pengajuan");
                 data[idx][1] = rs.getString("tanggal");
-                data[idx][2] = rs.getString("id_anggota");
+                data[idx][2] = rs.getString("nama");
                 data[idx][3] = rs.getString("total_pengajuan");
                 data[idx][4] = rs.getString("status");
                 idx++;
@@ -80,23 +83,26 @@ public class ClassPengajuan {
 //            System.out.println("Data gagal tampil");
         }
     }
-    public void CariPengajuan(String key){ // Cari Barang Pada Tabel
+    public void CariPengajuan( String idAnggota, String date){ // Cari Barang Pada Tabel
         try{
             conn = ClassConnection.getKoneksi();
             st = conn.createStatement();
-            String sql = "SELECT COUNT(*) FROM pengajuan WHERE id_anggota= '" + key + "'";
+            String sql = "SELECT COUNT(*) FROM pengajuan WHERE id_anggota = '" + idAnggota + "' AND tanggal = '" + date + "' ";
             ResultSet rs = st.executeQuery(sql);
             while(rs.next()){
                 ndata = rs.getInt("COUNT(*)");
             }
-            sql = "SELECT * FROM pengajuan WHERE id_anggota= '" + key + "'";
+            sql = "SELECT pengajuan.*, anggota.nama " +
+                "FROM pengajuan " +
+                "JOIN anggota ON pengajuan.id_anggota = anggota.username " +
+                "WHERE pengajuan.id_anggota = '" + idAnggota + "' AND pengajuan.tanggal = '" + date + "'";
             rs = st.executeQuery(sql);
-            data = new Object[ndata][7];
+            data = new Object[ndata][5];
             int idx = 0;
             while(rs.next()){
                 data[idx][0] = rs.getString("id_pengajuan");
                 data[idx][1] = rs.getString("tanggal");
-                data[idx][2] = rs.getString("id_anggota");
+                data[idx][2] = rs.getString("nama");
                 data[idx][3] = rs.getString("total_pengajuan");
                 data[idx][4] = rs.getString("status");
                 idx++;
@@ -104,6 +110,7 @@ public class ClassPengajuan {
             rs.close();
             st.close();
         } catch (SQLException ex){
+            System.out.println(ex);
             System.out.println("Data gagal tampil");
         }
     }

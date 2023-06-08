@@ -164,7 +164,7 @@ public class Frame_1_3_1 extends javax.swing.JFrame {
 
     private void btKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btKembaliActionPerformed
         // TODO add your handling code here:
-        new Frame_1_3_0().setVisible(true);
+        new Frame_1_3_0(String.valueOf(saldoAwal), akun).setVisible(true);
         dispose();
     }//GEN-LAST:event_btKembaliActionPerformed
 

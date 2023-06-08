@@ -253,6 +253,16 @@ public class Frame_2_3 extends javax.swing.JFrame {
         idAnggota = (String) tableModel.getValueAt(idx_table, 2);
         totalPengajuan = (String) tableModel.getValueAt(idx_table, 3);
         statusPengajuan = (String) tableModel.getValueAt(idx_table, 4);
+        if (statusPengajuan.equals("Diterima")) {
+            btTerima.setEnabled(false);
+            btTolak.setEnabled(false);
+        } else if(statusPengajuan.equals("Ditolak")) {
+            btTolak.setEnabled(false);
+            btTerima.setEnabled(true);
+        } else {
+            btTerima.setEnabled(true);
+            btTolak.setEnabled(true);
+        }
     }//GEN-LAST:event_tbPengajuanMouseClicked
 
     private void btTolakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTolakActionPerformed

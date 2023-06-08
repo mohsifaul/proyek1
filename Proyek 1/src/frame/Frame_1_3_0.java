@@ -7,8 +7,12 @@ package frame;
 //import static java.lang.Integer.parseInt;
 import code.ClassPengajuan;
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 //import javax.swing.JOptionPane;
 
 /**
@@ -30,7 +34,7 @@ public class Frame_1_3_0 extends javax.swing.JFrame {
         }
     }
     private String saldoTabung;
-    private String namaAkun;
+    private String namaAkun, FormatDate;
     public Frame_1_3_0(String saldo, String nama) {
         initComponents();
         // Mengubah saldo menjadi tipe data String
@@ -48,30 +52,50 @@ public class Frame_1_3_0 extends javax.swing.JFrame {
     DefaultTableModel tableModel;
     public void ModelTablePengajuan(){
         tableModel = new DefaultTableModel();
-        jTable1.setModel(tableModel);
+        tbPengajuan.setModel(tableModel);
         tableModel.addColumn("Id Pengajuan");
         tableModel.addColumn("Tanggal Pengajuan");
-        tableModel.addColumn("Id Anggota");
+        tableModel.addColumn("Nama Anggota");
         tableModel.addColumn("Total Pengajuan");
         tableModel.addColumn("Status");
         tableModel.getDataVector().removeAllElements();
         tableModel.fireTableDataChanged();
+        
+        // Mengatur ukuran kolom
+        TableColumnModel columnModel = tbPengajuan.getColumnModel();
+        columnModel.getColumn(0).setPreferredWidth(100);  // Kolom "Id Pengajuan" dengan lebar 30 piksel
+        columnModel.getColumn(1).setPreferredWidth(100);  // Kolom "Tanggal Pngajuan" dengan lebar 80 piksel
+        columnModel.getColumn(2).setPreferredWidth(100); // Kolom "Nama Anggota" dengan lebar 150 piksel
+        columnModel.getColumn(3).setPreferredWidth(100); // Kolom "Total Pengajuan" dengan lebar 100 piksel
+        columnModel.getColumn(4).setPreferredWidth(80); // Kolom "Status" dengan lebar 100 piksel
     }
     void loadData(String key) {
         ModelTablePengajuan();
         ClassPengajuan cp = new ClassPengajuan();
-        cp.TampilPengajuan(key);
+        if (key.equals(namaAkun)) {
+            cp.TampilPengajuan(key);
+        } else if(key.equals(FormatDate)) {
+            System.out.println("Tanggal " + key);
+            cp.CariPengajuan(namaAkun, key);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Data Gagal Tampil", "Informasi", JOptionPane.INFORMATION_MESSAGE);
+        }
         int ndata = cp.getNumberDataPengajuan();
         Object[][] data = cp.getAllDataPengajuan();
-        Object[] data1 = new Object[5];
-        for (int i = 0; i < ndata; i++) {
-            for (int j = 0; j < 5; j++) {
-                data1[j] = data[i][j];
+        if (ndata == 0) {
+            loadData(namaAkun);
+            JOptionPane.showMessageDialog(rootPane, "Data Tidak Ditemukan", "Informasi", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            Object[] data1 = new Object[5];
+            for (int i = 0; i < ndata; i++) {
+                for (int j = 0; j < 5; j++) {
+                    data1[j] = data[i][j];
+                }
+                tableModel.addRow(data1);
             }
-            tableModel.addRow(data1);
+            int jumlah = tableModel.getRowCount(); 
+            txTotalPengajuan.setText(Integer.toString(jumlah));
         }
-        int jumlah = tableModel.getRowCount(); 
-       txTotalPengajuan.setText(Integer.toString(jumlah));
     }
 
     /**
@@ -91,10 +115,12 @@ public class Frame_1_3_0 extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbPengajuan = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         txTotalPengajuan = new javax.swing.JLabel();
+        date = new com.toedter.calendar.JDateChooser();
+        btCari = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Total Saldo");
@@ -140,7 +166,7 @@ public class Frame_1_3_0 extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbPengajuan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -151,7 +177,7 @@ public class Frame_1_3_0 extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbPengajuan);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel3.setText("Daftar Pengajuan");
@@ -161,6 +187,19 @@ public class Frame_1_3_0 extends javax.swing.JFrame {
 
         txTotalPengajuan.setFont(new java.awt.Font("Source Sans Pro", 1, 18)); // NOI18N
         txTotalPengajuan.setText("1");
+
+        date.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dateMouseClicked(evt);
+            }
+        });
+
+        btCari.setText("Cari");
+        btCari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCariActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -172,26 +211,29 @@ public class Frame_1_3_0 extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 198, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(btTabung, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGap(30, 30, 30)
-                                    .addComponent(btAjuanTarik, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(txTotalPengajuan)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton1)))
-                            .addComponent(jLabel3))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(btTabung, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(30, 30, 30)
+                                .addComponent(btAjuanTarik, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txTotalPengajuan)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton1))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btCari)))
                         .addGap(87, 87, 87))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txTotSaldo, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel1)
                                 .addGap(99, 99, 99)))
                         .addGap(175, 175, 175))))
@@ -214,7 +256,11 @@ public class Frame_1_3_0 extends javax.swing.JFrame {
                             .addComponent(btAjuanTarik, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btTabung, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel3)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btCari)
+                                .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addGap(31, 31, 31)))
@@ -222,7 +268,7 @@ public class Frame_1_3_0 extends javax.swing.JFrame {
                     .addComponent(txTotalPengajuan, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
-                .addContainerGap(111, Short.MAX_VALUE))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -257,6 +303,19 @@ public class Frame_1_3_0 extends javax.swing.JFrame {
         new Frame_1_3_2(namaAkun, saldoTabung).setVisible(true);
         dispose();
     }//GEN-LAST:event_btAjuanTarikActionPerformed
+
+    private void btCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCariActionPerformed
+        // TODO add your handling code here:
+        Date calendar = date.getDate();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        FormatDate = dateFormat.format(calendar);
+        System.out.println("Tanggal: " + FormatDate);
+        loadData(FormatDate);
+    }//GEN-LAST:event_btCariActionPerformed
+
+    private void dateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dateMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dateMouseClicked
 
     /**
      * @param args the command line arguments
@@ -295,7 +354,9 @@ public class Frame_1_3_0 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAjuanTarik;
+    private javax.swing.JButton btCari;
     private javax.swing.JButton btTabung;
+    private com.toedter.calendar.JDateChooser date;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -303,7 +364,7 @@ public class Frame_1_3_0 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tbPengajuan;
     private javax.swing.JLabel txTotSaldo;
     private javax.swing.JLabel txTotalPengajuan;
     // End of variables declaration//GEN-END:variables
