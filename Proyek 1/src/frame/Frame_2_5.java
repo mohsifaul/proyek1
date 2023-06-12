@@ -101,6 +101,9 @@ public class Frame_2_5 extends javax.swing.JFrame {
         txTotalPemasukkan = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1280, 720));
+        setResizable(false);
+        setSize(new java.awt.Dimension(1280, 720));
 
         jPanel1.setBackground(new java.awt.Color(169, 226, 245));
         jPanel1.setPreferredSize(new java.awt.Dimension(1280, 720));
@@ -247,7 +250,7 @@ public class Frame_2_5 extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1270, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

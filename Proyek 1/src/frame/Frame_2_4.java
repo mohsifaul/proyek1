@@ -110,7 +110,8 @@ public class Frame_2_4 extends javax.swing.JFrame {
         txTotalPemasukkan = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1286, 732));
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1286, 726));
 
         jPanel1.setBackground(new java.awt.Color(169, 226, 245));
         jPanel1.setPreferredSize(new java.awt.Dimension(1286, 732));
@@ -259,6 +260,7 @@ public class Frame_2_4 extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

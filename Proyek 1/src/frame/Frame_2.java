@@ -58,6 +58,8 @@ public class Frame_2 extends javax.swing.JFrame {
         btLaporan = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1286, 726));
 
         jPanel1.setBackground(new java.awt.Color(169, 226, 245));
         jPanel1.setPreferredSize(new java.awt.Dimension(1280, 720));
@@ -181,7 +183,7 @@ public class Frame_2 extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(btKembali)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                 .addComponent(jLabel6)
                 .addGap(4, 4, 4)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -228,6 +230,7 @@ public class Frame_2 extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btAnggotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAnggotaActionPerformed

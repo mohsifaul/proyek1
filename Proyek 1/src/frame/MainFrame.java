@@ -36,7 +36,9 @@ public class MainFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(169, 226, 245));
+        setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(1280, 720));
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(162, 233, 245));
         jPanel1.setPreferredSize(new java.awt.Dimension(1280, 720));
@@ -126,6 +128,7 @@ public class MainFrame extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdminActionPerformed

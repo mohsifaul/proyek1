@@ -111,7 +111,8 @@ public class Frame_2_1_2 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Daftar Anggota");
-        setResizable(false);
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1286, 726));
 
         jPanel1.setBackground(new java.awt.Color(169, 226, 245));
         jPanel1.setPreferredSize(new java.awt.Dimension(1280, 720));
@@ -364,6 +365,7 @@ public class Frame_2_1_2 extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTambahActionPerformed

@@ -140,6 +140,7 @@ public class Frame_1_1 extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(26, 188, 156));
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1286, 726));
 
         jPanel1.setBackground(new java.awt.Color(169, 226, 245));
         jPanel1.setPreferredSize(new java.awt.Dimension(1280, 720));
@@ -412,6 +413,7 @@ public class Frame_1_1 extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btCetakStrukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCetakStrukActionPerformed

@@ -43,6 +43,8 @@ public class Frame_Login_Tabung extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Login");
+        setUndecorated(true);
+        setResizable(false);
         setSize(new java.awt.Dimension(1280, 720));
 
         jPanel1.setBackground(new java.awt.Color(162, 233, 245));

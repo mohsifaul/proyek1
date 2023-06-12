@@ -24,7 +24,7 @@ public class ClassValidasi {
     
     public String[] Login(String username, String password){
 //        boolean valid = false;
-        String userData[] = new String[2];
+        String userData[] = new String[3];
         String sql = "SELECT * FROM user WHERE username = '" + username + "'"
                 + "AND userpass = '" + password + "'";
         try{
@@ -32,8 +32,9 @@ public class ClassValidasi {
             st = conn.createStatement();
             ResultSet rs = st.executeQuery(sql);
             if (rs.next()) {
-                userData[0] = rs.getString("nama"); // Simpan nama ke indeks 0
-                userData[1] = rs.getString("level"); // Simpan level ke indeks 1
+                userData[0] = rs.getString("username"); // Simpan nama ke indeks 0
+                userData[1] = rs.getString("userpass"); // Simpan nama ke indeks 1
+                userData[2] = rs.getString("nama");
             } else {
                 System.out.println("Username atau Password Salah!!");
                 JOptionPane.showMessageDialog(null, "Username atau Password Salah!!");

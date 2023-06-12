@@ -58,6 +58,7 @@ public class Frame_Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1280, 720));
+        setResizable(false);
         setSize(new java.awt.Dimension(1280, 720));
 
         jPanel1.setBackground(new java.awt.Color(162, 233, 245));
@@ -193,18 +194,16 @@ public class Frame_Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Masukkan Username / Password", "Informasi", JOptionPane.ERROR_MESSAGE);
         } else {
             ClassValidasi cv = new ClassValidasi();
-            String[] userData = cv.Login2(txUsername.getText(), txPassword.getText());
+            String[] userData = cv.Login(txUsername.getText(), txPassword.getText());
             if (userData[0] != null) {
-                String nama = userData[0];
-                String level = userData[1];
-                if ("Admin".equals(level)) {
+                String username = userData[0];
+                String password = userData[1];
+                String nama = userData[2];
+                if (txUsername.getText().equals(username)&& txPassword.getText().equals(password)) {
                     new Frame_2(nama).setVisible(true);
                     dispose();
-                } else if("Anggota".equals(level)){
-                    new Frame_1_3_0().setVisible(true);
-                    dispose();
-                }else{
-                   JOptionPane.showMessageDialog(null, "Login Gagal.\nAnda Bukan Admin", "Informasi", JOptionPane.ERROR_MESSAGE); 
+                } else{
+                   JOptionPane.showMessageDialog(null, "Login Gagal.\nSilahkan Cek kembali Username dan Password", "Informasi", JOptionPane.ERROR_MESSAGE); 
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Login Gagal.\nSilahkan Cek kembali Username dan Password", "Informasi", JOptionPane.ERROR_MESSAGE);
