@@ -5,6 +5,7 @@
 package frame;
 
 import code.ClassBarang;
+import code.ClassCetakPdf;
 import code.ClassConnection;
 import code.ClassTransaksi;
 import java.awt.event.KeyEvent;
@@ -16,7 +17,9 @@ import java.sql.Statement;
 import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Random;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -32,6 +35,7 @@ public class Frame_1_1 extends javax.swing.JFrame {
     private Statement st;
     private String jam, tanggal;
     int idx_table, subtotal;
+    private boolean isVisible = false;
     DefaultTableModel tableModel;
     public Frame_1_1() {
         initComponents();
@@ -41,6 +45,7 @@ public class Frame_1_1 extends javax.swing.JFrame {
         tampiljamtanggal();
         ModelTableTransaksi();
         txTotHarga.setText("Rp 0");
+        hidden();
     }
     // Fungsi filter angka
     void filterAngka(KeyEvent b){ 
@@ -101,6 +106,13 @@ public class Frame_1_1 extends javax.swing.JFrame {
         };
         thread.start();
     }
+    void hidden(){
+        jLabel6.setVisible(false);
+        jLabel7.setVisible(false);
+        txUang.setVisible(false);
+        txKembali.setVisible(false);
+        btBayar.setVisible(false);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -116,7 +128,6 @@ public class Frame_1_1 extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         txIdBarang = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        btCetakStruk = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         txTotHarga = new javax.swing.JLabel();
         btKembali = new javax.swing.JButton();
@@ -129,13 +140,15 @@ public class Frame_1_1 extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txKembali = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        btBayar = new javax.swing.JButton();
         comboNama = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         txTanggal = new javax.swing.JLabel();
         txHargaBarang = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         txInvoice = new javax.swing.JLabel();
+        btQr = new javax.swing.JButton();
+        btCash = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(26, 188, 156));
@@ -169,16 +182,6 @@ public class Frame_1_1 extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
         jLabel1.setText("Kode Barang");
-
-        btCetakStruk.setBackground(new java.awt.Color(255, 239, 99));
-        btCetakStruk.setFont(new java.awt.Font("Source Sans Pro", 0, 16)); // NOI18N
-        btCetakStruk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/printer.png"))); // NOI18N
-        btCetakStruk.setText("Cetak Struk");
-        btCetakStruk.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btCetakStrukActionPerformed(evt);
-            }
-        });
 
         jLabel2.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
         jLabel2.setText("Total");
@@ -248,11 +251,11 @@ public class Frame_1_1 extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
         jLabel7.setText("Kembali");
 
-        jButton3.setFont(new java.awt.Font("Source Sans Pro", 0, 16)); // NOI18N
-        jButton3.setText("Bayar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btBayar.setFont(new java.awt.Font("Source Sans Pro", 0, 16)); // NOI18N
+        btBayar.setText("Bayar");
+        btBayar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btBayarActionPerformed(evt);
             }
         });
 
@@ -278,6 +281,20 @@ public class Frame_1_1 extends javax.swing.JFrame {
         txInvoice.setFont(new java.awt.Font("Source Sans Pro", 1, 18)); // NOI18N
         txInvoice.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         txInvoice.setText("Invoice");
+
+        btQr.setText("QR Code");
+        btQr.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btQrActionPerformed(evt);
+            }
+        });
+
+        btCash.setText("Cash");
+        btCash.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCashActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -309,7 +326,7 @@ public class Frame_1_1 extends javax.swing.JFrame {
                                 .addComponent(btTambah)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btHapus)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 349, Short.MAX_VALUE)
                                 .addComponent(txInvoice, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(65, 65, 65))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -321,6 +338,10 @@ public class Frame_1_1 extends javax.swing.JFrame {
                                 .addGap(53, 53, 53)
                                 .addComponent(txTotHarga, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btCash, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btQr, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(37, 37, 37)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -329,10 +350,8 @@ public class Frame_1_1 extends javax.swing.JFrame {
                             .addComponent(txKembali, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
                             .addComponent(txUang))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btCetakStruk))
-                        .addGap(37, 37, 37))
+                        .addComponent(btBayar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(46, 46, 46))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -379,22 +398,29 @@ public class Frame_1_1 extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txUang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6)
-                            .addComponent(jButton3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(txKembali, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btCetakStruk)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txUang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6)
+                                    .addComponent(btBayar))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel7)
+                                    .addComponent(txKembali, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txTotHarga, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(37, 37, 37))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txTotHarga, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(41, 41, 41))
+                        .addGap(29, 29, 29)
+                        .addComponent(btQr, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btCash, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -416,17 +442,13 @@ public class Frame_1_1 extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btCetakStrukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCetakStrukActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btCetakStrukActionPerformed
-
     private void btKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btKembaliActionPerformed
         // TODO add your handling code here:
         new Frame_1().setVisible(true);
         dispose();
     }//GEN-LAST:event_btKembaliActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBayarActionPerformed
         // TODO add your handling code here:
         if (txKembali.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Selesesaikan Pembayaran");
@@ -450,16 +472,19 @@ public class Frame_1_1 extends javax.swing.JFrame {
                     data[i][j] = String.valueOf(tableModel.getValueAt(i, j));
                 }
             }
-//            String id = lbKodeNota.getText();
-//            ClassCetakPdf cetak = new ClassCetakPdf();
-//            int lHarga = Integer.parseInt(lbHarga.getText());
-//            int tUang = Integer.parseInt(txtUang.getText());
-//            String[] jdlTbl = {"Kode Barang", "Nama Barang", "Jumlah Barang", "Harga", "Sub Total"};
-//            cetak.CetakTabelTransaksi("kop_transaksi.jpg", "Data Transaksi " + id, "NOTA PEMBELIAN\n" + jam + " " + tanggal +
-//                    "\nKode   : " + id +"\nKasir   : " + namalogin, jdlTbl, data, jTable1.getRowCount(), jTable1.getColumnCount(),lHarga, tUang);
+            String id = txInvoice.getText();
+            ClassCetakPdf cetak = new ClassCetakPdf();
+//            int lHarga = Integer.parseInt(txTotHarga.getText());
+            String textBayar = txTotHarga.getText();
+            String numericValue = textBayar.replaceAll("[^0-9]", ""); // mengambil nilai angka saja
+            int total = Integer.parseInt(numericValue);
+            int tUang = Integer.parseInt(txUang.getText());
+            String[] jdlTbl = {"Kode Barang", "Nama Barang", "Jumlah Barang", "Harga", "Sub Total"};
+            cetak.CetakTabelTransaksi("kop.jpg", "Nota " + id, "NOTA PEMBELIAN\n" + jam + " " + tanggal +
+                    "\nKode   : " + id, jdlTbl, data, jTable1.getRowCount(), jTable1.getColumnCount(),total, tUang);
             clearAllData();
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btBayarActionPerformed
 
     private void btTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTambahActionPerformed
         // TODO add your handling code here:
@@ -549,21 +574,25 @@ public class Frame_1_1 extends javax.swing.JFrame {
     private void txUangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txUangActionPerformed
         // TODO add your handling code here:
         String uang = txUang.getText();
-        if (uang.equals("")) {
-            JOptionPane.showMessageDialog(rootPane, "Silahkan Masukkan Uang.", "Informasi", JOptionPane.ERROR_MESSAGE);
-        } else{
-            int uangBayar = Integer.parseInt(txUang.getText());
-            int kembalian = 0;
-            String uangKembalian;
-            String textBayar = txTotHarga.getText();
-            String numericValue = textBayar.replaceAll("[^0-9]", ""); // mengambil nilai angka saja
-            int totalBayar = Integer.parseInt(numericValue);
-            if(uangBayar < totalBayar){
-                JOptionPane.showMessageDialog(rootPane, "Uang anda kurang!!.", "Informasi", JOptionPane.ERROR_MESSAGE);
-            } else {
-                kembalian = uangBayar - totalBayar;
-                uangKembalian = String.valueOf(kembalian);
-                txKembali.setText(uangKembalian);
+        if (jTable1.getRowCount()==0) {
+            JOptionPane.showMessageDialog(rootPane, "Silahkan Lakukan Pembelian Barang.", "Informasi", JOptionPane.ERROR_MESSAGE);
+        } else {
+            if (uang.equals("")) {
+                JOptionPane.showMessageDialog(rootPane, "Silahkan Masukkan Uang.", "Informasi", JOptionPane.ERROR_MESSAGE);
+            } else{
+                int uangBayar = Integer.parseInt(txUang.getText());
+                int kembalian = 0;
+                String uangKembalian;
+                String textBayar = txTotHarga.getText();
+                String numericValue = textBayar.replaceAll("[^0-9]", ""); // mengambil nilai angka saja
+                int totalBayar = Integer.parseInt(numericValue);
+                if(uangBayar < totalBayar){
+                    JOptionPane.showMessageDialog(rootPane, "Uang anda kurang!!.", "Informasi", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    kembalian = uangBayar - totalBayar;
+                    uangKembalian = String.valueOf(kembalian);
+                    txKembali.setText(uangKembalian);
+                }
             }
         }
     }//GEN-LAST:event_txUangActionPerformed
@@ -577,6 +606,70 @@ public class Frame_1_1 extends javax.swing.JFrame {
         // TODO add your handling code here:
         filterAngka(evt);
     }//GEN-LAST:event_txUangKeyTyped
+
+    private void btCashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCashActionPerformed
+        // TODO add your handling code here:
+         isVisible = !isVisible; // Mengubah status visibilitas menjadi sebaliknya
+
+        jLabel6.setVisible(isVisible);
+        jLabel7.setVisible(isVisible);
+        txUang.setVisible(isVisible);
+        txKembali.setVisible(isVisible);
+        btBayar.setVisible(isVisible);
+    }//GEN-LAST:event_btCashActionPerformed
+
+    private void btQrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btQrActionPerformed
+        // TODO add your handling code here:
+        int length = 12; // Panjang kombinasi angka
+        int min = 0; // Nilai angka minimum
+        int max = 9; // Nilai angka maksimum
+
+        Random random = new Random();
+        StringBuilder combination = new StringBuilder();
+
+        for (int i = 0; i < length; i++) {
+            int randomNumber = random.nextInt(max - min + 1) + min;
+            combination.append(randomNumber);
+        }
+        if (jTable1.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(rootPane, "Silahkan Lakukan Pembelian Barang.", "Informasi", JOptionPane.ERROR_MESSAGE);
+        } else {
+            String randomAngka = "<html><b><font size=\"10\">Kode : " + combination.toString() + "</font></b></html>";
+            int option = JOptionPane.showOptionDialog(null, randomAngka, "Pembayaran QR Code", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null);
+            String textBayar = txTotHarga.getText();
+            String numericValue = textBayar.replaceAll("[^0-9]", ""); // mengambil nilai angka saja
+            int totalBayar = Integer.parseInt(numericValue);
+            if (option == JOptionPane.OK_OPTION) {
+                int inputUang = totalBayar;
+                JOptionPane.showMessageDialog(null,"Pembayaran Berhasil");
+                String[][] data = new String[jTable1.getRowCount()][jTable1.getColumnCount()];
+                for (int i = 0; i < jTable1.getRowCount(); i++) {
+                    for (int j = 0; j < jTable1.getColumnCount(); j++) {
+                        data[i][j] = String.valueOf(tableModel.getValueAt(i, j));
+                    }
+                }
+                ClassTransaksi ct = new ClassTransaksi();
+    //            ct.InsertLog(tanggal, namalogin, lbKodeNota.getText(), data, jTable1.getRowCount());
+                ct.InsertLog(tanggal, txInvoice.getText(), data, jTable1.getRowCount());
+    //            System.out.println(data);
+                ClassBarang cb = new ClassBarang();
+                cb.UpdateStock(data,jTable1.getRowCount());
+                data = new String[jTable1.getRowCount()][jTable1.getColumnCount()];
+                for(int i=0;i<jTable1.getRowCount();i++){
+                    for(int j=0; j<jTable1.getColumnCount();j++){
+                        data[i][j] = String.valueOf(tableModel.getValueAt(i, j));
+                    }
+                }
+                String id = txInvoice.getText();
+                ClassCetakPdf cetak = new ClassCetakPdf();
+    //            int lHarga = Integer.parseInt(txTotHarga.getText());
+                String[] jdlTbl = {"Kode Barang", "Nama Barang", "Jumlah Barang", "Harga", "Sub Total"};
+                cetak.CetakTabelTransaksi("kop.jpg", "Nota " + id, "NOTA PEMBELIAN\n" + jam + " " + tanggal +
+                        "\nKode   : " + id, jdlTbl, data, jTable1.getRowCount(), jTable1.getColumnCount(),totalBayar, inputUang);
+                clearAllData();
+            }
+        }
+    }//GEN-LAST:event_btQrActionPerformed
 
     /**
      * @param args the command line arguments
@@ -615,12 +708,13 @@ public class Frame_1_1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btCetakStruk;
+    private javax.swing.JButton btBayar;
+    private javax.swing.JButton btCash;
     private javax.swing.JButton btHapus;
     private javax.swing.JButton btKembali;
+    private javax.swing.JButton btQr;
     private javax.swing.JButton btTambah;
     private javax.swing.JComboBox<String> comboNama;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

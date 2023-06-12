@@ -38,8 +38,6 @@ public class Frame_2_2 extends javax.swing.JFrame {
         tableModel.addColumn("Jenis Barang");
         tableModel.addColumn("Tempat");
         tableModel.addColumn("Stok");
-        tableModel.addColumn("Harga Beli");
-        tableModel.addColumn("Harga Jual");
         tableModel.getDataVector().removeAllElements();
         tableModel.fireTableDataChanged();
         
@@ -51,8 +49,6 @@ public class Frame_2_2 extends javax.swing.JFrame {
         columnModel.getColumn(3).setPreferredWidth(100); // Kolom "Jenis Barang" dengan lebar 100 piksel
         columnModel.getColumn(4).setPreferredWidth(100); // Kolom "Jenis Barang" dengan lebar 100 piksel
         columnModel.getColumn(5).setPreferredWidth(50);  // Kolom "Stok" dengan lebar 50 piksel
-        columnModel.getColumn(6).setPreferredWidth(100); // Kolom "Harga Beli" dengan lebar 100 piksel
-        columnModel.getColumn(7).setPreferredWidth(100); // Kolom "Harga Jual" dengan lebar 100 piksel
     }
     void loadData() {
         ModelTableUser();
@@ -61,10 +57,30 @@ public class Frame_2_2 extends javax.swing.JFrame {
         int no = 1;
         int ndata = cb.getNumberDataBarang();
         Object[][] data = cb.getAllDataBarang();
-        Object[] data1 = new Object[8];
+        Object[] data1 = new Object[6];
         for (int i = 0; i < ndata; i++) {
             data1[0] = no;
-            for (int j = 1; j < 8; j++) {
+            for (int j = 1; j < 6; j++) {
+                data1[j] = data[i][j - 1];
+            }
+            tableModel.addRow(data1);
+            no++;
+        }
+        int jumlah = tableModel.getRowCount(); 
+       txTotalBarang.setText(Integer.toString(jumlah));
+    }
+    
+    void loadData(String key) {
+        ModelTableUser();
+        ClassBarang cb = new ClassBarang();
+        cb.CariBarang(key);
+        int no = 1;
+        int ndata = cb.getNumberDataBarang();
+        Object[][] data = cb.getAllDataBarang();
+        Object[] data1 = new Object[6];
+        for (int i = 0; i < ndata; i++) {
+            data1[0] = no;
+            for (int j = 1; j < 6; j++) {
                 data1[j] = data[i][j - 1];
             }
             tableModel.addRow(data1);
@@ -84,13 +100,12 @@ public class Frame_2_2 extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        txCari = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbBarang = new javax.swing.JTable();
         btKelola = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         txTotalBarang = new javax.swing.JLabel();
         btKembali = new javax.swing.JButton();
@@ -100,6 +115,12 @@ public class Frame_2_2 extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(169, 226, 245));
         jPanel1.setPreferredSize(new java.awt.Dimension(1280, 720));
+
+        txCari.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txCariKeyTyped(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/search-interface-symbol.png"))); // NOI18N
@@ -132,16 +153,6 @@ public class Frame_2_2 extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(246, 253, 168));
-        jButton1.setFont(new java.awt.Font("Source Sans Pro", 0, 16)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/printer.png"))); // NOI18N
-        jButton1.setText("Cetak Barang");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         jLabel10.setFont(new java.awt.Font("Source Sans Pro", 1, 18)); // NOI18N
         jLabel10.setText("Total Barang");
 
@@ -162,29 +173,26 @@ public class Frame_2_2 extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(87, 87, 87)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txTotalBarang)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btKembali)
-                .addGap(18, 18, 18)
-                .addComponent(btKelola)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addGap(76, 76, 76))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txCari, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addGap(88, 88, 88))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(37, 37, 37)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txTotalBarang)
+                        .addGap(750, 750, 750)
+                        .addComponent(btKembali)
+                        .addGap(18, 18, 18)
+                        .addComponent(btKelola))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1196, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -192,7 +200,7 @@ public class Frame_2_2 extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(59, 59, 59)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txCari, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
@@ -203,9 +211,8 @@ public class Frame_2_2 extends javax.swing.JFrame {
                         .addComponent(btKembali, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txTotalBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btKelola, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(47, Short.MAX_VALUE))
+                    .addComponent(btKelola, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -225,10 +232,6 @@ public class Frame_2_2 extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void btKelolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btKelolaActionPerformed
         // TODO add your handling code here:
         new Frame_2_2_2().setVisible(true);
@@ -240,6 +243,11 @@ public class Frame_2_2 extends javax.swing.JFrame {
         new Frame_2(namaAkun).setVisible(true);
         dispose();
     }//GEN-LAST:event_btKembaliActionPerformed
+
+    private void txCariKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txCariKeyTyped
+        // TODO add your handling code here:
+        loadData(txCari.getText());
+    }//GEN-LAST:event_txCariKeyTyped
 
     /**
      * @param args the command line arguments
@@ -279,14 +287,13 @@ public class Frame_2_2 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btKelola;
     private javax.swing.JButton btKembali;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tbBarang;
+    private javax.swing.JTextField txCari;
     private javax.swing.JLabel txTotalBarang;
     // End of variables declaration//GEN-END:variables
 }

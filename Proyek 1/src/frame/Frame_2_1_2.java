@@ -5,6 +5,7 @@
 package frame;
 
 import code.ClassAnggota;
+import code.ClassCetakPdf;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -46,22 +47,57 @@ public class Frame_2_1_2 extends javax.swing.JFrame {
         ModelTableUser();
         ClassAnggota ca = new ClassAnggota();
         ca.TampilAnggota();
-        int no = 1;
         int ndata = ca.getNumberDataAnggota();
         Object[][] data = ca.getAllDataAngggota();
         Object[] data1 = new Object[6];
+        int no = 1; // Variabel nomor urut
         for (int i = 0; i < ndata; i++) {
-            data1[0] = no;
+            data1[0] = no; // Menyimpan nomor urut pada kolom pertama
             for (int j = 1; j < 6; j++) {
                 data1[j] = data[i][j - 1];
-//                System.out.println(data1[j]);
             }
             tableModel.addRow(data1);
-            no++;
+            no++; // Meningkatkan nomor urut setiap iterasi
         }
         int jumlah = tableModel.getRowCount(); 
-       txTotalAnggota.setText(Integer.toString(jumlah));
+        txTotalAnggota.setText(Integer.toString(jumlah));
     }
+//    void loadData(String key) {
+//        ModelTableUser();
+//        ClassAnggota ca = new ClassAnggota();
+//        ca.CariAnggota(key);
+//        int ndata = ca.getNumberDataAnggota();
+//        Object[][] data = ca.getAllDataAngggota();
+//        Object[] data1 = new Object[5];
+//        for (int i = 0; i < ndata; i++) {
+//            for (int j = 0; j < 5; j++) {
+//                data1[j] = data[i][j];
+//            }
+//            tableModel.addRow(data1);
+//        }
+//        int jumlah = tableModel.getRowCount(); 
+//       txTotalAnggota.setText(Integer.toString(jumlah));
+//    }
+    void loadData(String key) {
+        ModelTableUser();
+        ClassAnggota ca = new ClassAnggota();
+        ca.CariAnggota(key);
+        int ndata = ca.getNumberDataAnggota();
+        Object[][] data = ca.getAllDataAngggota();
+        Object[] data1 = new Object[6];
+        int no = 1; // Variabel nomor urut
+        for (int i = 0; i < ndata; i++) {
+            data1[0] = no; // Menyimpan nomor urut pada kolom pertama
+            for (int j = 1; j < 6; j++) {
+                data1[j] = data[i][j - 1];
+            }
+            tableModel.addRow(data1);
+            no++; // Meningkatkan nomor urut setiap iterasi
+        }
+        int jumlah = tableModel.getRowCount(); 
+        txTotalAnggota.setText(Integer.toString(jumlah));
+    }
+
     void clearData(){
         txNIS.setEnabled(true);
         txNIS.setEditable(true);
@@ -90,11 +126,11 @@ public class Frame_2_1_2 extends javax.swing.JFrame {
         btTambah = new javax.swing.JButton();
         btEdit = new javax.swing.JButton();
         btHapus = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        btCetak = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbAnggota = new javax.swing.JTable();
-        jTextField5 = new javax.swing.JTextField();
+        txCari = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         txUserpass = new javax.swing.JTextField();
@@ -154,10 +190,15 @@ public class Frame_2_1_2 extends javax.swing.JFrame {
             }
         });
 
-        jButton7.setBackground(new java.awt.Color(246, 253, 168));
-        jButton7.setFont(new java.awt.Font("Source Sans Pro", 0, 16)); // NOI18N
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/printer.png"))); // NOI18N
-        jButton7.setText("Cetak");
+        btCetak.setBackground(new java.awt.Color(246, 253, 168));
+        btCetak.setFont(new java.awt.Font("Source Sans Pro", 0, 16)); // NOI18N
+        btCetak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/printer.png"))); // NOI18N
+        btCetak.setText("Cetak");
+        btCetak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCetakActionPerformed(evt);
+            }
+        });
 
         jButton8.setBackground(new java.awt.Color(255, 99, 129));
         jButton8.setFont(new java.awt.Font("Source Sans Pro", 0, 16)); // NOI18N
@@ -187,7 +228,12 @@ public class Frame_2_1_2 extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tbAnggota);
 
-        jTextField5.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
+        txCari.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
+        txCari.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txCariKeyTyped(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/search-interface-symbol.png"))); // NOI18N
@@ -255,7 +301,7 @@ public class Frame_2_1_2 extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btCetak, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(txUsernama, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
@@ -275,7 +321,7 @@ public class Frame_2_1_2 extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txCari, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel4)
                         .addGap(87, 87, 87))
@@ -297,7 +343,7 @@ public class Frame_2_1_2 extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(71, 71, 71)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txCari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4))
                         .addGap(18, 18, 18))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -339,7 +385,7 @@ public class Frame_2_1_2 extends javax.swing.JFrame {
                         .addGap(27, 27, 27)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btCetak, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -481,6 +527,28 @@ public class Frame_2_1_2 extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton8ActionPerformed
 
+    private void txCariKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txCariKeyTyped
+        // TODO add your handling code here:
+        loadData(txCari.getText());
+    }//GEN-LAST:event_txCariKeyTyped
+
+    private void btCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCetakActionPerformed
+        // TODO add your handling code here:
+        String [][] data = new String[tbAnggota.getRowCount()][tbAnggota.getColumnCount()];
+        for(int i=0;i<tbAnggota.getRowCount();i++){
+            for(int j=0; j<tbAnggota.getColumnCount();j++){
+                data[i][j] = String.valueOf(tableModel.getValueAt(i, j));
+            }
+        }
+        ClassCetakPdf cetak = new ClassCetakPdf();
+        String[] jdlTbl = {"No", "NIS", "Password", "Nama Anggota", "Jenis Kelamin", "Kelas"};
+//        cetak.CetakTabel("Daftar Barang", "Data Barang", jdlTbl, data, jTableBarang.getRowCount(), jTableBarang.getColumnCount());
+        String totalAnggota = txTotalAnggota.getText();
+//        cetak.CetakTabel("Daftar User", "Data User", jdlTbl, data, jTable1.getRowCount(), jTable1.getColumnCount());
+        cetak.CetakTabelAnggota("Data Anggota", "Data Anggota", jdlTbl, data, tbAnggota.getRowCount(), 
+                tbAnggota.getColumnCount(),"Total Anggota : " + totalAnggota);
+    }//GEN-LAST:event_btCetakActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -518,11 +586,11 @@ public class Frame_2_1_2 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btBatal;
+    private javax.swing.JButton btCetak;
     private javax.swing.JButton btEdit;
     private javax.swing.ButtonGroup btGroupJk;
     private javax.swing.JButton btHapus;
     private javax.swing.JButton btTambah;
-    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -535,10 +603,10 @@ public class Frame_2_1_2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JRadioButton rbJkL;
     private javax.swing.JRadioButton rbJkP;
     private javax.swing.JTable tbAnggota;
+    private javax.swing.JTextField txCari;
     private javax.swing.JTextField txKelas;
     private javax.swing.JTextField txNIS;
     private javax.swing.JLabel txTotalAnggota;

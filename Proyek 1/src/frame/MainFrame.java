@@ -37,7 +37,7 @@ public class MainFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(169, 226, 245));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1280, 720));
+        setPreferredSize(new java.awt.Dimension(1280, 738));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(162, 233, 245));

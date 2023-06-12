@@ -58,14 +58,14 @@ public class ClassTransaksi {
         try{
             conn = ClassConnection.getKoneksi();
             st = conn.createStatement();
-            String sql = "SELECT COUNT(DISTINCT idtrx) FROM transaksi WHERE idtrx like '%" + key + "%' ";
+            String sql = "SELECT COUNT(DISTINCT idtrx) FROM transaksi WHERE tanggal = '" + key + "'";
             ResultSet rs = st.executeQuery(sql);
             while(rs.next()){
                 ndata = rs.getInt("COUNT(DISTINCT idtrx)");
             }
             sql = "SELECT tanggal, idtrx, COUNT(idtrx) AS nJenis, " 
                     + "SUM(itemBarang) AS nItem, SUM(total) AS pemasukan " 
-                    + "FROM transaksi WHERE idtrx like '%" + key + "%' GROUP BY idtrx";
+                    + "FROM transaksi WHERE tanggal = '" + key + "' GROUP BY idtrx";
             rs = st.executeQuery(sql);
             data = new Object[ndata][5];
             int idx = 0;

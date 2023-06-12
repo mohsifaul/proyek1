@@ -93,6 +93,34 @@ public class ClassAnggota {
         }
     }
     
+    public void CariAnggota(String key){
+        try{
+            conn = ClassConnection.getKoneksi();
+            st = conn.createStatement();
+            String sql = "SELECT COUNT(*) FROM anggota WHERE nama like '%" + key + "%' ";
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()){
+                ndata = rs.getInt("COUNT(*)");
+            }
+            sql = "SELECT * FROM anggota WHERE nama like '%" + key + "%' ";
+            rs = st.executeQuery(sql);
+            data = new Object[ndata][5];
+            int idx = 0;
+            while(rs.next()){
+                data[idx][0] = rs.getString("username");
+                data[idx][1] = rs.getString("userpass");
+                data[idx][2] = rs.getString("nama");
+                data[idx][3] = rs.getString("jenis_kelamin");
+                data[idx][4] = rs.getString("kelas");
+                idx++;
+            }
+            rs.close();
+            st.close();
+        } catch (SQLException ex){
+            System.out.println("Data gagal tampil");
+        }
+    }
+    
 //  Fungsi Untuk Tambah Data Anggota  
     public void insertAnggota(String NIS, String pass, String namaAnggota, String jenisKelamin, String kelasAnggota, int saldo){
         try{
