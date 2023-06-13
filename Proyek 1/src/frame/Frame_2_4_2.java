@@ -142,7 +142,6 @@ public class Frame_2_4_2 extends javax.swing.JFrame {
         txTotalBarang = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         txTotalUntung = new javax.swing.JLabel();
-        btCetak = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -195,16 +194,6 @@ public class Frame_2_4_2 extends javax.swing.JFrame {
         txTotalUntung.setFont(new java.awt.Font("Source Sans Pro", 1, 18)); // NOI18N
         txTotalUntung.setText("1");
 
-        btCetak.setBackground(new java.awt.Color(246, 253, 168));
-        btCetak.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
-        btCetak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/printer.png"))); // NOI18N
-        btCetak.setText("Cetak Struk");
-        btCetak.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btCetakActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -224,8 +213,7 @@ public class Frame_2_4_2 extends javax.swing.JFrame {
                         .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(txTotalUntung, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(70, 70, 70)
-                        .addComponent(btCetak))
+                        .addGap(198, 198, 198))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 34, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -248,16 +236,15 @@ public class Frame_2_4_2 extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txTotalUntung, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txTotalPemasukkan, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txTotalUntung, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btCetak, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txTotalBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(56, 56, 56))
+                .addGap(58, 58, 58))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -284,23 +271,6 @@ public class Frame_2_4_2 extends javax.swing.JFrame {
         new Frame_2_4().setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void btCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCetakActionPerformed
-        // TODO add your handling code here:
-        String [][] data = new String[tbTransaksi.getRowCount()][tbTransaksi.getColumnCount()];
-        for(int i=0;i<tbTransaksi.getRowCount();i++){
-            for(int j=0; j<tbTransaksi.getColumnCount();j++){
-                data[i][j] = String.valueOf(tableModel.getValueAt(i, j));
-            }
-        }
-        ClassCetakPdf cetak = new ClassCetakPdf();
-        String[] jdlTbl = {"No", "NIS", "Nama Anggota", "Jenis Kelamin", "Kelas"};
-//        cetak.CetakTabel("Daftar Barang", "Data Barang", jdlTbl, data, jTableBarang.getRowCount(), jTableBarang.getColumnCount());
-        String totalbarang = txTotalBarang.getText();
-//        String totalbarang = txTotalBarang.getText();
-        cetak.CetakTabel("Data Anggota", "Data Anggota", jdlTbl, data, tbTransaksi.getRowCount(), 
-                tbTransaksi.getColumnCount(),"Total Anggota : " + totalbarang);
-    }//GEN-LAST:event_btCetakActionPerformed
 
     /**
      * @param args the command line arguments
@@ -341,7 +311,6 @@ public class Frame_2_4_2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btCetak;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

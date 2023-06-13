@@ -74,11 +74,11 @@
                           <Component id="jLabel11" min="-2" pref="156" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="txTotalPemasukkan" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="144" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
                           <Component id="jLabel10" min="-2" pref="140" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="txTotalBarang" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="345" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="318" max="-2" attributes="0"/>
                           <Component id="btKembali1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="btDetail" min="-2" max="-2" attributes="0"/>
@@ -210,7 +210,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Source Sans Pro" size="18" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Total Barang"/>
+            <Property name="text" type="java.lang.String" value="Total Invoice"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="txTotalBarang">

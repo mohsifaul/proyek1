@@ -5,6 +5,7 @@
 package frame;
 
 import code.ClassBarang;
+import code.ClassCetakPdf;
 import code.ClassTransaksi;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -189,7 +190,7 @@ public class Frame_2_4 extends javax.swing.JFrame {
         });
 
         jLabel10.setFont(new java.awt.Font("Source Sans Pro", 1, 18)); // NOI18N
-        jLabel10.setText("Total Barang");
+        jLabel10.setText("Total Invoice");
 
         txTotalBarang.setFont(new java.awt.Font("Source Sans Pro", 1, 18)); // NOI18N
         txTotalBarang.setText("1");
@@ -233,11 +234,11 @@ public class Frame_2_4 extends javax.swing.JFrame {
                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(txTotalPemasukkan)
-                        .addGap(144, 144, 144)
+                        .addGap(85, 85, 85)
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(txTotalBarang)
-                        .addGap(345, 345, 345)
+                        .addGap(318, 318, 318)
                         .addComponent(btKembali1)
                         .addGap(18, 18, 18)
                         .addComponent(btDetail)
@@ -291,7 +292,20 @@ public class Frame_2_4 extends javax.swing.JFrame {
 
     private void btCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCetakActionPerformed
         // TODO add your handling code here:
-        
+        String [][] data = new String[tbTransaksi.getRowCount()][tbTransaksi.getColumnCount()];
+        for(int i=0;i<tbTransaksi.getRowCount();i++){
+            for(int j=0; j<tbTransaksi.getColumnCount();j++){
+                data[i][j] = String.valueOf(tableModel.getValueAt(i, j));
+            }
+        }
+        ClassCetakPdf cetak = new ClassCetakPdf();
+        String[] jdlTbl = {"No","Tanggal", "Invoice", "Total Barang", "Total Harga"};
+//        cetak.CetakTabel("Daftar Barang", "Data Barang", jdlTbl, data, jTableBarang.getRowCount(), jTableBarang.getColumnCount());
+        String totalInvoice = txTotalBarang.getText();
+        String totalPemasukan = txTotalPemasukkan.getText();
+//        cetak.CetakTabel("Daftar User", "Data User", jdlTbl, data, jTable1.getRowCount(), jTable1.getColumnCount());
+        cetak.CetakTabelInvoice("Data Invoice", "Data Invoice", jdlTbl, data, tbTransaksi.getRowCount(), 
+                tbTransaksi.getColumnCount(), "Total Pemasukkan           : " + totalPemasukan);
     }//GEN-LAST:event_btCetakActionPerformed
 
     private void btKembali1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btKembali1ActionPerformed

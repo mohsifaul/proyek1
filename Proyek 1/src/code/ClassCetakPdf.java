@@ -27,7 +27,7 @@ import javax.swing.JOptionPane;
  * @author MSIFAULK
  */
 public class ClassCetakPdf {
-    String nama, judul, isi, total, totalIsi;
+    String nama, judul, isi, total, totalIsi, pemasukkan;
     
     public ClassCetakPdf(){
         
@@ -198,6 +198,58 @@ public class ClassCetakPdf {
             p.setSpacingAfter(5);
             Paragraph pT = new Paragraph();
             pT.add(totalIsi);
+            pT.setAlignment(Paragraph.ALIGN_RIGHT);
+            document.add(pT);
+            document.close();
+            JOptionPane.showMessageDialog(null, "Cetak Berhasil");
+        } catch (DocumentException | FileNotFoundException ex) {
+            java.util.logging.Logger.getLogger(ClassCetakPdf.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+ 
+    }
+    public void CetakTabelInvoice(String nmDokumen, String jdlDoc, String[] judulTabel, String[][] isi, int bar, int kol, String totalPemasukkan){
+        try {
+            String pathFolder = "Pendataan/"; // Ubah dengan path folder yang diinginkan
+            String nama = pathFolder + nmDokumen + ".pdf";
+            DecimalFormat DF = new DecimalFormat("#,###,###"); 
+            judul = jdlDoc;
+            pemasukkan = totalPemasukkan;
+            
+            Document document = new Document();
+            PdfWriter pw = PdfWriter.getInstance(document, new FileOutputStream(nama));
+
+            // Mengatur lebar kolom tabel
+            float[] columnWidths = {20f, 50f, 50f, 50f , 50f}; // Atur ukuran kolom sesuai kebutuhan (dalam satuan piksel)
+            PdfPTable pt = new PdfPTable(columnWidths);
+            document.open();
+            Paragraph p = new Paragraph(judul);
+            p.setAlignment(Paragraph.ALIGN_CENTER);
+            p.setSpacingAfter(5);
+            document.add(p);
+
+            for (int i = 0; i < kol; i++) {
+                PdfPCell cell = new PdfPCell(new Phrase(judulTabel[i]));
+                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                pt.addCell(cell);
+            }
+
+            for(int i = 0; i < bar; i++) {
+                for(int j = 0; j < kol; j++) {
+                    if (j == 4) {
+                        String isiCell = isi[i][j].toString();
+                        double angka = Integer.parseInt(isiCell);
+                        String harga = "Rp " + DF.format(angka);
+                        pt.addCell(harga);
+                    } else {
+                        pt.addCell(isi[i][j]);
+                    }
+                }
+            }
+
+            document.add(pt);
+            p.setSpacingAfter(5);
+            Paragraph pT = new Paragraph();
+            pT.add(pemasukkan);
             pT.setAlignment(Paragraph.ALIGN_RIGHT);
             document.add(pT);
             document.close();
