@@ -4,6 +4,7 @@
  */
 package frame;
 
+import code.ClassAnggota;
 import code.ClassPengajuan;
 import code.ClassTransaksi;
 import static java.lang.Thread.sleep;
@@ -194,20 +195,27 @@ public class Frame_1_3_2 extends javax.swing.JFrame {
         // TODO add your handling code here:
         String uang = txAmbilUang.getText();
         if (uang.equals("")) {
-            JOptionPane.showInternalMessageDialog(rootPane, "Silahkan Masukkan Jumlah Uang", "Informasi", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(rootPane, "Silahkan Masukkan Jumlah Uang", "Informasi", JOptionPane.INFORMATION_MESSAGE);
         } else {
             int uangAmbil = Integer.valueOf(uang);
-            ClassPengajuan cp = new ClassPengajuan();
-            cp.InsertPengajuan(idPengajuan, tanggal, namaAkun, uangAmbil, "Pengajuan");
-//            txAmbilUang.setText("");
-            new Frame_1_3_0(saldoTabungan, namaAkun).setVisible(true);
-            dispose();
+            ClassAnggota ca = new ClassAnggota();
+            int saldo = ca.getSaldo(namaAkun);
+            if (uangAmbil > saldo){
+                JOptionPane.showMessageDialog(rootPane, "Saldo tidak mencukupi", "Informasi", JOptionPane.INFORMATION_MESSAGE);
+//                System.out.println("Saldo Tidak mencukupi, " + saldo);
+            } else {
+                ClassPengajuan cp = new ClassPengajuan();
+                cp.InsertPengajuan(idPengajuan, tanggal, namaAkun, uangAmbil, "Pengajuan");
+    //            txAmbilUang.setText("");
+                new Frame_1_3_0(saldoTabungan, namaAkun).setVisible(true);
+                dispose();
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btKembaliActionPerformed
         // TODO add your handling code here:
-        new Frame_1_3_0().setVisible(true);
+        new Frame_1_3_0(saldoTabungan, namaAkun).setVisible(true);
         dispose();
     }//GEN-LAST:event_btKembaliActionPerformed
 
